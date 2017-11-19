@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="stretch stretch">
+    <header fxLayout="row">
+        <mat-toolbar color="primary" fxLayout="row">
+            <div fxFlex="85%" fxFlexLayoutAlign="center start"> Servicio General de Identificacion Personal</div>
+            
+            <a fxFlex="15%" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()">{{msn.getMsn('loginMensaje')}}</a>
+            <div fxFlex="15%" fxFlexLayoutAlign="center end">
+                <div *ngIf="idioma=='es'" (click)="cambiarIdioma('en')">en</div>
+                <div *ngIf="idioma=='en'" (click)="cambiarIdioma('es')">es</div>
+            </div>
+            <a fxFlex="15%" fxFlexLayoutAlign="center end" mat-button routerLink="/logout"  *ngIf="auth.isUserAuthenticated()">{{msn.getMsn('logoutMensaje')}}</a>
+        </mat-toolbar>
+    </header>
+    <div fxLayout="column">
+        <router-outlet  fxLayout="row" fxLayoutAlign="center center"></router-outlet>
+    </div>
+    <footer fxLayout="row" >
+        <mat-toolbar color="primary">Copyright © Segip 2017 | Versión 0.0.0.0</mat-toolbar>
+    </footer>   
+</div>

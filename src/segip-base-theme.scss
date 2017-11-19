@@ -1,0 +1,126 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+
+
+$sg-pallete-primary: (
+    50 : #e1eaf1,
+    100 : #b3cbdd,
+    200 : #81a8c7,
+    300 : #4f85b0,
+    400 : #296a9f,
+    500 : #03508e,
+    600 : #034986,
+    700 : #02407b,
+    800 : #023771,
+    900 : #01275f,
+    A100 : #90b3ff,
+    A200 : #5d90ff,
+    A400 : #2a6dff,
+    A700 : #105cff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$sg-palette-secondary: (
+    50 : #fff4e6,
+    100 : #ffe3c0,
+    200 : #ffd096,
+    300 : #ffbd6c,
+    400 : #ffaf4d,
+    500 : #ffa12d,
+    600 : #ff9928,
+    700 : #ff8f22,
+    800 : #ff851c,
+    900 : #ff7411,
+    A100 : #ffffff,
+    A200 : #fffbf8,
+    A400 : #ffdbc5,
+    A700 : #ffcbac,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$sg-palette-info: (
+    50 : #e9f7fd,
+    100 : #c7ecfb,
+    200 : #a2dff8,
+    300 : #7cd2f5,
+    400 : #60c8f3,
+    500 : #44bef1,
+    600 : #3eb8ef,
+    700 : #35afed,
+    800 : #2da7eb,
+    900 : #1f99e7,
+    A100 : #ffffff,
+    A200 : #eaf6ff,
+    A400 : #b7e1ff,
+    A700 : #9dd7ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$segip-app-primary: mat-palette($sg-pallete-primary, 600, 100, 900);
+$segip-app-accent:  mat-palette($sg-palette-secondary);
+
+// The warn palette is optional (defaults to red).
+$segip-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$segip-app-theme: mat-light-theme($segip-app-primary, $segip-app-accent, $segip-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($segip-app-theme);
