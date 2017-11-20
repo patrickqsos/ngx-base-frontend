@@ -26,7 +26,17 @@
   min-width: 100%;
 }
   
+.main-logo{
+  height: 100px;
+}
 
+.main-toolbar{
+  height: 100px
+}
+
+.main-footer{
+  font-size: 15px;
+}
   
   .flex-spacer{
       flex-grow: 1
