@@ -3,6 +3,7 @@ import { AuthService } from '../services/AuthService.service';
 import { MensajesService } from '../parametros/mensajesServices';
 import { lang } from '../parametros/lang';
 import { ConfigService } from '../parametros/config.service';
+import { MenuService } from '../services/Menu.service';
 
 @Component({
     selector: 'app-layout',
@@ -29,14 +30,24 @@ export class LayoutComponent {
         }
       ];
 
-    constructor(private auth: AuthService, private msn: MensajesService, private configService: ConfigService) {
+    constructor(
+        public auth: AuthService, 
+        private msn: MensajesService, 
+        private configService: ConfigService,
+        private menuList: MenuService) {
         this.idioma = this.configService.getConfig("lang");
         this.nombreSistema = this.configService.getConfig("nombreSistema");
         this.versionSistema = this.configService.getConfig("versionSistema");
-    }
+      
+      }
+   
 
     cambiarIdioma(pIdioma: string) {
         this.msn.setNuevoLanguage(pIdioma);
         this.idioma = pIdioma;
+    }
+
+    logout(){
+      this.auth.logoutUser();
     }
 }

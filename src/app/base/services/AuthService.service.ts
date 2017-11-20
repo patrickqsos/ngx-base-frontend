@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { MensajesService } from '../parametros/mensajesServices'
 import { MatSnackBar } from '@angular/material'
+import { MenuService } from '../services/Menu.service'
 
 @Injectable()
 export class AuthService {
@@ -10,11 +11,16 @@ export class AuthService {
   // todo: sacar esto a config.json
   urlBase: string = "http://localhost/pruebasRestful";
 
-  constructor(private router: Router, private http:HttpClient, private mensaje: MensajesService, private snackBar: MatSnackBar) {}
+  constructor(
+    private router: Router,
+    private http:HttpClient,
+    private mensaje: MensajesService,
+    private snackBar: MatSnackBar,
+    private MenuService: MenuService) {}
 
 
   loginUser(username: string, password: string) {
-    this.http.get<{login: string}>(this.urlBase+"/login.php").subscribe(
+    this.http.get<{login: string, modulos}>(this.urlBase+"/login.php").subscribe(
       data=>{
         if(data.login)
         {
@@ -23,8 +29,10 @@ export class AuthService {
                 duration: 1750,
                 verticalPosition:'bottom', horizontalPosition:'right'
               });
-            
-            this.router.navigate(['/menu']);
+              
+           
+            this.MenuService.setMenu(data.modulos)
+            this.router.navigate(['menu']);
         }
         else{
             this.snackBar.open(this.mensaje.getMsn('loginFallido'), null,{
@@ -37,10 +45,16 @@ export class AuthService {
 
   logoutUser() {
     this.token = null;
-    this.http.post(this.urlBase+"/logout",null).subscribe((response)=>{
-        console.log("response");
+    console.log("logout");
+    this.http.post(this.urlBase+"/logout.php",null).subscribe((response)=>{
         return response;
-    })
+    });
+    this.snackBar.open(this.mensaje.getMsn('loginCerrado'), null,{
+      duration: 750,
+      verticalPosition:'bottom',   horizontalPosition:'right'
+    });
+    this.MenuService.setMenu([])
+    this.router.navigate(['/login'])
   }
 
   getUserToken() {

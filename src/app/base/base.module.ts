@@ -16,14 +16,10 @@ import { RouterModule, Routes } from '@angular/router';
 /* Import Angular FormsModule */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-/* Import App Mensajes Service */
-import { MensajesService } from './parametros/mensajesServices';
-
 /* Import Angular Material Flex Layout Module */
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-/* Import App Auth Guard */
-import { AuthGuardService } from './services/AuthGuard.service';
+
 
 
 /*Import Angular Material Module*/
@@ -50,11 +46,9 @@ import { LoginComponent } from './login/login.component';
 /* Import Menu Component */
 import { MenuComponent } from './menu/menu.component';
 
-
 // Configuración de las rutas
 export const baseRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'menu', component: MenuComponent, canActivate: [AuthGuardService]},
+ 
 ];
 
 @NgModule({
@@ -74,8 +68,7 @@ export const baseRoutes: Routes = [
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule,
-    MatExpansionModule
+    MatIconModule
   ],
   declarations: [
     LayoutComponent,
@@ -83,7 +76,6 @@ export const baseRoutes: Routes = [
     MenuComponent
   ],
   providers: [
-    MensajesService,
     ConfigService,
     { provide: APP_INITIALIZER, useFactory: (config: ConfigService) => () => config.load(), deps: [ConfigService], multi: true }
   ],
