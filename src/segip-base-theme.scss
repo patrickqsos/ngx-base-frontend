@@ -12,20 +12,20 @@
 
 
 $sg-pallete-primary: (
-    50 : #e1eaf1,
-    100 : #b3cbdd,
-    200 : #81a8c7,
-    300 : #4f85b0,
-    400 : #296a9f,
-    500 : #03508e,
-    600 : #034986,
-    700 : #02407b,
-    800 : #023771,
-    900 : #01275f,
-    A100 : #90b3ff,
-    A200 : #5d90ff,
-    A400 : #2a6dff,
-    A700 : #105cff,
+    50 : #e0eaef,
+    100 : #b3cbd7,
+    200 : #80a9bd,
+    300 : #4d86a2,
+    400 : #266c8e,
+    500 : #00527a,
+    600 : #004b72,
+    700 : #004167,
+    800 : #00385d,
+    900 : #00284a,
+    A100 : #7eb8ff,
+    A200 : #4b9cff,
+    A400 : #187fff,
+    A700 : #0072fd,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -111,7 +111,7 @@ $sg-palette-info: (
 );
 
 
-$segip-app-primary: mat-palette($sg-pallete-primary, 600, 100, 900);
+$segip-app-primary: mat-palette($sg-pallete-primary);
 $segip-app-accent:  mat-palette($sg-palette-secondary);
 
 // The warn palette is optional (defaults to red).

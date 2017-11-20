@@ -1,10 +1,10 @@
 <div class="main-page" fxLayout='column' fxLayoutAlign="center center"  >
     <header fxFlexFill>
-        <mat-toolbar color="primary" fxLayout="row">
-            <!-- <img fxFlex="15" src="../../assets/segip-logo.jpeg" alt=""> -->
+        <mat-toolbar color="primary" fxLayout="row" class="main-toolbar">
+            <img class="main-logo" src="../../assets/logo.png" alt="">
             <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon class="md-24" >menu</mat-icon>
-              </button>￼
+                <mat-icon>menu</mat-icon>
+            </button>￼
 
             <div fxFlex="85" >Sistema base segip</div>
             
@@ -49,6 +49,6 @@
     </mat-sidenav-container>
 
     <footer fxFlexFill>
-        <mat-toolbar color="primary" style="font-size: 12px" >Copyright © Segip 2017 | Versión 0.0.0.0</mat-toolbar>
+        <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >Copyright © Segip 2017 | Versión 0.0.0.0</mat-toolbar>
     </footer>
 </div>
