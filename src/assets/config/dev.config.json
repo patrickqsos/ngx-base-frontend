@@ -1,0 +1,7 @@
+{
+    "debugging": true,
+    "backendUrl": "http://algo.com",
+    "nombreSistema" : "Sistema base test",
+    "versionSistema" : "1.0.0.0",
+    "lang" : "es"
+}

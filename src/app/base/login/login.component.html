@@ -7,11 +7,13 @@
 			<mat-card-content>	
 				<div fxLayout="column" fxLayoutAlign="center center">
 						<mat-form-field color="primary" fxFlexFill>
+							<mat-icon matSuffix>account_box</mat-icon>
 							<input matInput placeholder="{{mensaje('usuarioFormLabel')}}" [formControl]="usuario" required>
 							<mat-error *ngIf="usuario.invalid">{{mensaje("usuarioLogin")}}</mat-error>
 						</mat-form-field>
 					<br>
 						<mat-form-field color="primary" fxFlexFill>
+							<mat-icon matSuffix>vpn_key</mat-icon>
 							<input matInput placeholder="{{mensaje('passwordFormLabel')}}" [formControl]="password" required>
 							<mat-error *ngIf="password.invalid">{{mensaje("passwordLogin")}}</mat-error>
 						</mat-form-field>

@@ -6,7 +6,7 @@
                 <mat-icon>menu</mat-icon>
             </button>￼
 
-            <div fxFlex="85" >Sistema base segip</div>
+            <div fxFlex="85" >{{ nombreSistema }}</div>
             
             <a fxFlex="15" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()">{{msn.getMsn('loginMensaje')}}</a>
             <div fxFlex="15" fxFlexLayoutAlign="center end">
@@ -24,7 +24,7 @@
               <h3 mat-subheader>Informacion del sistema</h3>
               <mat-list-item >
                 <mat-icon mat-list-icon>apps</mat-icon>
-                <h4 mat-line>Sistema base segip</h4>
+                <h4 mat-line>{{ nombreSistema }}</h4>
               </mat-list-item>
               <mat-list-item >
                   <mat-icon mat-list-icon>date_range</mat-icon>
@@ -33,13 +33,53 @@
     
               <mat-divider></mat-divider>
               
-              <h3 mat-subheader>Recursos</h3>
-              <mat-list-item *ngFor="let recurso of listaRecursos">
-                <mat-icon mat-list-icon>chevron_right</mat-icon>
-                <h4 mat-line>{{recurso.name}}</h4>
-              </mat-list-item>
-              <mat-divider></mat-divider>
+             
               
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Personal data
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+              
+                  <h3 mat-subheader>Recursos</h3>
+                  <mat-list-item *ngFor="let recurso of listaRecursos">
+                    <mat-icon mat-list-icon>chevron_right</mat-icon>
+                    <h4 mat-line>{{recurso.name}}</h4>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <h3 mat-subheader>Recursos</h3>
+                  <mat-list-item *ngFor="let recurso of listaRecursos">
+                    <mat-icon mat-list-icon>chevron_right</mat-icon>
+                    <h4 mat-line>{{recurso.name}}</h4>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                </mat-expansion-panel>
+                
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Personal data
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                
+                    <h3 mat-subheader>Recursos</h3>
+                    <mat-list-item *ngFor="let recurso of listaRecursos">
+                      <mat-icon mat-list-icon>chevron_right</mat-icon>
+                      <h4 mat-line>{{recurso.name}}</h4>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <h3 mat-subheader>Recursos</h3>
+                    <mat-list-item *ngFor="let recurso of listaRecursos">
+                      <mat-icon mat-list-icon>chevron_right</mat-icon>
+                      <h4 mat-line>{{recurso.name}}</h4>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                  </mat-expansion-panel>
+                  
+              </mat-accordion>
+
             </mat-list>
         </mat-sidenav>
         <div class="sidenav-content" fxLayout="row" fxLayoutAlign="center center">
@@ -49,6 +89,6 @@
     </mat-sidenav-container>
 
     <footer fxFlexFill>
-        <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >Copyright © Segip 2017 | Versión 0.0.0.0</mat-toolbar>
+        <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >Copyright © Segip 2017 | Versión {{ versionSistema }}</mat-toolbar>
     </footer>
 </div>

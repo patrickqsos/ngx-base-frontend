@@ -1,6 +1,12 @@
 /* Import Angular NgModule */
 import { NgModule } from '@angular/core';
 
+import { APP_INITIALIZER } from '@angular/core';
+
+import { HttpModule }      from '@angular/http';
+
+import { ConfigService }       from './parametros/config.service';
+
 /* Import Angular CommonModule */
 import { CommonModule } from '@angular/common';
 
@@ -19,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 /* Import App Auth Guard */
 import { AuthGuardService } from './services/AuthGuard.service';
 
+
 /*Import Angular Material Module*/
 import {
   MatInputModule,
@@ -31,6 +38,7 @@ import {
   MatSidenavModule,
   MatListModule,
   MatIconModule,
+  MatExpansionModule
 } from '@angular/material';
 
 /* Import App Layout Component*/
@@ -53,6 +61,7 @@ export const baseRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(baseRoutes),
+    HttpModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -66,13 +75,18 @@ export const baseRoutes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatExpansionModule
   ],
   declarations: [
     LayoutComponent,
     LoginComponent,
     MenuComponent
   ],
-  providers: [MensajesService],
+  providers: [
+    MensajesService,
+    ConfigService,
+    { provide: APP_INITIALIZER, useFactory: (config: ConfigService) => () => config.load(), deps: [ConfigService], multi: true }
+  ],
   exports: [LayoutComponent]
 })
 export class BaseModule {}
