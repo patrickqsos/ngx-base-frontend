@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import { AuthService } from '../services/AuthService.service';
 import { MensajesService } from '../parametros/mensajesServices';
 import { lang } from '../parametros/lang';
+import { MenuService } from '../services/Menu.service';
 
 @Component({
     selector: 'app-layout',
@@ -13,21 +14,10 @@ export class LayoutComponent {
     public idioma: string;
     public fechaActual = new Date();
 
-    listaRecursos = [
-        {
-          name: 'Archivos',
-        },
-        {
-          name: 'Parametros',
-        },
-        {
-          name: 'Seguridad',
-        }
-      ];
-
     constructor(
       public auth: AuthService,
-      private msn: MensajesService) {
+      private msn: MensajesService,
+      private menuList: MenuService) {
       
         this.idioma = lang;
     }

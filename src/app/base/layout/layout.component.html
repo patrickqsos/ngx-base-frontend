@@ -34,9 +34,9 @@
               <mat-divider></mat-divider>
               
               <h3 mat-subheader>Recursos</h3>
-              <mat-list-item *ngFor="let recurso of listaRecursos">
+              <mat-list-item *ngFor="let m of menuList.menu">
                 <mat-icon mat-list-icon>chevron_right</mat-icon>
-                <h4 mat-line>{{recurso.name}}</h4>
+                <h4 mat-line>{{m.nombreModulo}}</h4>
               </mat-list-item>
               <mat-divider></mat-divider>
               

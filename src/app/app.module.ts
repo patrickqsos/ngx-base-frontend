@@ -41,6 +41,9 @@ import {HttpClientModule} from '@angular/common/http';
 /* Import App Mensajes Service */
 import { MensajesService } from './base/parametros/mensajesServices';
 
+/* Import App Menu Service */
+import { MenuService} from './base/services/Menu.service';
+
 @NgModule({
   declarations: [
 		AppComponent
@@ -62,7 +65,7 @@ import { MensajesService } from './base/parametros/mensajesServices';
 	MatCardModule,
 	HttpClientModule		
   ],
-  providers: [AuthService, AuthGuardService, MensajesService],
+  providers: [AuthService, AuthGuardService, MensajesService, MenuService],
   bootstrap: [AppComponent],
   exports: []
 })
