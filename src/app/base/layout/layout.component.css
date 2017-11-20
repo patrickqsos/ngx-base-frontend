@@ -14,9 +14,19 @@
     
   }
 
-  .main-container{
-    min-height: 100%;
-  }
+  
+  .sidenav-content {
+  /* position: absolute;
+  min-height: 100% !important; */
+
+  position: fixed;
+  height: 80%;
+  min-height: 80%;
+  width: 100%;
+  min-width: 100%;
+}
+  
+
   
   .flex-spacer{
       flex-grow: 1
@@ -25,4 +35,3 @@
   /* mat-sidenav {
     width: 250px;
   } */
-

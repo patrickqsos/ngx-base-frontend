@@ -1,4 +1,4 @@
-<div class="main-container" fxLayout='column' fxLayoutAlign="center center"  >
+<div class="main-page" fxLayout='column' fxLayoutAlign="center center"  >
     <header fxFlexFill>
         <mat-toolbar color="primary" fxLayout="row">
             <!-- <img fxFlex="15" src="../../assets/segip-logo.jpeg" alt=""> -->
@@ -18,7 +18,7 @@
     </header>
 
     <mat-sidenav-container fxFlex="1" class="main-container-nav">
-        <mat-sidenav #sidenav mode="over" opened="true" >
+        <mat-sidenav #sidenav mode="over" opened="false" >
           <!-- sidenav content -->
           <mat-list dense>
               <h3 mat-subheader>Informacion del sistema</h3>
@@ -33,7 +33,7 @@
     
               <mat-divider></mat-divider>
               
-              <h3 mat-subheader>Folders</h3>
+              <h3 mat-subheader>Recursos</h3>
               <mat-list-item *ngFor="let recurso of listaRecursos">
                 <mat-icon mat-list-icon>chevron_right</mat-icon>
                 <h4 mat-line>{{recurso.name}}</h4>
@@ -42,10 +42,10 @@
               
             </mat-list>
         </mat-sidenav>
-      
-        <div fxLayout="column" fxLayoutAlign="center center" class="main-container">
-            <router-outlet  fxLayout="row" fxLayoutAlign="center center"></router-outlet>
+        <div class="sidenav-content" fxLayout="row" fxLayoutAlign="center center">
+            <router-outlet fxFlex="1" ></router-outlet>
         </div>
+
     </mat-sidenav-container>
 
     <footer fxFlexFill>

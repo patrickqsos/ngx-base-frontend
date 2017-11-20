@@ -5,4 +5,4 @@ html, body {
   margin: 0;
 }
 
-  router-outlet + * { flex: 1 1 auto ; display: flex ; flex-direction: column ; }
+  /* router-outlet + * { flex: 1 1 auto ; display: flex ; flex-direction: column ; } */
