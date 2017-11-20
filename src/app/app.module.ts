@@ -38,6 +38,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 /* Import HttpClient Module */
 import {HttpClientModule} from '@angular/common/http';
 
+/* Import App Mensajes Service */
+import { MensajesService } from './base/parametros/mensajesServices';
+
 @NgModule({
   declarations: [
 		AppComponent
@@ -59,7 +62,7 @@ import {HttpClientModule} from '@angular/common/http';
 	MatCardModule,
 	HttpClientModule		
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, MensajesService],
   bootstrap: [AppComponent],
   exports: []
 })

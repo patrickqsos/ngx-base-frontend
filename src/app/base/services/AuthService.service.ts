@@ -24,7 +24,7 @@ export class AuthService {
                 verticalPosition:'bottom', horizontalPosition:'right'
               });
             
-            this.router.navigate(['/menu']);
+            this.router.navigate(['menu']);
         }
         else{
             this.snackBar.open(this.mensaje.getMsn('loginFallido'), null,{
@@ -37,10 +37,15 @@ export class AuthService {
 
   logoutUser() {
     this.token = null;
-    this.http.post(this.urlBase+"/logout",null).subscribe((response)=>{
-        console.log("response");
+    console.log("logout");
+    this.http.post(this.urlBase+"/logout.php",null).subscribe((response)=>{
         return response;
-    })
+    });
+    this.snackBar.open(this.mensaje.getMsn('loginCerrado'), null,{
+      duration: 750,
+      verticalPosition:'bottom',   horizontalPosition:'right'
+    });
+    this.router.navigate(['/login'])
   }
 
   getUserToken() {

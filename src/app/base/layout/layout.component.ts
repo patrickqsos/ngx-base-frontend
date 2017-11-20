@@ -10,7 +10,7 @@ import { lang } from '../parametros/lang';
    // host: {class: 'myFoo'}
 })
 export class LayoutComponent {
-    private idioma: string;
+    public idioma: string;
     public fechaActual = new Date();
 
     listaRecursos = [
@@ -25,12 +25,19 @@ export class LayoutComponent {
         }
       ];
 
-    constructor(private auth: AuthService, private msn: MensajesService) {
+    constructor(
+      public auth: AuthService,
+      private msn: MensajesService) {
+      
         this.idioma = lang;
     }
 
     cambiarIdioma(pIdioma: string) {
         this.msn.setNuevoLanguage(pIdioma);
         this.idioma = pIdioma;
+    }
+
+    logout(){
+      this.auth.logoutUser();
     }
 }
