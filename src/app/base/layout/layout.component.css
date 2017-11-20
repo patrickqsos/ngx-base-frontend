@@ -3,3 +3,26 @@
     display: flex;
     overflow: hidden;
   }
+
+  .main-page {
+    min-height: 100%;
+  }
+
+  .main-container-nav{
+    width: 100%;
+    min-height: 100%;
+    
+  }
+
+  .main-container{
+    min-height: 100%;
+  }
+  
+  .flex-spacer{
+      flex-grow: 1
+  }
+
+  /* mat-sidenav {
+    width: 250px;
+  } */
+

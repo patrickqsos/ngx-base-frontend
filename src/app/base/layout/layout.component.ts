@@ -11,6 +11,19 @@ import { lang } from '../parametros/lang';
 })
 export class LayoutComponent {
     private idioma: string;
+    public fechaActual = new Date();
+
+    listaRecursos = [
+        {
+          name: 'Archivos',
+        },
+        {
+          name: 'Parametros',
+        },
+        {
+          name: 'Seguridad',
+        }
+      ];
 
     constructor(private auth: AuthService, private msn: MensajesService) {
         this.idioma = lang;

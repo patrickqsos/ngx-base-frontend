@@ -7,9 +7,10 @@ import { MatSnackBar } from '@angular/material'
 @Injectable()
 export class AuthService {
   token: string;
+  // todo: sacar esto a config.json
   urlBase: string = "http://localhost/pruebasRestful";
 
-  constructor(private router: Router, private http:HttpClient, private mensaje: MensajesService, private snackBar: MatSnackBar,) {}
+  constructor(private router: Router, private http:HttpClient, private mensaje: MensajesService, private snackBar: MatSnackBar) {}
 
 
   loginUser(username: string, password: string) {

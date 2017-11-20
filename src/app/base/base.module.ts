@@ -27,7 +27,10 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatCardModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatIconModule,
 } from '@angular/material';
 
 /* Import App Layout Component*/
@@ -59,7 +62,10 @@ export const baseRoutes: Routes = [
     ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
   ],
   declarations: [
     LayoutComponent,
