@@ -1,11 +1,11 @@
 <div fxFlex fxLayoutWrap fxLayoutGap="10px">
-    <div class="fixFxLayoutGapBottom"  *ngFor="let m of menu.menu">
+    <div class="fixFxLayoutGapBottom"  *ngFor="let modulo of contextoService.getListaModulos()">
         <mat-card >
             <mat-card-header >
-                <mat-card-title> <h2>{{m.nombreModulo }}</h2></mat-card-title>
+                <mat-card-title> <h2>{{modulo.etiqueta }}</h2></mat-card-title>
             </mat-card-header>
             <mat-card-content fxLayoutAlign="center center">
-                    <mat-icon class="mat-24" color="primary">{{m.icon}}</mat-icon>
+                    <mat-icon class="mat-24" color="primary">{{modulo.imagen}}</mat-icon>
             </mat-card-content>
         </mat-card>
     </div>

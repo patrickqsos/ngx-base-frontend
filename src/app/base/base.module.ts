@@ -5,8 +5,6 @@ import { APP_INITIALIZER } from '@angular/core';
 
 import { HttpModule }      from '@angular/http';
 
-import { ConfigService }       from './parametros/config.service';
-
 /* Import Angular CommonModule */
 import { CommonModule } from '@angular/common';
 
@@ -18,9 +16,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Import Angular Material Flex Layout Module */
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
-
 
 /*Import Angular Material Module*/
 import {
@@ -76,8 +71,6 @@ export const baseRoutes: Routes = [
     MenuComponent
   ],
   providers: [
-    ConfigService,
-    { provide: APP_INITIALIZER, useFactory: (config: ConfigService) => () => config.load(), deps: [ConfigService], multi: true }
   ],
   exports: [LayoutComponent]
 })

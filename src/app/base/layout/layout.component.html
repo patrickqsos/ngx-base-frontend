@@ -6,13 +6,13 @@
                 <mat-icon>menu</mat-icon>
             </button>￼
 
-            <div fxFlex="85" >{{ nombreSistema }}</div>
+            <div fxFlex="85" >{{ contextoService.getConfig('nombreSistema') }}</div>
             
-            <a fxFlex="10" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()">{{msn.getMsn('loginMensaje')}}</a>
-            <a fxFlex="10" mat-button (click)="logout()"  *ngIf="auth.isUserAuthenticated()">{{msn.getMsn('logoutMensaje')}}</a>
+            <a fxFlex="10" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()">{{langService.getLang(langService.modulos.Base,'loginMensaje')}}</a>
+            <a fxFlex="10" mat-button (click)="logout()"  *ngIf="auth.isUserAuthenticated()">{{langService.getLang(langService.modulos.Base,'logoutMensaje')}}</a>
             <div fxFlex="5" fxFlexLayoutAlign="center end">
-                <div *ngIf="idioma=='es'" (click)="cambiarIdioma('en')">en</div>
-                <div *ngIf="idioma=='en'" (click)="cambiarIdioma('es')">es</div>
+                <div *ngIf="contextoService.getLenguajeActual() =='es'" (click)="cambiarIdioma('en')">en</div>
+                <div *ngIf="contextoService.getLenguajeActual() =='en'" (click)="cambiarIdioma('es')">es</div>
             </div>
         </mat-toolbar>
     </header>
@@ -21,10 +21,10 @@
         <mat-sidenav #sidenav mode="over" opened="false" >
           <!-- sidenav content -->
           <mat-list dense>
-              <h3 mat-subheader>Informacion del sistema</h3>
+              <h3 mat-subheader>{{langService.getLang(langService.modulos.Base ,'tit-info-sistema')}}</h3>
               <mat-list-item >
                 <mat-icon mat-list-icon>apps</mat-icon>
-                <h4 mat-line>{{ nombreSistema }}</h4>
+                <h4 mat-line>{{ contextoService.getConfig('nombreSistema') }}</h4>
               </mat-list-item>
               <mat-list-item >
                   <mat-icon mat-list-icon>date_range</mat-icon>
@@ -34,56 +34,11 @@
               <mat-divider></mat-divider>
               
               <h3 mat-subheader>Recursos</h3>
-              <mat-list-item *ngFor="let m of menuList.menu">
-                <mat-icon mat-list-icon>chevron_right</mat-icon>
-                <h4 mat-line>{{m.nombreModulo}}</h4>
+              <mat-list-item *ngFor="let modulo of contextoService.getListaModulos()">
+                <mat-icon mat-list-icon>{{modulo.Imagen}}</mat-icon>
+                <h4 mat-line>{{modulo.Etiqueta}}</h4>
               </mat-list-item>
               <mat-divider></mat-divider>
-              
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Personal data
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-              
-                  <h3 mat-subheader>Recursos</h3>
-                  <mat-list-item *ngFor="let recurso of listaRecursos">
-                    <mat-icon mat-list-icon>chevron_right</mat-icon>
-                    <h4 mat-line>{{recurso.name}}</h4>
-                  </mat-list-item>
-                  <mat-divider></mat-divider>
-                  <h3 mat-subheader>Recursos</h3>
-                  <mat-list-item *ngFor="let recurso of listaRecursos">
-                    <mat-icon mat-list-icon>chevron_right</mat-icon>
-                    <h4 mat-line>{{recurso.name}}</h4>
-                  </mat-list-item>
-                  <mat-divider></mat-divider>
-                </mat-expansion-panel>
-                
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Personal data
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                
-                    <h3 mat-subheader>Recursos</h3>
-                    <mat-list-item *ngFor="let recurso of listaRecursos">
-                      <mat-icon mat-list-icon>chevron_right</mat-icon>
-                      <h4 mat-line>{{recurso.name}}</h4>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <h3 mat-subheader>Recursos</h3>
-                    <mat-list-item *ngFor="let recurso of listaRecursos">
-                      <mat-icon mat-list-icon>chevron_right</mat-icon>
-                      <h4 mat-line>{{recurso.name}}</h4>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                  </mat-expansion-panel>
-                  
-              </mat-accordion>
 
             </mat-list>
         </mat-sidenav>
@@ -94,6 +49,6 @@
     </mat-sidenav-container>
 
     <footer fxFlexFill>
-        <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >Copyright © Segip 2017 | Versión {{ versionSistema }}</mat-toolbar>
+        <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >Copyright © Segip 2017 | Versión {{ contextoService.getConfig('versionSistema') }}</mat-toolbar>
     </footer>
 </div>
