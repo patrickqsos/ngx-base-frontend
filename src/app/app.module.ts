@@ -10,14 +10,15 @@ import { AppComponent } from './app.component';
 import { 
 	MatInputModule, 
 	MatFormFieldModule,
-	MatSelectModule,
 	MatToolbarModule,
 	MatButtonModule,
 	MatCardModule,
 	MatSnackBarModule,
 	MatExpansionModule,
 	MatSlideToggleModule
-	} from '@angular/material';
+} from '@angular/material';
+
+import {MatSelectModule} from '@angular/material/select';
 
 /* Import Angular Animations */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -69,7 +70,8 @@ import { LangService } from './base/services/lang.service';
 	MatCardModule,
 	HttpClientModule,
 	MatExpansionModule,
-	MatSlideToggleModule
+	MatSlideToggleModule,
+	MatSelectModule
   ],
   providers: [
 	  AuthService, 
@@ -80,4 +82,4 @@ import { LangService } from './base/services/lang.service';
   bootstrap: [AppComponent],
   exports: []
 })
-export class AppModule { }
+export class AppModule {}

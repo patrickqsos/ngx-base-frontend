@@ -1,24 +1,14 @@
-.foo {
-    flex: 1 1 auto;
-    display: flex;
-    overflow: hidden;
-  }
+.main-page {
+  min-height: 100%;
+}
 
-  .main-page {
-    min-height: 100%;
-  }
-
-  .main-container-nav{
-    width: 100%;
-    min-height: 100%;
-    
-  }
-
+.main-container-nav{
+  width: 100%;
+  min-height: 100%;
   
-  .sidenav-content {
-  /* position: absolute;
-  min-height: 100% !important; */
+}
 
+.sidenav-content {
   position: fixed;
   height: 80%;
   min-height: 80%;
@@ -39,9 +29,13 @@
   height: 40px;
 }
   
-  .flex-spacer{
-      flex-grow: 1
-  }
+.flex-spacer{
+  flex-grow: 1
+}
+
+mat-sidenav {
+  max-width: 300px;
+}
 
 .mat-subheader{
   background-color: rgba(0, 0, 0, 0.1)

@@ -30,17 +30,22 @@ export class LangService {
   }
 
   /**
-   * Método para obtener un mensaje del objeto de mensajes en base al lenguaje del sistema.
+   * Método para obtener un lang del objeto de langs cargados.
    * 
    * @param {string} pModulo Identificador del modulo.
    * @param {string} pIdMensaje Identificador del mensaje.
-   * @returns Valor del mensaje.
+   * @returns Valor del lang.
    * @memberof ContextoService
    */
   getLang(pModulo:Modulos, pIdMensaje: string) {
-    if(pModulo != null && pIdMensaje != null)
-      return this.langs[pModulo].contenido[this.contextoService.getLenguajeActual()][pIdMensaje];
+    if(pModulo != null && pIdMensaje != null){
+      var lang = this.langs[pModulo].contenido[this.contextoService.getLenguajeActual()][pIdMensaje];
+      if(lang != null)      
+        return lang;
+      else
+        return BaseLang[this.contextoService.getLenguajeActual()]['lang-error'];  
+    }    
     else
-      return "No se pudo obtener el lang";  
+      return BaseLang[this.contextoService.getLenguajeActual()]['lang-param-error'];  
   }
 }

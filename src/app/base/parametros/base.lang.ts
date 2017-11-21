@@ -1,6 +1,8 @@
 export const BaseLang =
     {
         'es': {
+            'lang-error':'No se pudo encontrar el lang',
+            'lang-param-error':'Faltan parámetros en el langService',
             'usuarioLogin': 'Por favor introduzca un usuario valido.',
             'usuarioFormLabel': 'Usuario',
             'usuarioHintLabel' : 'Ingrese el nombre de usuario.',
@@ -15,9 +17,13 @@ export const BaseLang =
             'logoutMensaje': 'Cerrar Sesion',
             'tit-autenticacion': 'Autenticación',
             'loginCerrado': 'Su sesion ha sido cerrada.',
-            'tit-info-sistema':'Información del sistema'
+            'tit-info-sistema':'Información del sistema',
+            'msg-copyright':'Copyright © Segip ' + new Date().getFullYear(),
+            'msg-version': 'Versión',
+            'lbl-lenguaje':'Lenguaje'
         },
         'en': {
+            'lang-error':'Lang not found',
             'usuarioLogin': 'Please enter a valid username',
             'usuarioFormLabel': 'Username',
             'usuarioHintLabel' : 'Enter the username',
@@ -32,6 +38,9 @@ export const BaseLang =
             'logoutMensaje': 'Log Out',
             'tit-autenticacion': 'Login',
             'loginCerrado': 'Log out successfully',
-            'tit-info-sistema':'System info'
+            'tit-info-sistema':'System info',
+            'msg-copyright':'Copyright © Segip ' + new Date().getFullYear(),
+            'msg-version': 'Version',
+            'lbl-lenguaje':'Language'
         }
     };

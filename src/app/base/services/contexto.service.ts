@@ -14,9 +14,12 @@ import { BaseLang } from "../parametros/base.lang";
 @Injectable()
 export class ContextoService {
 
-    // Lenguaje del sistema.
-    private lenguaje:string = '';
+    // Idioma seleccionado para el sistema.
+    private idiomaSeleccionado:string = '';
 
+    // Array de idiomas disponibles.
+    private idiomas = [];
+    
     // Configuración leida del archivo de configuración.
     private config:Object = null;
 
@@ -67,30 +70,33 @@ export class ContextoService {
                     .subscribe((responseData) => {
                         // Guarda localmente la configuración leida.
                         this.config = responseData;
-                        // Obtiene le lenguaje inicial del sistema.
-                        this.lenguaje = this.getConfig('lang');
+                        // Obtiene idiomas  del sistema.
+                        this.idiomas = this.getConfig('langs');
+                        // Por defecto selcciona el primer idioma.
+                        this.idiomaSeleccionado = this.idiomas[0];
+
                         resolve(true);
                     });
         });
     }  
 
     /**
-     * Método para cambiar el lenguaje del sistema.
+     * Método para cambiar el idioma del sistema.
      * 
-     * @param {string} pNuevoLenguaje Nuevo lenguaje.
+     * @param {string} pNuevoLenguaje Nuevo idioma.
      * @memberof ContextoService
      */
     setNuevoLenguaje(pNuevoLenguaje: string) {
-        this.lenguaje = pNuevoLenguaje;
+        this.idiomaSeleccionado = pNuevoLenguaje;
     }
 
     /**
-     * Método para obtener el lenguaje actual del sistema.
+     * Método para obtener el idioma actual del sistema.
      * 
      * @memberof ContextoService
      */
     getLenguajeActual() {
-        return this.lenguaje ;
+        return this.idiomaSeleccionado ;
     }
 
     /**
@@ -117,8 +123,51 @@ export class ContextoService {
         this.contextoUsuario = pContextoUsuario;
     }
 
+    /**
+     * Método para finalizar el contexto de la aplicación.
+     * 
+     * @memberof ContextoService
+     */
     finalizarContexto()
     {
         this.contextoUsuario = null;
+        // todo: finalizar contexto en comun.
+    }
+
+    /**
+     * Método para obtener el usuario loggeado en el contexto.
+     * 
+     * @memberof ContextoService
+     */
+    getUsuario()
+    {
+        // Valida si el nombre del usuario esta en el contexto.
+        if(this.contextoUsuario != null && this.contextoUsuario.NombreCompletoUsuario != null)
+            return this.contextoUsuario.NombreCompletoUsuario;
+        else
+            return null;
+    }
+
+    /**
+     * Método para obtener la institución del usuario loggeado en el contexto.
+     * 
+     * @memberof ContextoService
+     */
+    getInstitucion(){
+        // Valida si el nombre de la institución esta en el contexto.
+        if(this.contextoUsuario != null && this.contextoUsuario.NombreInstitucion != null)
+            return this.contextoUsuario.NombreInstitucion;
+        else
+            return null;
+    }
+
+    esMultiplesIdioma()
+    {
+        return this.idiomas.length > 1;
+    }
+
+    getIdiomas()
+    {
+        return this.idiomas;
     }
 }
