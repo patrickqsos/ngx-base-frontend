@@ -31,7 +31,8 @@ import {
   MatSidenavModule,
   MatListModule,
   MatIconModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 /* Import App Layout Component*/
@@ -66,7 +67,8 @@ export const baseRoutes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   declarations: [
     LayoutComponent,

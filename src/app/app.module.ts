@@ -12,7 +12,8 @@ import {
 	MatButtonModule,
 	MatCardModule,
 	MatSnackBarModule,
-	MatExpansionModule
+	MatExpansionModule,
+	MatSlideToggleModule
 	} from '@angular/material';
 
 /* Import Angular Animations */
@@ -65,7 +66,8 @@ import { MenuService} from './base/services/Menu.service';
 	FlexLayoutModule,
 	MatCardModule,
 	HttpClientModule,
-	MatExpansionModule	
+	MatExpansionModule,
+	MatSlideToggleModule
   ],
   providers: [AuthService, AuthGuardService, MensajesService, MenuService],
   bootstrap: [AppComponent],

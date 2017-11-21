@@ -58,7 +58,7 @@
   padding-left: 20px;
 }
 
-.mat-accent, .mat-accent:focus, .mat-accent:hover, .mat-expansion-panel-header-title {
+.mat-accent-expansion-panel-header, .mat-accent-expansion-panel-header:focus, .mat-accent-expansion-panel-header:hover, .mat-expansion-panel-header-title {
   background-color: #ffa12d !important;
   color:white !important;
 }
