@@ -66,3 +66,10 @@ mat-sidenav {
   background-color: #ffd096;
   padding-left: 25px;
 }
+
+.transform_icon
+{
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}

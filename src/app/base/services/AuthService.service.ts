@@ -7,11 +7,23 @@ import { LangService } from './lang.service';
 import { Resultado } from '../parametros/resultado.entidad';
 
 @Injectable()
+/**
+ * Class AuthService
+ * Clase que permite Realizar la autenticacion de usuarios.
+ */
 export class AuthService {
   token: string;
   // todo: sacar esto a config.json
   urlBase: string = "http://localhost/pruebasRestful";
 
+  /**
+   * Constructor de la clase
+   * @param router 
+   * @param http 
+   * @param langService 
+   * @param contextoService 
+   * @param snackBar 
+   */
   constructor(
     private router: Router,
     private http:HttpClient,
@@ -20,6 +32,11 @@ export class AuthService {
     private snackBar: MatSnackBar) {}
 
 
+    /**
+     * loginUser Permite realizar la autenticacion del usuario.
+     * @param username nombre de usuario del sistema
+     * @param password password del usuario para acceder al sistema
+     */
   loginUser(username: string, password: string) {
     this.http.get<Resultado>(this.urlBase+"/login.php").subscribe(
       data=>{
@@ -44,6 +61,10 @@ export class AuthService {
     })
   }
 
+  /**
+   * Funcion logoutUser
+   * Permite realizar el cierre de sesion del usuario
+   */
   logoutUser() {
     this.token = null;
     console.log("logout");
@@ -58,6 +79,10 @@ export class AuthService {
     this.router.navigate(['/login'])
   }
 
+  /**
+   * Funcion getUserToken
+   * Permite recuperar un token para accedr al sistema
+   */
   getUserToken() {
     this.http.post(this.urlBase+"/token",null).subscribe((response:string)=>{
         console.log("response");
@@ -66,6 +91,10 @@ export class AuthService {
     return this.token;
   }
 
+  /**
+   * Funcion isUserAuthenticated
+   * Devuelve el token para saber si el usuario esta autentificado o no.
+   */
   isUserAuthenticated() {
     return this.token != null;
   }

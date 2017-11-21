@@ -8,8 +8,11 @@
 
             <div fxFlex="85" >{{ contextoService.getConfig('nombreSistema') }}</div>
             
-            <a fxFlex="10" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()"><mat-icon>input</mat-icon> {{langService.getLang(langService.modulos.Base,'loginMensaje')}}</a>
-            <a fxFlex="10" mat-button (click)="logout()"  *ngIf="auth.isUserAuthenticated()"><mat-icon>input</mat-icon> {{langService.getLang(langService.modulos.Base,'logoutMensaje')}}</a>
+            <a fxFlex="10" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()">
+                <mat-icon>input</mat-icon> 
+                {{langService.getLang(langService.modulos.Base,'loginMensaje')}}
+            </a>
+            <a fxFlex="10" mat-button (click)="logout()"  *ngIf="auth.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon> {{langService.getLang(langService.modulos.Base,'logoutMensaje')}}</a>
             <div fxFlex="5" fxFlexLayoutAlign="center end">
                 <div *ngIf="contextoService.getLenguajeActual() =='es'" (click)="cambiarIdioma('en')">en</div>
                 <div *ngIf="contextoService.getLenguajeActual() =='en'" (click)="cambiarIdioma('es')">es</div>
@@ -79,7 +82,8 @@
                     <mat-list dense *ngFor="let recurso of modulo.RecursosHijos" >
                         <h3 mat-subheader color="primary">{{ recurso.Descripcion}}</h3>
                         <mat-list-item *ngFor="let subrecurso of recurso.RecursosHijos"  >
-                            <a fxLayoutAlign="center center" routerLink="{{subrecurso.Ejecutable}}" class="accordion-list" >{{subrecurso.Descripcion}}</a>
+                                <mat-icon matListIcon>chevron_right</mat-icon>
+                            <a routerLink="{{subrecurso.Ejecutable}}" class="accordion-list" >{{subrecurso.Descripcion}}</a>
                         </mat-list-item>
                     </mat-list>
                     
