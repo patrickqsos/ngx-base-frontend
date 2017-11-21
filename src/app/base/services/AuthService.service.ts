@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { MensajesService } from '../parametros/mensajesServices'
 import { MatSnackBar } from '@angular/material'
-import { MenuService } from '../services/Menu.service'
+import { ContextoService } from './contexto.service';
+import { LangService } from './lang.service';
+import { Resultado } from '../parametros/resultado.entidad';
 
 @Injectable()
 export class AuthService {
@@ -14,29 +15,29 @@ export class AuthService {
   constructor(
     private router: Router,
     private http:HttpClient,
-    private mensaje: MensajesService,
-    private snackBar: MatSnackBar,
-    private MenuService: MenuService) {}
+    private langService : LangService,
+    private contextoService: ContextoService,
+    private snackBar: MatSnackBar) {}
 
 
   loginUser(username: string, password: string) {
-    this.http.get<{login: string, modulos}>(this.urlBase+"/login.php").subscribe(
+    this.http.get<Resultado>(this.urlBase+"/login.php").subscribe(
       data=>{
-        if(data.login)
+        if(data.esValido)
         {
-          this.token = data.login;
-            this.snackBar.open(this.mensaje.getMsn('loginExitoso'), 'X',{
-                duration: 1750,
+          this.token = "token";
+            this.snackBar.open(this.langService.getLang(this.langService.modulos.Base, 'loginExitoso'), 'X',{
+                duration: 2000,
                 verticalPosition:'bottom', horizontalPosition:'right'
               });
               
-           
-            this.MenuService.setMenu(data.modulos)
+              console.log(data.datoAdicional);
+            this.contextoService.setContexto(data.datoAdicional);
             this.router.navigate(['menu']);
         }
         else{
-            this.snackBar.open(this.mensaje.getMsn('loginFallido'), null,{
-                duration: 750,
+            this.snackBar.open(this.langService.getLang(this.langService.modulos.Base, 'loginFallido'), null,{
+                duration: 2000,
                 verticalPosition:'bottom',   horizontalPosition:'right'
               });
         }
@@ -49,11 +50,11 @@ export class AuthService {
     this.http.post(this.urlBase+"/logout.php",null).subscribe((response)=>{
         return response;
     });
-    this.snackBar.open(this.mensaje.getMsn('loginCerrado'), null,{
-      duration: 750,
+    this.snackBar.open(this.langService.getLang(this.langService.modulos.Base, 'loginCerrado'), null,{
+      duration: 2000,
       verticalPosition:'bottom',   horizontalPosition:'right'
     });
-    this.MenuService.setMenu([])
+    this.contextoService.finalizarContexto();
     this.router.navigate(['/login'])
   }
 

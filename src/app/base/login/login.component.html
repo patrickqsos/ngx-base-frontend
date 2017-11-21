@@ -1,28 +1,27 @@
 
-	<mat-card class="base-auth">
-			<mat-card-header>
-					<mat-card-title> <h2>{{ mensaje("tit-autenticacion") }}</h2></mat-card-title>
-				<!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-			</mat-card-header>
-			<mat-card-content>	
-				<div fxLayout="column" fxLayoutAlign="center center">
-						<mat-form-field color="primary" fxFlexFill>
-							<mat-icon matSuffix>account_box</mat-icon>
-							<input matInput placeholder="{{mensaje('usuarioFormLabel')}}" [formControl]="usuario" required>
-							<mat-error *ngIf="usuario.invalid">{{mensaje("usuarioLogin")}}</mat-error>
-						</mat-form-field>
-					<br>
-						<mat-form-field color="primary" fxFlexFill>
-							<mat-icon matSuffix>vpn_key</mat-icon>
-							<input matInput placeholder="{{mensaje('passwordFormLabel')}}" [formControl]="password" required>
-							<mat-error *ngIf="password.invalid">{{mensaje("passwordLogin")}}</mat-error>
-						</mat-form-field>
-					<br>
-					<div fxLayout="row" fxLayoutAlign="end end">
-						<!-- <button mat-raised-button >{{mensaje("btnCancel")}}</button> -->
-						<button fxFlex mat-raised-button color="accent" (click)="login()">{{mensaje("btnLogin")}}</button>
-					</div>
-				</div>
-			</mat-card-content>
-		</mat-card>
+<mat-card class="base-auth">
+	<mat-card-header>
+			<mat-card-title> <h2>{{ langService.getLang(langService.modulos.Base,'tit-autenticacion') }}</h2></mat-card-title>
+		<!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+	</mat-card-header>
+	<mat-card-content>	
+		<div fxLayout="column" fxLayoutAlign="center center">
+				<mat-form-field color="primary" fxFlexFill>
+					<mat-icon matSuffix>account_box</mat-icon>
+					<input matInput placeholder="{{ langService.getLang(langService.modulos.Base,'usuarioFormLabel') }}" [formControl]="usuario" required>
+					<mat-error *ngIf="usuario.invalid">{{ langService.getLang(langService.modulos.Base,'usuarioLogin') }}</mat-error>
+				</mat-form-field>
+			<br>
+				<mat-form-field color="primary" fxFlexFill>
+					<mat-icon matSuffix>vpn_key</mat-icon>
+					<input matInput placeholder="{{ langService.getLang(langService.modulos.Base,'passwordFormLabel') }}" [formControl]="password" required>
+					<mat-error *ngIf="password.invalid">{{ langService.getLang(langService.modulos.Base,'passwordLogin') }}</mat-error>
+				</mat-form-field>
+			<br>
+			<div fxLayout="row" fxLayoutAlign="end end">
+				<button fxFlex mat-raised-button color="accent" (click)="login()">{{ langService.getLang(langService.modulos.Base,'btnLogin') }}</button>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>	
 	

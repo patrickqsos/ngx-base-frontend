@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuService } from '../services/Menu.service';
+import { ContextoService } from '../services/contexto.service';
 @Component({
     selector: 'app-menu',
     templateUrl: 'menu.component.html',
@@ -8,9 +8,5 @@ import { MenuService } from '../services/Menu.service';
 
 export class MenuComponent{
 
-    constructor(
-        private menu: MenuService
-    ){
-        console.log(menu);
-    }
+    constructor(public contextoService: ContextoService) {}
 }

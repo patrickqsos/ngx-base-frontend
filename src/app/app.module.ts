@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { APP_INITIALIZER } from '@angular/core';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { AppComponent } from './app.component';
 
 /* Import Angular Material Module*/
@@ -23,13 +26,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseModule } from './base/base.module';
 
 /* Import Routing system */
-import {appRoutes} from './base/app.routing';
+import { appRoutes } from './base/app.routing';
 
 /* import Auth Service */
-import {AuthService} from './base/services/AuthService.service';
+import { AuthService } from './base/services/AuthService.service';
 
 /* import App Auth Service */
-import {AuthGuardService} from './base/services/AuthGuard.service';
+import { AuthGuardService } from './base/services/AuthGuard.service';
 
 /* Import Angular Routes and Angular Router Module */
 import { Routes, RouterModule } from '@angular/router';
@@ -38,13 +41,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* Import HttpClient Module */
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
-/* Import App Mensajes Service */
-import { MensajesService } from './base/parametros/mensajesServices';
+/* Import Context Service */
+import { ContextoService } from './base/services/contexto.service';
+import { LangService } from './base/services/lang.service';
 
-/* Import App Menu Service */
-import { MenuService} from './base/services/Menu.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,12 @@ import { MenuService} from './base/services/Menu.service';
 	MatExpansionModule,
 	MatSlideToggleModule
   ],
-  providers: [AuthService, AuthGuardService, MensajesService, MenuService],
+  providers: [
+	  AuthService, 
+	  AuthGuardService, 
+	  LangService,
+	  ContextoService,
+	  { provide: APP_INITIALIZER, useFactory: (contexto: ContextoService) => () => contexto.load(), deps: [ContextoService], multi: true }],
   bootstrap: [AppComponent],
   exports: []
 })

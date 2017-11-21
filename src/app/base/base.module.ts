@@ -5,8 +5,6 @@ import { APP_INITIALIZER } from '@angular/core';
 
 import { HttpModule }      from '@angular/http';
 
-import { ConfigService }       from './parametros/config.service';
-
 /* Import Angular CommonModule */
 import { CommonModule } from '@angular/common';
 
@@ -76,8 +74,6 @@ export const baseRoutes: Routes = [
     MenuComponent
   ],
   providers: [
-    ConfigService,
-    { provide: APP_INITIALIZER, useFactory: (config: ConfigService) => () => config.load(), deps: [ConfigService], multi: true }
   ],
   exports: [LayoutComponent]
 })
