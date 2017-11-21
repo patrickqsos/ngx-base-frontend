@@ -19,8 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "segip-base-theme.scss",
-        "styles.css"
+        "styles.css",
+        "segip-base-theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

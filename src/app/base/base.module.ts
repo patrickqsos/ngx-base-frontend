@@ -19,9 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* Import Angular Material Flex Layout Module */
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
-
-
 /*Import Angular Material Module*/
 import {
   MatInputModule,
@@ -68,7 +65,8 @@ export const baseRoutes: Routes = [
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ],
   declarations: [
     LayoutComponent,

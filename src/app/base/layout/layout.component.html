@@ -17,75 +17,39 @@
         </mat-toolbar>
     </header>
 
-    <mat-sidenav-container fxFlex="1" class="main-container-nav">
+    <mat-sidenav-container fxFlex="1" class="main-container-nav" fxLayout="column">
         <mat-sidenav #sidenav mode="over" opened="false" >
-          <!-- sidenav content -->
-          <mat-list dense>
-              <h3 mat-subheader>Informacion del sistema</h3>
-              <mat-list-item >
+         
+            <mat-list dense>
+                <h3 mat-subheader>Informacion del sistema</h3>
+                <mat-list-item >
                 <mat-icon mat-list-icon>apps</mat-icon>
                 <h4 mat-line>{{ nombreSistema }}</h4>
-              </mat-list-item>
-              <mat-list-item >
-                  <mat-icon mat-list-icon>date_range</mat-icon>
-                  <h4 mat-line>{{fechaActual | date}}</h4>
                 </mat-list-item>
-    
-              <mat-divider></mat-divider>
-              
-              <h3 mat-subheader>Recursos</h3>
-              <mat-list-item *ngFor="let m of menuList.menu">
-                <mat-icon mat-list-icon>chevron_right</mat-icon>
-                <h4 mat-line>{{m.nombreModulo}}</h4>
-              </mat-list-item>
-              <mat-divider></mat-divider>
-              
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Personal data
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-              
-                  <h3 mat-subheader>Recursos</h3>
-                  <mat-list-item *ngFor="let recurso of listaRecursos">
-                    <mat-icon mat-list-icon>chevron_right</mat-icon>
-                    <h4 mat-line>{{recurso.name}}</h4>
-                  </mat-list-item>
-                  <mat-divider></mat-divider>
-                  <h3 mat-subheader>Recursos</h3>
-                  <mat-list-item *ngFor="let recurso of listaRecursos">
-                    <mat-icon mat-list-icon>chevron_right</mat-icon>
-                    <h4 mat-line>{{recurso.name}}</h4>
-                  </mat-list-item>
-                  <mat-divider></mat-divider>
-                </mat-expansion-panel>
-                
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Personal data
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                
-                    <h3 mat-subheader>Recursos</h3>
-                    <mat-list-item *ngFor="let recurso of listaRecursos">
-                      <mat-icon mat-list-icon>chevron_right</mat-icon>
-                      <h4 mat-line>{{recurso.name}}</h4>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <h3 mat-subheader>Recursos</h3>
-                    <mat-list-item *ngFor="let recurso of listaRecursos">
-                      <mat-icon mat-list-icon>chevron_right</mat-icon>
-                      <h4 mat-line>{{recurso.name}}</h4>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                  </mat-expansion-panel>
-                  
-              </mat-accordion>
+                <mat-list-item >
+                    <mat-icon mat-list-icon>date_range</mat-icon>
+                    <h4 mat-line>{{fechaActual | date}}</h4>
+                </mat-list-item>
 
+                <mat-divider></mat-divider>
             </mat-list>
+            <mat-accordion >
+            <mat-expansion-panel *ngFor="let m of menuList.menu" >
+                <mat-expansion-panel-header class="mat-accent" >
+                    <mat-panel-title >
+                        {{m.nombreModulo}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list dense *ngFor="let recurso of m.listaRecursos" >
+                    <h3 mat-subheader color="primary">{{ recurso.nombreRecurso}}</h3>
+                    <mat-list-item *ngFor="let subrecurso of recurso.listaSubRecuros"  >
+                        <a fxLayoutAlign="center center"  href="" class="accordion-list" >{{subrecurso.nombreRecurso}}</a>
+                    </mat-list-item>
+                </mat-list>
+                
+            </mat-expansion-panel>
+            </mat-accordion>
+            <mat-divider></mat-divider>
         </mat-sidenav>
         <div class="sidenav-content" fxLayout="row" fxLayoutAlign="center center">
             <router-outlet fxFlex="1" ></router-outlet>

@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 
 /* Import Angular Material Module*/
 import { 
-  MatInputModule, 
-  MatFormFieldModule,
-  MatSelectModule,
-  MatToolbarModule,
-  MatButtonModule,
+	MatInputModule, 
+	MatFormFieldModule,
+	MatSelectModule,
+	MatToolbarModule,
+	MatButtonModule,
 	MatCardModule,
-	MatSnackBarModule
+	MatSnackBarModule,
+	MatExpansionModule
 	} from '@angular/material';
 
 /* Import Angular Animations */
@@ -63,7 +64,8 @@ import { MenuService} from './base/services/Menu.service';
 	MatToolbarModule,
 	FlexLayoutModule,
 	MatCardModule,
-	HttpClientModule		
+	HttpClientModule,
+	MatExpansionModule	
   ],
   providers: [AuthService, AuthGuardService, MensajesService, MenuService],
   bootstrap: [AppComponent],
