@@ -34,7 +34,7 @@
               <mat-divider></mat-divider>
               
             </mat-list>
-            <mat-accordion >
+            <mat-accordion>
             <mat-expansion-panel *ngFor="let modulo of contextoService.getListaModulos()" >
                 <mat-expansion-panel-header class="mat-accent" >
                     <mat-panel-title >
@@ -43,13 +43,13 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <!-- <mat-list dense *ngFor="let recurso of m.listaRecursos" >
-                    <h3 mat-subheader color="primary">{{ recurso.nombreRecurso}}</h3>
-                    <mat-list-item *ngFor="let subrecurso of recurso.listaSubRecuros"  >
-                        <a fxLayoutAlign="center center"  href="" class="accordion-list" >{{subrecurso.nombreRecurso}}</a>
+                <mat-list dense *ngFor="let recurso of modulo.RecursosHijos" >
+                    <h3 mat-subheader color="primary">{{ recurso.Descripcion}}</h3>
+                    <mat-list-item *ngFor="let subrecurso of recurso.RecursosHijos"  >
+                        <a fxLayoutAlign="center center" routerLink="{{subrecurso.Ejecutable}}" class="accordion-list" >{{subrecurso.Descripcion}}</a>
                     </mat-list-item>
                 </mat-list>
-                 -->
+                
             </mat-expansion-panel>
             </mat-accordion>
             <mat-divider></mat-divider>
