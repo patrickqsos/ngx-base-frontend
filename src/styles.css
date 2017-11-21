@@ -4,5 +4,10 @@ html, body {
   height: 100%;
   margin: 0;
 }
+.mat-expansion-panel-body {
+  padding: 0px !important;
+}
 
-  /* router-outlet + * { flex: 1 1 auto ; display: flex ; flex-direction: column ; } */
+.mat-expansion-panel-header-description, .mat-expansion-indicator, .mat-expansion-indicator:after{
+  color: white !important;
+}

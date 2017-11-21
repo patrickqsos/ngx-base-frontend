@@ -17,7 +17,7 @@
         </mat-toolbar>
     </header>
 
-    <mat-sidenav-container fxFlex="1" class="main-container-nav">
+    <mat-sidenav-container fxFlex="1" class="main-container-nav" fxLayout="column">
         <mat-sidenav #sidenav mode="over" opened="false" >
           <!-- sidenav content -->
           <mat-list dense>
@@ -33,14 +33,26 @@
     
               <mat-divider></mat-divider>
               
-              <h3 mat-subheader>Recursos</h3>
-              <mat-list-item *ngFor="let modulo of contextoService.getListaModulos()">
-                <mat-icon mat-list-icon>{{modulo.Imagen}}</mat-icon>
-                <h4 mat-line>{{modulo.Etiqueta}}</h4>
-              </mat-list-item>
-              <mat-divider></mat-divider>
-
             </mat-list>
+            <mat-accordion >
+            <mat-expansion-panel *ngFor="let modulo of contextoService.getListaModulos()" >
+                <mat-expansion-panel-header class="mat-accent" >
+                    <mat-panel-title >
+                        <mat-icon mat-list-icon>{{modulo.Imagen}}</mat-icon>
+                        {{modulo.Etiqueta}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <!-- <mat-list dense *ngFor="let recurso of m.listaRecursos" >
+                    <h3 mat-subheader color="primary">{{ recurso.nombreRecurso}}</h3>
+                    <mat-list-item *ngFor="let subrecurso of recurso.listaSubRecuros"  >
+                        <a fxLayoutAlign="center center"  href="" class="accordion-list" >{{subrecurso.nombreRecurso}}</a>
+                    </mat-list-item>
+                </mat-list>
+                 -->
+            </mat-expansion-panel>
+            </mat-accordion>
+            <mat-divider></mat-divider>
         </mat-sidenav>
         <div class="sidenav-content" fxLayout="row" fxLayoutAlign="center center">
             <router-outlet fxFlex="1" ></router-outlet>

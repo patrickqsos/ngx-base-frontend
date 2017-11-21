@@ -63,7 +63,8 @@ export const baseRoutes: Routes = [
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ],
   declarations: [
     LayoutComponent,
