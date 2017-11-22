@@ -8,15 +8,8 @@
 
             <div fxFlex="85" >{{ contextoService.getConfig('nombreSistema') }}</div>
             
-            <a fxFlex="10" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()">
-                <mat-icon>input</mat-icon> 
-                {{langService.getLang(langService.modulos.Base,'loginMensaje')}}
-            </a>
+            <a fxFlex="10" fxFlexLayoutAlign="center end" mat-button routerLink="/login"  *ngIf="!auth.isUserAuthenticated()"><mat-icon>input</mat-icon> {{langService.getLang(langService.modulos.Base,'loginMensaje')}}</a>
             <a fxFlex="10" mat-button (click)="logout()"  *ngIf="auth.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon> {{langService.getLang(langService.modulos.Base,'logoutMensaje')}}</a>
-            <div fxFlex="5" fxFlexLayoutAlign="center end">
-                <div *ngIf="contextoService.getLenguajeActual() =='es'" (click)="cambiarIdioma('en')">en</div>
-                <div *ngIf="contextoService.getLenguajeActual() =='en'" (click)="cambiarIdioma('es')">es</div>
-            </div>
         </mat-toolbar>
     </header>
 
@@ -34,7 +27,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <mat-list>
+                    <mat-list dense>
                         <mat-list-item>
                             <mat-icon matListIcon>apps</mat-icon>
                             <span>{{ contextoService.getConfig('nombreSistema') }}</span>
@@ -42,12 +35,12 @@
                         
                         <mat-list-item>
                                 <mat-icon matListIcon>date_range</mat-icon>
-                                <span>{{ fechaActual | date:'dd/MM/yyyy' }}</span>
+                                <span>{{ contextoService.getFechaActual() | date:'dd/MM/yyyy' }}</span>
                         </mat-list-item>
                         
-                        <mat-list-item *ngIf="contextoService.esMultiplesIdioma()">
+                        <mat-list-item *ngIf="contextoService.esMultiplesIdiomas()">
                             <mat-form-field >
-                                <mat-select matLine  placeholder="{{ langService.getLang(langService.modulos.Base ,'lbl-lenguaje') }}">
+                                <mat-select (selectionChange)="cambiarIdioma($event)" placeholder="{{ langService.getLang(langService.modulos.Base ,'lbl-lenguaje') }}">
                                     <mat-option *ngFor="let idioma of contextoService.getIdiomas()" [value]="idioma">
                                     {{ idioma }}
                                     </mat-option>

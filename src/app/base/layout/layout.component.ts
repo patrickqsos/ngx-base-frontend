@@ -11,16 +11,19 @@ import { LangService } from '../services/lang.service';
 })
 export class LayoutComponent {
 
-    // Fecha actual.
-    public fechaActual = new Date();
-
     constructor(
       public auth: AuthService,
       public contextoService: ContextoService,
       public langService: LangService) {}
-
-    cambiarIdioma(pIdioma: string) {
-        this.contextoService.setNuevoLenguaje(pIdioma);
+      
+    /**
+     * Método para manejar el evento selectionChange del select y cambiar el idioma del sistema usando el servicio de contexto.
+     * 
+     * @param {any} pEvent 
+     * @memberof LayoutComponent
+     */
+    cambiarIdioma(pEvent) {
+        this.contextoService.setNuevoLenguaje(pEvent.value);
     }
 
     logout(){

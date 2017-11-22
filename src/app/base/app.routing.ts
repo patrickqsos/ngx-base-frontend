@@ -16,6 +16,8 @@ export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LoginComponent, canActivate: [AuthGuardService] },
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuardService]},
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
   
 ];
  

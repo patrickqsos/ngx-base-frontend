@@ -161,13 +161,36 @@ export class ContextoService {
             return null;
     }
 
-    esMultiplesIdioma()
+    /**
+     * Método para evaluar si el sistema tiene multiples idiomas. 
+     * 
+     * @returns 
+     * @memberof ContextoService
+     */
+    esMultiplesIdiomas()
     {
         return this.idiomas.length > 1;
     }
 
+    /**
+     * Método para obtener listado de idiomas.
+     * 
+     * @returns 
+     * @memberof ContextoService
+     */
     getIdiomas()
     {
         return this.idiomas;
+    }
+    
+    /**
+     * Método que obtiene la fecha actual.
+     * 
+     * @returns 
+     * @memberof ContextoService
+     */
+    getFechaActual()
+    {
+        return new Date();
     }
 }
