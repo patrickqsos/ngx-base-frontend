@@ -37,16 +37,6 @@
                                 <mat-icon matListIcon>date_range</mat-icon>
                                 <span>{{ contextoService.getFechaActual() | date:'dd/MM/yyyy' }}</span>
                         </mat-list-item>
-                        
-                        <mat-list-item *ngIf="contextoService.esMultiplesIdiomas()">
-                            <mat-form-field >
-                                <mat-select (selectionChange)="cambiarIdioma($event)" placeholder="{{ langService.getLang(langService.modulos.Base ,'lbl-lenguaje') }}">
-                                    <mat-option *ngFor="let idioma of contextoService.getIdiomas()" [value]="idioma">
-                                    {{ idioma }}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-list-item>
 
                         <mat-list-item *ngIf="contextoService.getUsuario() != null">
                                 <mat-icon matListIcon>account_circle</mat-icon>
@@ -56,6 +46,16 @@
                         <mat-list-item *ngIf="contextoService.getInstitucion() != null">
                                 <mat-icon matListIcon>work</mat-icon>
                                 <span>{{ contextoService.getInstitucion()  }}</span>
+                        </mat-list-item>
+
+                        <mat-list-item *ngIf="contextoService.esMultiIdioma()">
+                                <mat-form-field >
+                                    <mat-select (selectionChange)="cambiarIdioma($event)" placeholder="{{ langService.getLang(langService.modulos.Base ,'lbl-lenguaje') }}">
+                                        <mat-option *ngFor="let idioma of contextoService.getIdiomas()" [value]="idioma.id">
+                                        {{ idioma.etiqueta }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                         </mat-list-item>
                     </mat-list>
                     

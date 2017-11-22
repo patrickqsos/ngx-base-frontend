@@ -4,7 +4,13 @@
     "nombreSistema" : "Sistema base archivos",
     "versionSistema" : "1.0.0.0",
     "langs" : [
-        "es",
-        "en"
+        {
+            "id":"es",
+            "etiqueta":"Español"
+        },
+        {
+            "id":"en",
+            "etiqueta":"English"
+        }
     ]
 }

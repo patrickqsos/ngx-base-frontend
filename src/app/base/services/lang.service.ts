@@ -38,14 +38,18 @@ export class LangService {
    * @memberof ContextoService
    */
   getLang(pModulo:Modulos, pIdMensaje: string) {
+
+    // Obtiene idioma actual.
+    let idioma = this.contextoService.getIdiomaActual();
+    // Valida params de entrada.
     if(pModulo != null && pIdMensaje != null){
-      var lang = this.langs[pModulo].contenido[this.contextoService.getLenguajeActual()][pIdMensaje];
+      var lang = this.langs[pModulo].contenido[idioma][pIdMensaje];
       if(lang != null)      
         return lang;
       else
-        return BaseLang[this.contextoService.getLenguajeActual()]['lang-error'];  
+        return BaseLang[idioma]['lang-error'];  
     }    
     else
-      return BaseLang[this.contextoService.getLenguajeActual()]['lang-param-error'];  
+      return BaseLang[idioma]['lang-param-error'];  
   }
 }

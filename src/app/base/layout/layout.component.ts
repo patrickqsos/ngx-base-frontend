@@ -23,7 +23,7 @@ export class LayoutComponent {
      * @memberof LayoutComponent
      */
     cambiarIdioma(pEvent) {
-        this.contextoService.setNuevoLenguaje(pEvent.value);
+        this.contextoService.setNuevoIdioma(pEvent.value);
     }
 
     logout(){

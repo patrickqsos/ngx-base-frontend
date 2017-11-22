@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { environment } from '../../../environments/environment'; //path to your environment files
+import { environment } from '../../../environments/environment';
 import { BaseLang } from "../parametros/base.lang";
 
 /**
@@ -29,30 +29,24 @@ export class ContextoService {
     // Contexto de usuario proveniente de la autenticación.
     public contextoUsuario = null;
 
+    /**
+     * Creates an instance of ContextoService.
+     * @param {HttpClient} http Servicio HttpClient
+     * @memberof ContextoService
+     */
     constructor(private http: HttpClient) {}
 
     /**
      * Método para obtener una variable del archivo de configuración.
      * 
-     * @param {*} key Key de la variable en el archivo de configuración.
+     * @param {string} key Key de la variable en el archivo de configuración.
      * @returns Valor de la variable en el archivo de configuración.
      * @memberof ContextoService
      */
-    public getConfig(key: any) {
+    public getConfig(key: string) {
         return this.config[key];
     }
   
-    /**
-     * Método para obtener 
-     * 
-     * @param {*} key 
-     * @returns 
-     * @memberof ContextoService
-     */
-    public getEnv(key: any) {
-        return this.env[key];
-    }
-
     /**
      * Método para cargar el archivo de configuración.
      * 
@@ -73,7 +67,7 @@ export class ContextoService {
                         // Obtiene idiomas  del sistema.
                         this.idiomas = this.getConfig('langs');
                         // Por defecto selcciona el primer idioma.
-                        this.idiomaSeleccionado = this.idiomas[0];
+                        this.idiomaSeleccionado = this.idiomas[0]['id'];
 
                         resolve(true);
                     });
@@ -86,8 +80,8 @@ export class ContextoService {
      * @param {string} pNuevoLenguaje Nuevo idioma.
      * @memberof ContextoService
      */
-    setNuevoLenguaje(pNuevoLenguaje: string) {
-        this.idiomaSeleccionado = pNuevoLenguaje;
+    setNuevoIdioma(pNuevoIdioma: string) {
+        this.idiomaSeleccionado = pNuevoIdioma;
     }
 
     /**
@@ -95,14 +89,13 @@ export class ContextoService {
      * 
      * @memberof ContextoService
      */
-    getLenguajeActual() {
+    getIdiomaActual() {
         return this.idiomaSeleccionado ;
     }
 
     /**
-     * Método para setear la lista de recursos disponibles
+     * Método para obtener lista de modulos del sistema.
      * 
-     * @param {any} pListaRecursos 
      * @memberof ContextoService
      */
     getListaModulos(){
@@ -131,7 +124,7 @@ export class ContextoService {
     finalizarContexto()
     {
         this.contextoUsuario = null;
-        // todo: finalizar contexto en comun.
+        // todo: finalizar contexto el servicio comun.
     }
 
     /**
@@ -164,10 +157,9 @@ export class ContextoService {
     /**
      * Método para evaluar si el sistema tiene multiples idiomas. 
      * 
-     * @returns 
      * @memberof ContextoService
      */
-    esMultiplesIdiomas()
+    esMultiIdioma()
     {
         return this.idiomas.length > 1;
     }
@@ -175,7 +167,6 @@ export class ContextoService {
     /**
      * Método para obtener listado de idiomas.
      * 
-     * @returns 
      * @memberof ContextoService
      */
     getIdiomas()
@@ -186,7 +177,6 @@ export class ContextoService {
     /**
      * Método que obtiene la fecha actual.
      * 
-     * @returns 
      * @memberof ContextoService
      */
     getFechaActual()
