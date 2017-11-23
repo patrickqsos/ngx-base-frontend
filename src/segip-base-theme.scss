@@ -77,7 +77,7 @@ $sg-palette-secondary: (
     )
 );
 
-$sg-palette-info: (
+$sg-palette-alt-primary: (
     50 : #e9f7fd,
     100 : #c7ecfb,
     200 : #a2dff8,
@@ -98,11 +98,44 @@ $sg-palette-info: (
         200 : #000000,
         300 : #000000,
         400 : #000000,
-        500 : #000000,
+        500 : #ffffff,
         600 : #000000,
         700 : #000000,
         800 : #000000,
         900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$sg-palette-alt-accent: (
+    50 : #fef7ed,
+    100 : #fdecd2,
+    200 : #fbdfb4,
+    300 : #f9d295,
+    400 : #f8c87f,
+    500 : #f7be68,
+    600 : #f6b860,
+    700 : #f5af55,
+    800 : #f3a74b,
+    900 : #f1993a,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffead5,
+    A700 : #ffdebc,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #f2f5f7,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
         A100 : #000000,
         A200 : #000000,
         A400 : #000000,
@@ -124,3 +157,12 @@ $segip-app-theme: mat-light-theme($segip-app-primary, $segip-app-accent, $segip-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($segip-app-theme);
+
+.alt-theme {
+    $alt-primary: mat-palette($sg-palette-alt-primary);
+    $alt-accent:  mat-palette($sg-palette-alt-accent);
+    
+    $alt-theme: mat-light-theme($alt-primary, $alt-accent);
+  
+    @include angular-material-theme($alt-theme);
+}
