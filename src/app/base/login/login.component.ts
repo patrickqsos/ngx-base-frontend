@@ -8,7 +8,8 @@ import { LangService } from '../services/lang.service';
 @Component({
     selector: 'app-login',
     templateUrl: 'login.component.html',
-    styleUrls: ['login.component.css']
+    styleUrls: ['login.component.css'],
+    host: {class: 'divInnerRouterOutlet'}
 })
 export class LoginComponent{
 
