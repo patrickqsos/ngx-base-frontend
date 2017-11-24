@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { MatSnackBar } from '@angular/material'
 import { ContextoService } from './contexto.service';
 import { LangService } from './lang.service';
-import { Resultado } from '../parametros/resultado.entidad';
+import { Resultado } from '../../general/models/resultado.model';
 
 @Injectable()
 /**

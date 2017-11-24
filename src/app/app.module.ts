@@ -27,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseModule } from './base/base.module';
 
 /* Import Routing system */
-import { appRoutes } from './base/app.routing';
+import { appRoutes } from './app.routing';
 
 /* import Auth Service */
 import { AuthService } from './base/services/AuthService.service';
@@ -44,9 +44,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 /* Import HttpClient Module */
 import { HttpClientModule } from '@angular/common/http';
 
-/* Import Context Service */
+/* Import base Services */
 import { ContextoService } from './base/services/contexto.service';
 import { LangService } from './base/services/lang.service';
+import { UtilService } from './base/services/util.service';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { LangService } from './base/services/lang.service';
 	  AuthGuardService, 
 	  LangService,
 	  ContextoService,
+	  UtilService,
 	  { provide: APP_INITIALIZER, useFactory: (contexto: ContextoService) => () => contexto.load(), deps: [ContextoService], multi: true }],
   bootstrap: [AppComponent],
   exports: []

@@ -1,3 +1,9 @@
+/**
+ * Langs del modulo base.
+ * 
+ * @export
+ * @const BaseLang
+ */
 export const BaseLang =
     {
         'es': {

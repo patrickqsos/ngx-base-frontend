@@ -2,13 +2,13 @@
 import { Routes, RouterModule } from '@angular/router';
  
 /* Import App Login Component */
-import { LoginComponent }  from './login/login.component';
+import { LoginComponent }  from './base/login/login.component';
 
 /* Import Menu Component */
-import { MenuComponent }  from './menu/menu.component';
+import { MenuComponent }  from './base/menu/menu.component';
 
 /* Import App Auth Guard */
-import { AuthGuardService } from './services/AuthGuard.service';
+import { AuthGuardService } from './base/services/AuthGuard.service';
  
 /* Configuracion de las rutas de la aplicacion base */
 export const appRoutes: Routes = [

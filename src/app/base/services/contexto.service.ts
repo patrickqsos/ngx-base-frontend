@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { BaseLang } from "../parametros/base.lang";
+import { BaseLang } from "../base.lang";
 
 /**
  * Servicio para interactuar con el contexto del sistema. 
@@ -27,7 +27,7 @@ export class ContextoService {
     private env:Object = null;
 
     // Contexto de usuario proveniente de la autenticación.
-    public contextoUsuario = null;
+    public contextoUsuario:any = null;
 
     /**
      * Creates an instance of ContextoService.
@@ -43,7 +43,7 @@ export class ContextoService {
      * @returns Valor de la variable en el archivo de configuración.
      * @memberof ContextoService
      */
-    public getConfig(key: string) {
+    public getConfig(key: string):any {
         return this.config[key];
     }
   
@@ -80,7 +80,7 @@ export class ContextoService {
      * @param {string} pNuevoLenguaje Nuevo idioma.
      * @memberof ContextoService
      */
-    setNuevoIdioma(pNuevoIdioma: string) {
+    setNuevoIdioma(pNuevoIdioma: string):void {
         this.idiomaSeleccionado = pNuevoIdioma;
     }
 
@@ -98,7 +98,7 @@ export class ContextoService {
      * 
      * @memberof ContextoService
      */
-    getListaModulos(){
+    getListaModulos():any[] {
         if(this.contextoUsuario != null && this.contextoUsuario.RecursosUsuario != null)
             return this.contextoUsuario.RecursosUsuario;
         else
@@ -111,8 +111,7 @@ export class ContextoService {
      * @param {*} pContextoUsuario Contexto de usuario.
      * @memberof ContextoService
      */
-    setContexto(pContextoUsuario: any)
-    {
+    setContexto(pContextoUsuario: any):void {
         this.contextoUsuario = pContextoUsuario;
     }
 
@@ -121,8 +120,7 @@ export class ContextoService {
      * 
      * @memberof ContextoService
      */
-    finalizarContexto()
-    {
+    finalizarContexto():void {
         this.contextoUsuario = null;
         // todo: finalizar contexto el servicio comun.
     }
@@ -130,10 +128,10 @@ export class ContextoService {
     /**
      * Método para obtener el usuario loggeado en el contexto.
      * 
+     * @returns {string} 
      * @memberof ContextoService
      */
-    getUsuario()
-    {
+    getUsuario():string {
         // Valida si el nombre del usuario esta en el contexto.
         if(this.contextoUsuario != null && this.contextoUsuario.NombreCompletoUsuario != null)
             return this.contextoUsuario.NombreCompletoUsuario;
@@ -144,9 +142,10 @@ export class ContextoService {
     /**
      * Método para obtener la institución del usuario loggeado en el contexto.
      * 
+     * @returns {string} 
      * @memberof ContextoService
      */
-    getInstitucion(){
+    getInstitucion():string {
         // Valida si el nombre de la institución esta en el contexto.
         if(this.contextoUsuario != null && this.contextoUsuario.NombreInstitucion != null)
             return this.contextoUsuario.NombreInstitucion;
@@ -157,30 +156,21 @@ export class ContextoService {
     /**
      * Método para evaluar si el sistema tiene multiples idiomas. 
      * 
+     * @returns {boolean} 
      * @memberof ContextoService
      */
-    esMultiIdioma()
-    {
+    esMultiIdioma():boolean {
         return this.idiomas.length > 1;
     }
 
     /**
      * Método para obtener listado de idiomas.
      * 
+     * @returns {*} 
      * @memberof ContextoService
      */
-    getIdiomas()
-    {
+    getIdiomas():any[] {
         return this.idiomas;
     }
     
-    /**
-     * Método que obtiene la fecha actual.
-     * 
-     * @memberof ContextoService
-     */
-    getFechaActual()
-    {
-        return new Date();
-    }
 }
