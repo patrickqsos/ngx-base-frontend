@@ -14,7 +14,7 @@
     </header>
 
     <mat-sidenav-container fxFlex="1" class="main-container-nav" fxLayout="column">
-        <mat-sidenav #sidenav mode="over" opened="false" >
+        <mat-sidenav #sidenav mode="push" opened="false" >
             <mat-accordion>
                 <mat-expansion-panel hideToggle="true">
                     <mat-expansion-panel-header class="mat-accent" >
@@ -72,7 +72,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <mat-list dense *ngFor="let recurso of modulo.RecursosHijos" >
+                    <mat-list dense *ngFor="let recurso of modulo.RecursosHijos" (click)="sidenav.toggle()" >
                         <h3 mat-subheader color="primary">{{ recurso.Descripcion}}</h3>
                         <mat-list-item *ngFor="let subrecurso of recurso.RecursosHijos"  >
                                 <mat-icon matListIcon>chevron_right</mat-icon>
