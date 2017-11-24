@@ -7,14 +7,14 @@
   min-height: 100%;
   
 }
-
+/* 
 .sidenav-content {
-  /* position: fixed; */
+  position: fixed;
   height: 80%;
   min-height:80%;
   width: 100%;
   min-width: 100%;
-}
+} */
   
 .main-logo{
   height: 100px;
@@ -31,6 +31,13 @@
   
 mat-sidenav {
   max-width: 300px;
+}
+
+.mat-sidenav-content{
+  background-color: red;
+  flex: 1 1 100%;
+  display: flex !important; flex-direction: column ; min-height: 100%; 
+  align-content: center; justify-content: center;
 }
 
 .mat-subheader{

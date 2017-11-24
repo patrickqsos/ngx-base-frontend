@@ -12,8 +12,8 @@ html, body {
   color: white !important;
 }
 
-router-outlet + .divInnerRouterOutlet { flex: 1 1 auto ; display: flex ; flex-direction: column ; min-height: 100%; min-width: 100%; 
-  align-content: center; justify-content: center; align-items: center }
+router-outlet + .divInnerRouterOutlet { flex: 1 1 auto ; display: flex ; flex-direction: column ; min-height: 100%; 
+  align-content: center; justify-content: center }
 
 router-outlet{
   display: none;
@@ -30,4 +30,15 @@ router-outlet{
 
 .flex-spacer{
   flex-grow: 1
+}
+
+mat-sidenav-content{
+  flex: 1 1 100%;
+  display: flex !important; 
+  flex-direction: column ;
+  min-height: 100%; 
+  align-content: center; 
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
