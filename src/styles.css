@@ -12,16 +12,20 @@ html, body {
   color: white !important;
 }
 
-router-outlet + .divInnerRouterOutlet { flex: 1 1 auto ; display: flex ; flex-direction: column ; min-height: 100%; 
-  align-content: center; justify-content: center }
+/* router-outlet + .divInnerRouterOutlet { flex: 1 1 auto ; display: flex ; flex-direction: column ; min-height: 100%; 
+  align-content: center; justify-content: center } */
 
 router-outlet{
   display: none;
 }
 
-.segip-card, .mat-card-header-text
+.container-fluid
 {
-  flex: 1
+  height: 100%;
+  margin: 0px;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
 }
 
 .mat-card-header-text {
@@ -40,5 +44,5 @@ mat-sidenav-content{
   align-content: center; 
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  /* padding: 10px; */
 }
