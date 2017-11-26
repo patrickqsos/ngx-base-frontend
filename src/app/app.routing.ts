@@ -8,7 +8,7 @@ import { LoginComponent }  from './base/login/login.component';
 import { MenuComponent }  from './base/menu/menu.component';
 
 /* Import App Auth Guard */
-import { AuthGuardService } from './base/services/AuthGuard.service';
+import { AuthGuardService } from './base/services/auth-guard.service';
  
 /* Configuracion de las rutas de la aplicacion base */
 export const appRoutes: Routes = [

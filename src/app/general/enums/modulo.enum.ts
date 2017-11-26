@@ -4,6 +4,6 @@
  * @export
  * @enum {number}
  */
-export enum eModulos {
+export enum eModulo {
     Base
 }

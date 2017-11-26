@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material'
 import { ContextoService } from './contexto.service';
 import { LangService } from './lang.service';
 import { Resultado } from '../../general/models/resultado.model';
+import { NotificacionService } from './notificacion.service';
+import { eModulo } from '../../general/enums/modulo.enum';
 
 @Injectable()
 /**
@@ -29,7 +31,7 @@ export class AuthService {
     private http:HttpClient,
     private langService : LangService,
     private contextoService: ContextoService,
-    private snackBar: MatSnackBar) {}
+    private notificacionService: NotificacionService) {}
 
 
     /**
@@ -40,23 +42,15 @@ export class AuthService {
   loginUser(username: string, password: string) {
     this.http.get<Resultado>(this.urlBase+"/login.php").subscribe(
       data=>{
+
+        // Llama al servicio de notificacion.
+        this.notificacionService.showSnackbarResultado(data);
+        
         if(data.esValido)
         {
           this.token = "token";
-            this.snackBar.open(this.langService.getLang(this.langService.modulos.Base, 'loginExitoso'), 'X',{
-                duration: 2000,
-                verticalPosition:'bottom', horizontalPosition:'right'
-              });
-              
-              console.log(data.datoAdicional);
-            this.contextoService.setContexto(data.datoAdicional);
-            this.router.navigate(['menu']);
-        }
-        else{
-            this.snackBar.open(this.langService.getLang(this.langService.modulos.Base, 'loginFallido'), null,{
-                duration: 2000,
-                verticalPosition:'bottom',   horizontalPosition:'right'
-              });
+          this.contextoService.setContexto(data.datoAdicional);
+          this.router.navigate(['menu']);
         }
     })
   }
@@ -71,10 +65,10 @@ export class AuthService {
     this.http.post(this.urlBase+"/logout.php",null).subscribe((response)=>{
         return response;
     });
-    this.snackBar.open(this.langService.getLang(this.langService.modulos.Base, 'loginCerrado'), null,{
-      duration: 2000,
-      verticalPosition:'bottom',   horizontalPosition:'right'
-    });
+
+    // Llama al servicio de notificacion.
+    this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'loginCerrado'));
+
     this.contextoService.finalizarContexto();
     this.router.navigate(['/login'])
   }

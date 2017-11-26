@@ -1,23 +1,13 @@
-/* Import Angular NgModule */
 import { NgModule } from '@angular/core';
 
-import { APP_INITIALIZER } from '@angular/core';
-
-import { HttpModule }      from '@angular/http';
-
-/* Import Angular CommonModule */
 import { CommonModule } from '@angular/common';
 
-/* Import Angular Router and Routes Module */
 import { RouterModule, Routes } from '@angular/router';
 
-/* Import Angular FormsModule */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-/* Import Angular Material Flex Layout Module */
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-/*Import Angular Material Module*/
 import {
   MatInputModule,
   MatFormFieldModule,
@@ -33,14 +23,14 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 
-/* Import App Layout Component*/
 import { LayoutComponent } from './layout/layout.component';
 
-/* Import App Log In Component */
 import { LoginComponent } from './login/login.component';
 
-/* Import Menu Component */
 import { MenuComponent } from './menu/menu.component';
+import { NotificacionComponent } from './notificacion/notificacion.component';
+import { ClassTipoMensajePipe } from './pipes/class-tipo-mensaje.pipe';
+import { IconTipoMensajePipe } from './pipes/icon-tipo-mensaje.pipe';
 
 // Configuración de las rutas
 export const baseRoutes: Routes = [
@@ -51,7 +41,6 @@ export const baseRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(baseRoutes),
-    HttpModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -71,10 +60,18 @@ export const baseRoutes: Routes = [
   declarations: [
     LayoutComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    NotificacionComponent,
+    ClassTipoMensajePipe,
+    IconTipoMensajePipe
   ],
   providers: [
   ],
-  exports: [LayoutComponent]
+  exports: [
+    LayoutComponent
+  ],
+  entryComponents: [
+    NotificacionComponent
+  ],
 })
 export class BaseModule {}

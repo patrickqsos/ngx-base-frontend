@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseLang } from "../base.lang";
-import { eModulos } from '../../general/enums/modulos.enum';
+import { eModulo } from '../../general/enums/modulo.enum';
 import { ContextoService } from './contexto.service';
 
 /**
@@ -13,10 +13,8 @@ import { ContextoService } from './contexto.service';
 export class LangService {
 
   // Langs de todos los modulos.
-  private langs: {id:any, contenido: any}[] = [];
-  // Enum de modulos.
-  public modulos = eModulos;
-
+  private langs: { id:any, contenido: any }[] = [];
+  
   /**
    * Ctor del servicio, carga los langs de todos los módulos.
    * @memberof LangService
@@ -24,7 +22,7 @@ export class LangService {
   constructor(private contextoService: ContextoService) {
     this.langs.push(
       {
-        id:eModulos.Base,
+        id: eModulo.Base,
         contenido: BaseLang
       });
   }
@@ -37,7 +35,7 @@ export class LangService {
    * @returns {string} Valor del lang.
    * @memberof ContextoService
    */
-  getLang(pModulo:eModulos, pIdMensaje: string):string {
+  getLang(pModulo:eModulo, pIdMensaje: string):string {
 
     // Obtiene idioma actual.
     let idioma = this.contextoService.getIdiomaActual();

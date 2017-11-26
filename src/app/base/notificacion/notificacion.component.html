@@ -1,0 +1,6 @@
+<div class="mat-simple-snackbar">
+    <mat-icon [ngClass]="contenido.tipoMensaje | getClassTipoMensaje">
+        {{ contenido.tipoMensaje | getIconTipoMensaje }}
+    </mat-icon>
+    <span [ngClass]="contenido.tipoMensaje | getClassTipoMensaje">{{ contenido.mensaje }}</span>
+</div>

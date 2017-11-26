@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { APP_INITIALIZER } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { Routes, RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
 import { AppComponent } from './app.component';
 
-/* Import Angular Material Module*/
 import { 
 	MatInputModule, 
 	MatFormFieldModule,
@@ -18,37 +19,14 @@ import {
 	MatSlideToggleModule
 } from '@angular/material';
 
-import {MatSelectModule} from '@angular/material/select';
-
-/* Import Angular Animations */
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-/* Import base Layout */
 import { BaseModule } from './base/base.module';
-
-/* Import Routing system */
 import { appRoutes } from './app.routing';
-
-/* import Auth Service */
-import { AuthService } from './base/services/AuthService.service';
-
-/* import App Auth Service */
-import { AuthGuardService } from './base/services/AuthGuard.service';
-
-/* Import Angular Routes and Angular Router Module */
-import { Routes, RouterModule } from '@angular/router';
-
-/* Import Angular Material Flex Layout Module */
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-/* Import HttpClient Module */
-import { HttpClientModule } from '@angular/common/http';
-
-/* Import base Services */
+import { AuthService } from './base/services/auth.service';
+import { AuthGuardService } from './base/services/auth-guard.service';
 import { ContextoService } from './base/services/contexto.service';
 import { LangService } from './base/services/lang.service';
 import { UtilService } from './base/services/util.service';
-
+import { NotificacionService } from './base/services/notificacion.service';
 
 @NgModule({
   declarations: [
@@ -80,6 +58,7 @@ import { UtilService } from './base/services/util.service';
 	  LangService,
 	  ContextoService,
 	  UtilService,
+	  NotificacionService,
 	  { provide: APP_INITIALIZER, useFactory: (contexto: ContextoService) => () => contexto.load(), deps: [ContextoService], multi: true }],
   bootstrap: [AppComponent],
   exports: []

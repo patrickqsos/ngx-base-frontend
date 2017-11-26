@@ -1,25 +1,25 @@
 <mat-card class="base-auth mat-elevation-z12">
 	<mat-card-header fxFlexFill>
 		<mat-toolbar color="accent" fxLayout="row">
-				<h2>{{ langService.getLang(langService.modulos.Base,'tit-autenticacion') }}</h2>
+				<h2>{{ langService.getLang(eModulo.Base,'tit-autenticacion') }}</h2>
 		</mat-toolbar>
 	</mat-card-header>
 	<mat-card-content>	
 		<div fxLayout="column" fxLayoutAlign="center center">
 				<mat-form-field color="primary" fxFlexFill>
 					<mat-icon matSuffix>account_box</mat-icon>
-					<input matInput placeholder="{{ langService.getLang(langService.modulos.Base,'usuarioFormLabel') }}" [formControl]="usuario" required>
-					<mat-error *ngIf="usuario.invalid">{{ langService.getLang(langService.modulos.Base,'usuarioLogin') }}</mat-error>
+					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'usuarioFormLabel') }}" [formControl]="usuario" required>
+					<mat-error *ngIf="usuario.invalid">{{ langService.getLang(eModulo.Base,'usuarioLogin') }}</mat-error>
 				</mat-form-field>
 			<br>
 				<mat-form-field color="primary" fxFlexFill>
 					<mat-icon matSuffix>vpn_key</mat-icon>
-					<input matInput placeholder="{{ langService.getLang(langService.modulos.Base,'passwordFormLabel') }}" [formControl]="password" required>
-					<mat-error *ngIf="password.invalid">{{ langService.getLang(langService.modulos.Base,'passwordLogin') }}</mat-error>
+					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" [formControl]="password" required>
+					<mat-error *ngIf="password.invalid">{{ langService.getLang(eModulo.Base,'passwordLogin') }}</mat-error>
 				</mat-form-field>
 			<br>
 			<div fxLayout="row" fxLayoutAlign="end end">
-				<button fxFlex mat-raised-button color="accent" (click)="login()">{{ langService.getLang(langService.modulos.Base,'btnLogin') }}</button>
+				<button fxFlex mat-raised-button color="accent" (click)="login()">{{ langService.getLang(eModulo.Base,'btnLogin') }}</button>
 			</div>
 		</div>
 	</mat-card-content>

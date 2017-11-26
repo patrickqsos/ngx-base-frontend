@@ -46,3 +46,18 @@ mat-sidenav-content{
   align-items: center;
   /* padding: 10px; */
 }
+
+.correcto{
+  color: greenyellow;
+}
+
+.incorrecto{
+  color: red;
+}
+
+.advertencia{
+  color: rgb(219, 219, 9);
+}
+.informativo{
+  color: rgb(126, 207, 255);
+}

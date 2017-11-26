@@ -1,0 +1,7 @@
+.mat-simple-snackbar{
+    display: flex;
+    justify-content: space-between;
+    line-height: 20px;
+    opacity: 1;
+}
+

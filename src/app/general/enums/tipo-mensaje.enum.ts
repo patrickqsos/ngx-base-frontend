@@ -7,6 +7,6 @@
 export enum eTipoMensaje{
     Correcto,
     Incorrecto,
+    Advertencia,
     Informativo,
-    Advertencia
 }
