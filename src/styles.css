@@ -61,3 +61,26 @@ mat-sidenav-content{
 .informativo{
   color: rgb(126, 207, 255);
 }
+
+.menu-card{
+  cursor: pointer;
+  border-radius: 10px !important;
+}
+
+.animate-icon-menu {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Chrome, Safari, Opera */
+  transform: scale(1.2);
+  transition: all 0.5s ease-out;
+}
+
+.mat-24 {
+  font-size:5em !important;
+  height:1em !important;
+  width:1em !important;
+}
+
+.fixFxLayoutGapBottom
+{
+  margin-bottom: 10px;
+}

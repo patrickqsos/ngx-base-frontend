@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { BaseLang } from "../base.lang";
+import { forEach } from '@angular/router/src/utils/collection';
 
 /**
  * Servicio para interactuar con el contexto del sistema. 
@@ -96,14 +97,38 @@ export class ContextoService {
     /**
      * Método para obtener lista de modulos del sistema.
      * 
+     * @returns {any[]} Lista de modulos.
      * @memberof ContextoService
      */
-    getListaModulos():any[] {
+    getListaModulos(): any[] {
         if(this.contextoUsuario != null && this.contextoUsuario.RecursosUsuario != null)
             return this.contextoUsuario.RecursosUsuario;
         else
             return [];
     }
+
+    /**
+     *  Método para obtener lista de recursos hijos.
+     * 
+     * @returns {any[]} Lista de recursos hijos.
+     * @memberof ContextoService
+     */
+    getListaSchemas(): any[] {
+        // Instancia lista.
+        let listaSchemas = [];
+        // Valida si existe elementos en la lista.
+        if(this.contextoUsuario != null && this.contextoUsuario.RecursosUsuario != null){
+            // Recorre lista de recursos hijos para adiconarlos a la lista a devolver.
+            for(let modulo of this.contextoUsuario.RecursosUsuario){
+                for(let schema of modulo.RecursosHijos) {
+                    listaSchemas.push(schema);
+                }
+            }
+        }
+        // Retorna lista.
+        return listaSchemas;
+    }
+
 
     /**
      * Método para setear el contexto de usuario recibido desde la autenticación.

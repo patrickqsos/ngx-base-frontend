@@ -20,7 +20,8 @@ import {
   MatListModule,
   MatIconModule,
   MatExpansionModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatChipsModule
 } from '@angular/material';
 
 import { LayoutComponent } from './layout/layout.component';
@@ -31,6 +32,8 @@ import { MenuComponent } from './menu/menu.component';
 import { NotificacionComponent } from './notificacion/notificacion.component';
 import { ClassTipoMensajePipe } from './pipes/class-tipo-mensaje.pipe';
 import { IconTipoMensajePipe } from './pipes/icon-tipo-mensaje.pipe';
+import { HoverCardDirective } from './directives/hover-card.directive';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 // Configuración de las rutas
 export const baseRoutes: Routes = [
@@ -55,7 +58,8 @@ export const baseRoutes: Routes = [
     MatListModule,
     MatIconModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatChipsModule
   ],
   declarations: [
     LayoutComponent,
@@ -63,7 +67,9 @@ export const baseRoutes: Routes = [
     MenuComponent,
     NotificacionComponent,
     ClassTipoMensajePipe,
-    IconTipoMensajePipe
+    IconTipoMensajePipe,
+    HoverCardDirective,
+    NotfoundComponent
   ],
   providers: [
   ],

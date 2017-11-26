@@ -9,6 +9,7 @@ import { MenuComponent }  from './base/menu/menu.component';
 
 /* Import App Auth Guard */
 import { AuthGuardService } from './base/services/auth-guard.service';
+import { NotfoundComponent } from './base/notfound/notfound.component';
  
 /* Configuracion de las rutas de la aplicacion base */
 export const appRoutes: Routes = [
@@ -17,7 +18,7 @@ export const appRoutes: Routes = [
   { path: 'logout', component: LoginComponent, canActivate: [AuthGuardService] },
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuardService]},
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', component: NotfoundComponent }
   
 ];
  

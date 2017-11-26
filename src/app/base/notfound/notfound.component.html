@@ -1,0 +1,12 @@
+<mat-card class="base-auth mat-elevation-z12">
+    <mat-card-header class="base-auth-header alt-theme" fxFlexFill>
+      <mat-toolbar color="primary" fxLayout="row">
+          <h2>{{ langService.getLang(eModulo.Base,'tit-not-found') }}</h2>
+      </mat-toolbar>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">	
+      <h3 fxFlexAlign="center" > {{ langService.getLang(eModulo.Base,'desc-not-found') }} </h3>
+      <a mat-fab routerLink="/menu"><mat-icon>home</mat-icon></a>
+    </mat-card-content>
+</mat-card>
+  

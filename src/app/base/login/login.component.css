@@ -1,3 +1,8 @@
 .base-auth{
     width: 400px; 
 }
+
+.base-auth-header{
+    margin-bottom: 20px !important;
+}
+  
