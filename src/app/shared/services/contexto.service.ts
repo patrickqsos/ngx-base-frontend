@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { BaseLang } from "../base.lang";
-import { forEach } from '@angular/router/src/utils/collection';
+import { BaseLang } from "../../base/base.lang";
 
 /**
  * Servicio para interactuar con el contexto del sistema. 

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { eTipoMensaje } from '../../general/enums/tipo-mensaje.enum';
+import { eTipoMensaje } from '../../shared/enums/tipo-mensaje.enum';
 
 
 @Pipe({name: 'getClassTipoMensaje'})

@@ -4,9 +4,9 @@ import {HttpClient} from '@angular/common/http';
 import { MatSnackBar } from '@angular/material'
 import { ContextoService } from './contexto.service';
 import { LangService } from './lang.service';
-import { Resultado } from '../../general/models/resultado.model';
+import { Resultado } from '../../shared/models/resultado.model';
 import { NotificacionService } from './notificacion.service';
-import { eModulo } from '../../general/enums/modulo.enum';
+import { eModulo } from '../../shared/enums/modulo.enum';
 
 @Injectable()
 /**

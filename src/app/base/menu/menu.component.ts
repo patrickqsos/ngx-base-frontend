@@ -1,8 +1,8 @@
 import { Component, OnInit, trigger, state, style, transition, animate, keyframes } from '@angular/core';
-import { ContextoService } from '../services/contexto.service';
-import { BaseComponent } from '../base.component';
-import { LangService } from '../services/lang.service';
 import { Router } from '@angular/router';
+import { BaseComponent } from '../../shared/base.component';
+import { ContextoService } from '../../shared/services/contexto.service';
+import { LangService } from '../../shared/services/lang.service';
 
 /** 
  * Componente para mostrar el menu del sistema.

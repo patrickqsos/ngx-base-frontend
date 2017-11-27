@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseComponent } from '../base.component';
-import { LangService } from '../services/lang.service';
+import { BaseComponent } from '../../shared/base.component';
+import { LangService } from '../../shared/services/lang.service';
 
 /**
  * Componente para mostrar la pagina 404 not found.

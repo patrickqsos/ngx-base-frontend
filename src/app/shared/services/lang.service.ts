@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BaseLang } from "../base.lang";
-import { eModulo } from '../../general/enums/modulo.enum';
+import { BaseLang } from "../../base/base.lang";
+import { eModulo } from '../../shared/enums/modulo.enum';
 import { ContextoService } from './contexto.service';
 
 /**

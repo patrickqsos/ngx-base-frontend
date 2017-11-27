@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import {MAT_SNACK_BAR_DATA} from '@angular/material';
-import { Resultado } from '../../general/models/resultado.model';
-import { eTipoMensaje } from '../../general/enums/tipo-mensaje.enum';
-import { BaseComponent } from '../base.component';
+import { Resultado } from '../../shared/models/resultado.model';
+import { eTipoMensaje } from '../../shared/enums/tipo-mensaje.enum';
+import { BaseComponent } from '../../shared/base.component';
 /**
  * Componente para mostrar notificaciones.
  * 

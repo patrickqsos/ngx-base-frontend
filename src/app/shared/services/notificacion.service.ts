@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Resultado } from '../../general/models/resultado.model';
 import { MatSnackBar } from '@angular/material';
-import { NotificacionComponent } from '../notificacion/notificacion.component';
-import { eTipoMensaje } from '../../general/enums/tipo-mensaje.enum';
+import { Resultado } from '../../shared/models/resultado.model';
+import { NotificacionComponent } from '../../base/notificacion/notificacion.component';
+import { eTipoMensaje } from '../../shared/enums/tipo-mensaje.enum';
 
 /**
  * Servicio para notificar mensajes.

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl,Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { LangService } from '../services/lang.service';
-import { BaseComponent } from '../base.component';
+import { AuthService } from '../../shared/services/auth.service';
+import { LangService } from '../../shared/services/lang.service';
+import { BaseComponent } from '../../shared/base.component';
 
 @Component({
     selector: 'app-login',

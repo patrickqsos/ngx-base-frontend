@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { ContextoService } from '../services/contexto.service';
-import { LangService } from '../services/lang.service';
-import { UtilService } from '../services/util.service';
-import { BaseComponent } from '../base.component';
+import { AuthService } from '../../shared/services/auth.service';
+import { ContextoService } from '../../shared/services/contexto.service';
+import { LangService } from '../../shared/services/lang.service';
+import { UtilService } from '../../shared/services/util.service';
+import { BaseComponent } from '../../shared/base.component';
 
 @Component({
     selector: 'app-layout',

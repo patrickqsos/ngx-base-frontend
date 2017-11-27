@@ -1,9 +1,9 @@
-import { eModulo } from "../general/enums/modulo.enum";
-import { LangService } from "./services/lang.service";
-import { UtilService } from "./services/util.service";
-import { NotificacionService } from "./services/notificacion.service";
+import { eModulo } from "../shared/enums/modulo.enum";
+import { LangService } from "../shared/services/lang.service";
+import { UtilService } from "../shared/services/util.service";
+import { NotificacionService } from "../shared/services/notificacion.service";
 import { Component } from "@angular/core";
-import { eTipoMensaje } from "../general/enums/tipo-mensaje.enum";
+import { eTipoMensaje } from "../shared/enums/tipo-mensaje.enum";
 
 /**
  * Clase que sirve de base para los componentes creados.
