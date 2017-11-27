@@ -68,8 +68,11 @@
                             {{modulo.Etiqueta}}
                         </mat-panel-title>
                         <mat-panel-description>
-                                <span class=flex-spacer></span>
-                                <mat-icon>{{ modulo.Imagen }}</mat-icon>
+                            <span class=flex-spacer></span>
+                            <mat-icon *ngIf="modulo.Imagen != null; else noImage">{{ modulo.Imagen }}</mat-icon>
+                            <ng-template #noImage>
+                                <mat-icon>extension</mat-icon>
+                            </ng-template>
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
