@@ -37,5 +37,5 @@ export class Resultado {
      * @type {*}
      * @memberof Resultado
      */
-    public datoAdicional: any;
+    public datosAdicionales: any;
 }

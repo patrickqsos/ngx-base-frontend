@@ -16,16 +16,16 @@ export class BaseComponent {
     /**
      * Enum que contiene lista de modulos.
      * 
-     * @protected
+     * @public
      * @memberof BaseComponent
      */
-    protected eModulo = eModulo
+    public eModulo = eModulo
 
     /**
      * Enum que contiene los tipos de mensaje.
      * 
-     * @protected
+     * @public
      * @memberof BaseComponent
      */
-    protected eTipoMensaje = eTipoMensaje;
+    public eTipoMensaje = eTipoMensaje;
 }
