@@ -22,15 +22,10 @@ export class AuthGuardService implements CanActivate {
    * Permite saber si el usuario esta o no autenticado.
    */
   canActivate() {
-    
-    console.log(this.router.url);
-    if(this.authService.isUserAuthenticated())
-    {
+    if (this.authService.isUserAuthenticated()) {
       return true;
-    }
-    else
-    {  
-      this.router.navigate(['/login'])
+    } else {
+      this.router.navigate(['/login']);
       return false;
     }
   }

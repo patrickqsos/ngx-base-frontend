@@ -5,7 +5,7 @@ import { ContextoService } from './contexto.service';
 
 /**
  * Servicio para manejar langs de forma global en el sistema.
- * 
+ *
  * @export
  * @class LangService
  */
@@ -13,8 +13,8 @@ import { ContextoService } from './contexto.service';
 export class LangService {
 
   // Langs de todos los modulos.
-  private langs: { id:any, contenido: any }[] = [];
-  
+  private langs: { id: any, contenido: any }[] = [];
+
   /**
    * Ctor del servicio, carga los langs de todos los módulos.
    * @memberof LangService
@@ -29,24 +29,24 @@ export class LangService {
 
   /**
    * Método para obtener un lang del objeto de langs cargados.
-   * 
+   *
    * @param {string} pModulo Identificador del modulo.
    * @param {string} pIdMensaje Identificador del mensaje.
    * @returns {string} Valor del lang.
    * @memberof ContextoService
    */
-  getLang(pModulo:eModulo, pIdMensaje: string):string {
+  getLang(pModulo: eModulo, pIdMensaje: string): string {
 
     // Obtiene idioma actual.
-    let idioma = this.contextoService.getIdiomaActual();
+    const idioma = this.contextoService.getIdiomaActual();
     // Valida params de entrada.
-    if(pModulo != null && pIdMensaje != null){
-      var lang = this.langs[pModulo].contenido[idioma][pIdMensaje];
-      if(lang != null)      
+    if (pModulo != null && pIdMensaje != null) {
+      const lang = this.langs[pModulo].contenido[idioma][pIdMensaje];
+      if (lang != null)
         return lang;
       else
         return BaseLang[idioma]['lang-error'];  
-    }    
+    }
     else
       return BaseLang[idioma]['lang-param-error'];  
   }

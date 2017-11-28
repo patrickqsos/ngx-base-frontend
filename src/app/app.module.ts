@@ -1,8 +1,9 @@
+import { ProgressInterceptor } from './shared/interceptors/progressbar.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { BaseModule } from './base/base.module';
@@ -14,30 +15,38 @@ import { LangService } from './shared/services/lang.service';
 import { UtilService } from './shared/services/util.service';
 import { NotificacionService } from './shared/services/notificacion.service';
 
+
+const interceptor = new ProgressInterceptor();
+
+
 @NgModule({
   declarations: [
-	AppComponent
+		AppComponent
   ],
   imports: [
-	BrowserModule,
-	BrowserAnimationsModule,
-	HttpClientModule,
-	BaseModule,
-	RouterModule.forRoot(appRoutes),
+		BrowserModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		BaseModule,
+		RouterModule.forRoot(appRoutes),
+
   ],
   providers: [
-	AuthService, 
-	AuthGuardService, 
+	AuthService,
+	AuthGuardService,
 	LangService,
 	ContextoService,
 	UtilService,
 	NotificacionService,
 	{ 
-		provide: APP_INITIALIZER, 
-		useFactory: (contexto: ContextoService) => () => contexto.load(), 
-		deps: [ContextoService], 
-		multi: true 
-	}
+		provide: APP_INITIALIZER,
+		useFactory: (contexto: ContextoService) => () => contexto.load(),
+		deps: [ContextoService],
+		multi: true
+	},
+	{ provide: ProgressInterceptor, useValue: interceptor },
+	{ provide: HTTP_INTERCEPTORS, useValue: interceptor, multi: true },
+
   ],
   bootstrap: [AppComponent],
   exports: []

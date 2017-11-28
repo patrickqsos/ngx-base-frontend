@@ -13,6 +13,7 @@
             <a mat-button routerLink="/menu" *ngIf="authService.isUserAuthenticated()"><mat-icon>home</mat-icon></a>
         </mat-toolbar>
     </header>
+    <app-progress-bar fxFlexFill></app-progress-bar>
 
     <mat-sidenav-container fxFlex="1" class="main-container-nav" fxLayout="column">
         <mat-sidenav #sidenav mode="push" opened="false" >

@@ -1,12 +1,14 @@
+
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { MatSnackBar } from '@angular/material'
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
 import { ContextoService } from './contexto.service';
 import { LangService } from './lang.service';
 import { Resultado } from '../../shared/models/resultado.model';
 import { NotificacionService } from './notificacion.service';
 import { eModulo } from '../../shared/enums/modulo.enum';
+import 'rxjs/add/operator/first';
 
 @Injectable()
 /**
@@ -16,22 +18,22 @@ import { eModulo } from '../../shared/enums/modulo.enum';
 export class AuthService {
   token: string;
   // todo: sacar esto a config.json
-  urlBase: string = "http://localhost/pruebasRestful";
+  urlBase= 'http://localhost/pruebasRestful';
 
   /**
    * Constructor de la clase
-   * @param router 
-   * @param http 
-   * @param langService 
-   * @param contextoService 
-   * @param snackBar 
+   * @param router ;
+   * @param http ;
+   * @param langService ;
+   * @param contextoService ;
+   * @param snackBar ;
    */
   constructor(
     private router: Router,
-    private http:HttpClient,
-    private langService : LangService,
+    private http: HttpClient,
+    private langService: LangService,
     private contextoService: ContextoService,
-    private notificacionService: NotificacionService) {}
+    private notificacionService: NotificacionService ) {}
 
 
     /**
@@ -39,20 +41,26 @@ export class AuthService {
      * @param username nombre de usuario del sistema
      * @param password password del usuario para acceder al sistema
      */
-  loginUser(username: string, password: string) {
-    this.http.get<Resultado>(this.urlBase+"/login.php").subscribe(
-      data=>{
+  loginUser(pUsername: string, pPassword: string) {
 
+  //   this.http.post(this.urlBase + '/login.php', null).subscribe((response) => {
+  //     return response;
+  // });
+
+    this.http.post<Resultado>(this.urlBase + '/login.php', {user: pUsername, pass: pPassword}, {
+      headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*'),
+    }).first().subscribe(
+      (response) => {
         // Llama al servicio de notificacion.
-        this.notificacionService.showSnackbarResultado(data);
-        
-        if(data.esValido)
-        {
-          this.token = "token";
-          this.contextoService.setContexto(data.datoAdicional);
+        this.notificacionService.showSnackbarResultado(response);
+        if (response.esValido) {
+          this.token = 'token';
+          this.contextoService.setContexto(response.datosAdicionales);
           this.router.navigate(['menu']);
+          console.log('Progress Interceptor Intercept');
         }
-    })
+    }
+  );
   }
 
   /**
@@ -61,16 +69,14 @@ export class AuthService {
    */
   logoutUser() {
     this.token = null;
-    console.log("logout");
-    this.http.post(this.urlBase+"/logout.php",null).subscribe((response)=>{
+    this.http.post(this.urlBase + '/logout.php', null).subscribe((response) => {
+      // Llama al servicio de notificacion.
+      this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'loginCerrado'));
+      this.contextoService.finalizarContexto();
+      this.router.navigate(['/login']);
         return response;
     });
 
-    // Llama al servicio de notificacion.
-    this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'loginCerrado'));
-
-    this.contextoService.finalizarContexto();
-    this.router.navigate(['/login'])
   }
 
   /**
@@ -78,8 +84,8 @@ export class AuthService {
    * Permite recuperar un token para accedr al sistema
    */
   getUserToken() {
-    this.http.post(this.urlBase+"/token",null).subscribe((response:string)=>{
-        console.log("response");
+    this.http.post(this.urlBase + '/token', null).subscribe((response: string) => {
+        console.log('response');
         this.token = response;
     });
     return this.token;

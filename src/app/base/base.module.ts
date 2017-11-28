@@ -1,3 +1,4 @@
+import { ProgressComponent } from './progressBar/progressBar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,9 +27,10 @@ export const baseRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(baseRoutes),
-    SharedModule
+    SharedModule,
   ],
   declarations: [
+    ProgressComponent,
     LayoutComponent,
     LoginComponent,
     MenuComponent,
@@ -37,7 +39,7 @@ export const baseRoutes: Routes = [
   ],
   exports: [
     LayoutComponent,
-    RouterModule
+    RouterModule,
   ],
   entryComponents: [
     NotificacionComponent

@@ -5,21 +5,28 @@
 		</mat-toolbar>
 	</mat-card-header>
 	<mat-card-content>	
-		<div fxLayout="column" fxLayoutAlign="center center">
+		<div fxLayout="column" fxLayoutAlign="center center" [formGroup]="form">
 				<mat-form-field color="primary" fxFlexFill>
 					<mat-icon matSuffix color="primary">account_box</mat-icon>
-					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'usuarioFormLabel') }}" [formControl]="usuario" required>
-					<mat-error *ngIf="usuario.invalid">{{ langService.getLang(eModulo.Base,'usuarioLogin') }}</mat-error>
+					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'usuarioFormLabel') }}" formControlName="usuario" required>
+					<mat-error *ngIf="form.controls['usuario'].invalid">{{ langService.getLang(eModulo.Base,'usuarioLogin') }}</mat-error>
 				</mat-form-field>
 			<br>
 				<mat-form-field color="primary" fxFlexFill>
 					<mat-icon matSuffix color="primary">vpn_key</mat-icon>
-					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" [formControl]="password" required>
-					<mat-error *ngIf="password.invalid">{{ langService.getLang(eModulo.Base,'passwordLogin') }}</mat-error>
+					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" formControlName="password" required>
+					<mat-error *ngIf="form.controls['password'].invalid">{{ langService.getLang(eModulo.Base,'passwordLogin') }}</mat-error>
 				</mat-form-field>
 			<br>
 			<div fxLayout="row" fxLayoutAlign="end end">
-				<button fxFlex mat-raised-button color="accent" (click)="login()">{{ langService.getLang(eModulo.Base,'btnLogin') }}</button>
+				<button 
+					fxFlex 
+					mat-raised-button 
+					color="accent" 
+					(click)="login()"
+					disabled = "{{ form.invalid }}">
+						{{ langService.getLang(eModulo.Base,'btnLogin') }}
+				</button>
 			</div>
 		</div>
 	</mat-card-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl,Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../../shared/services/auth.service';
@@ -13,15 +13,29 @@ import { BaseComponent } from '../../shared/base.component';
 })
 export class LoginComponent extends BaseComponent{
 
-    usuario = new FormControl('', [Validators.required, Validators.minLength(5)]);
-    password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+    form = new FormGroup(
+        {usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        password : new FormControl('', [Validators.required, Validators.minLength(6)])}
+    );
 
+    /**
+     * Creates an instance of LoginComponent.
+     * @param {LangService} langService 
+     * @param {AuthService} authService 
+     * @memberof LoginComponent
+     */
     constructor(
         public langService: LangService,
         private authService: AuthService
-    ) {super();}
+    ) {super(); }
 
+
+    /**
+     * Funcion que permite Realizar el login(autenticacion) utilizando un
+     * servicio del backend
+     * @memberof LoginComponent
+     */
     login() {
-        this.authService.loginUser(this.usuario.value, this.password.value);
+        this.authService.loginUser(this.form.controls['usuario'].value, this.form.controls['password'].value);
     }
 }

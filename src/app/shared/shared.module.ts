@@ -22,8 +22,9 @@ import {
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
-} from '@angular/material'
+    MatPaginatorModule,
+    MatProgressBarModule
+} from '@angular/material';
 
 import { ClassTipoMensajePipe } from './pipes/class-tipo-mensaje.pipe';
 import { IconTipoMensajePipe } from './pipes/icon-tipo-mensaje.pipe';
@@ -32,9 +33,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
- * 
  * @export
  * @class SharedModule
  */
@@ -48,6 +49,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         CommonModule,
         // Modulos para material design.
         MatAutocompleteModule,
+        MatProgressBarModule,
         MatCheckboxModule,
         MatDatepickerModule,
         MatFormFieldModule,
@@ -98,6 +100,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
+        MatProgressBarModule,
 
         FormsModule,
         ReactiveFormsModule,
