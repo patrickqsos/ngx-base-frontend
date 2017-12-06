@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '../../shared/base.component';
 import { LangService } from '../../shared/services/lang.service';
+import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
 
 /**
  * Componente para mostrar la pagina 404 not found.
@@ -13,6 +14,8 @@ import { LangService } from '../../shared/services/lang.service';
   selector: 'app-notfound',
   templateUrl: './notfound.component.html',
   styleUrls: ['./notfound.component.css'],
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class NotfoundComponent extends BaseComponent  {
 

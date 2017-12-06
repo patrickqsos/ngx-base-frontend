@@ -14,7 +14,7 @@
 			<br>
 				<mat-form-field color="primary" fxFlexFill>
 					<mat-icon matSuffix color="primary">vpn_key</mat-icon>
-					<input matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" formControlName="password" required>
+					<input type="password" matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" formControlName="password" required>
 					<mat-error *ngIf="form.controls['password'].invalid">{{ langService.getLang(eModulo.Base,'passwordLogin') }}</mat-error>
 				</mat-form-field>
 			<br>
