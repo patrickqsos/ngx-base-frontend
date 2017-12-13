@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../../shared/services/auth.service';
 import { LangService } from '../../shared/services/lang.service';
 import { BaseComponent } from '../../shared/base.component';
-import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
+import { fadeInAnimation } from '../../shared/animations/template.animation';
 
 @Component({
     selector: 'app-login',

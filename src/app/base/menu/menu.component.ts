@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { BaseComponent } from '../../shared/base.component';
 import { ContextoService } from '../../shared/services/contexto.service';
 import { LangService } from '../../shared/services/lang.service';
+import { btnHomeAnimation, btnMenuAnimation } from '../../shared/animations/template.animation';
+
 
 /** 
  * Componente para mostrar el menu del sistema.
@@ -16,39 +18,7 @@ import { LangService } from '../../shared/services/lang.service';
     selector: 'app-menu',
     templateUrl: 'menu.component.html',
     styleUrls:['menu.component.css'],
-    animations: [
-        trigger('divMenu', [
-            transition('void => *', [
-                style({
-                  opacity: 0,
-                  transform: 'scale(0.2)'
-                }),
-                animate(400)
-              ]),
-            // transition('* => void', 
-            //     animate(500, style({
-            //         transform: 'scale(0.5)',
-            //         opacity: 0,
-            //     }))
-            // )
-        ]),
-        trigger('divHome', [
-            transition('void => *', [
-                style({
-                  opacity: 0,
-                  transform: 'translateX(-100%)'
-                }),
-                animate(500)
-            ]),
-            // transition('* => void', 
-            //     animate(500, style({
-            //         transform: 'scale(0.5)',
-            //         opacity: 0,
-            //     }))
-            // )
-        ]),
-
-    ]
+    animations: [btnHomeAnimation, btnMenuAnimation]
 })
 export class MenuComponent extends BaseComponent implements OnInit{
 

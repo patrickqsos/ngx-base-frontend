@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '../../shared/base.component';
 import { LangService } from '../../shared/services/lang.service';
-import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
+import { fadeInAnimation } from '../../shared/animations/template.animation';
 
 /**
  * Componente para mostrar la pagina 404 not found.
