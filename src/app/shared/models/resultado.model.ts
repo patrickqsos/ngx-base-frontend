@@ -1,6 +1,8 @@
-import { eTipoMensaje } from "../enums/tipo-mensaje.enum";
+import { Error } from "./error.model";
+import { eTipoNotificacion } from "../enums/tipo-notificacion.enum";
+
 /**
- * Clase para manejar la entidad resultado.
+ * Modelo de resultado usado en el response de la API RESTful.
  * 
  * @export
  * @class Resultado
@@ -8,12 +10,12 @@ import { eTipoMensaje } from "../enums/tipo-mensaje.enum";
 export class Resultado {
     
     /**
-     * Bandera que determina si el resultado es válido o no. 
+     * Dato del resultado, puede ser de cualquier tipo.
      * 
-     * @type {boolean}
+     * @type {*}
      * @memberof Resultado
      */
-    public esValido: boolean;
+    public data: any;
     
     /**
      * Mensaje asociado al resultado.
@@ -21,21 +23,21 @@ export class Resultado {
      * @type {string}
      * @memberof Resultado
      */
-    public mensaje: string;
+    public message: string;
 
     /**
-     * Tipo de mensaje.
+     * Array de errores.
      * 
-     * @type {eTipoMensaje}
+     * @type {Error[]}
      * @memberof Resultado
      */
-    public tipoMensaje: eTipoMensaje;
+    public error: Error[];
 
     /**
-     * Dato adicional del resultado, puede ser de cualquier tipo.
+     * Tipo de notificación.
      * 
-     * @type {*}
+     * @type {eTipoNotificacion}
      * @memberof Resultado
      */
-    public datosAdicionales: any;
+    public tipoNotificacion: eTipoNotificacion
 }

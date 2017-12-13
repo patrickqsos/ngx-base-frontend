@@ -14,6 +14,8 @@ import { ContextoService } from './shared/services/contexto.service';
 import { LangService } from './shared/services/lang.service';
 import { UtilService } from './shared/services/util.service';
 import { NotificacionService } from './shared/services/notificacion.service';
+import { JwtService } from './shared/services/jwt.service';
+import { BackendInterceptor } from './shared/interceptors/backend.interceptor';
 
 
 const interceptor = new ProgressInterceptor();
@@ -46,7 +48,8 @@ const interceptor = new ProgressInterceptor();
 	},
 	{ provide: ProgressInterceptor, useValue: interceptor },
 	{ provide: HTTP_INTERCEPTORS, useValue: interceptor, multi: true },
-
+	{ provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true },
+	JwtService
   ],
   bootstrap: [AppComponent],
   exports: []

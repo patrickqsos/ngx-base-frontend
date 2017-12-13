@@ -1,6 +1,5 @@
 {
-    "debugging": true,
-    "backendUrl": "http://algo.com",
+    "backendApi": "http://localhost/restapi",
     "nombreSistema" : "Sistema base archivos",
     "versionSistema" : "1.0.0.0",
     "langs" : [

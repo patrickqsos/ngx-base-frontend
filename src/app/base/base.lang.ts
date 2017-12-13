@@ -29,7 +29,8 @@ export const BaseLang =
             'lbl-lenguaje':'Lenguaje',
             'tit-home' : 'Página de inicio',
             'tit-not-found' : 'Página no encontrada',
-            'desc-not-found' : 'Lo sentimos mucho pero la página que busca no pudo ser encontrada, puede usar el icono de abajo para volver a la página de inicio'
+            'desc-not-found' : 'Lo sentimos mucho pero la página que busca no pudo ser encontrada, puede usar el icono de abajo para volver a la página de inicio',
+            'msg-network-error' : 'No se pudo completar la operación. Por favor vuelva a intentar'
         },
         'en': {
             'lang-error':'Lang not found',
@@ -53,6 +54,7 @@ export const BaseLang =
             'lbl-lenguaje':'Language',
             'tit-home' : 'Home',
             'tit-not-found' : 'Page not found',
-            'desc-not-found' : 'We are sorry but the page you were looking for was not found. You can use the icon below to return to the home page'
+            'desc-not-found' : 'We are sorry but the page you were looking for was not found. You can use the icon below to return to the home page',
+            'msg-network-error' : 'Operation could not be completed. Please try again'
         }
     };

@@ -26,26 +26,12 @@ export class ContextoService {
     // Entorno del sistema.
     private env:Object = null;
 
-    // Contexto de usuario proveniente de la autenticación.
-    public contextoUsuario:any = null;
-
     /**
      * Creates an instance of ContextoService.
      * @param {HttpClient} http Servicio HttpClient
      * @memberof ContextoService
      */
     constructor(private http: HttpClient) {}
-
-    /**
-     * Método para obtener una variable del archivo de configuración.
-     * 
-     * @param {string} key Key de la variable en el archivo de configuración.
-     * @returns Valor de la variable en el archivo de configuración.
-     * @memberof ContextoService
-     */
-    public getConfig(key: string):any {
-        return this.config[key];
-    }
   
     /**
      * Método para cargar el archivo de configuración.
@@ -71,8 +57,25 @@ export class ContextoService {
 
                         resolve(true);
                     });
+
+            
         });
     }  
+
+     /**
+     * Método para obtener una variable del archivo de configuración.
+     * 
+     * @param {string} key Key de la variable en el archivo de configuración.
+     * @returns Valor de la variable en el archivo de configuración.
+     * @memberof ContextoService
+     */
+    public getConfig(key: string):any {
+        return this.config[key];
+    }
+
+    public getBackendAPI(): string {
+        return this.config['backendApi'];
+    }
 
     /**
      * Método para cambiar el idioma del sistema.
@@ -100,8 +103,8 @@ export class ContextoService {
      * @memberof ContextoService
      */
     getListaModulos(): any[] {
-        if(this.contextoUsuario != null && this.contextoUsuario.RecursosUsuario != null)
-            return this.contextoUsuario.RecursosUsuario;
+        if(this.getContexto() != null && this.getContexto().RecursosUsuario != null)
+            return this.getContexto().RecursosUsuario;
         else
             return [];
     }
@@ -116,9 +119,9 @@ export class ContextoService {
         // Instancia lista.
         let listaSchemas = [];
         // Valida si existe elementos en la lista.
-        if(this.contextoUsuario != null && this.contextoUsuario.RecursosUsuario != null){
+        if(this.getContexto()  != null && this.getContexto().RecursosUsuario != null){
             // Recorre lista de recursos hijos para adiconarlos a la lista a devolver.
-            for(let modulo of this.contextoUsuario.RecursosUsuario){
+            for(let modulo of this.getContexto().RecursosUsuario){
                 for(let schema of modulo.RecursosHijos) {
                     listaSchemas.push(schema);
                 }
@@ -128,7 +131,6 @@ export class ContextoService {
         return listaSchemas;
     }
 
-
     /**
      * Método para setear el contexto de usuario recibido desde la autenticación.
      * 
@@ -136,7 +138,19 @@ export class ContextoService {
      * @memberof ContextoService
      */
     setContexto(pContextoUsuario: any):void {
-        this.contextoUsuario = pContextoUsuario;
+        // Guarda en el local storage el contexto.
+        localStorage.setItem('context', JSON.stringify(pContextoUsuario));
+    }
+
+    /**
+     * Método para obtener el contexto.
+     * 
+     * @returns 
+     * @memberof ContextoService
+     */
+    getContexto() {
+        // Obtiene desde el local storage el contexto.
+        return JSON.parse(localStorage.getItem('context'));
     }
 
     /**
@@ -145,8 +159,8 @@ export class ContextoService {
      * @memberof ContextoService
      */
     finalizarContexto():void {
-        this.contextoUsuario = null;
-        // todo: finalizar contexto el servicio comun.
+        // Remueve el contexto del local storage.
+        localStorage.removeItem('context');
     }
 
     /**
@@ -157,8 +171,8 @@ export class ContextoService {
      */
     getUsuario():string {
         // Valida si el nombre del usuario esta en el contexto.
-        if(this.contextoUsuario != null && this.contextoUsuario.NombreCompletoUsuario != null)
-            return this.contextoUsuario.NombreCompletoUsuario;
+        if(this.getContexto() != null && this.getContexto().NombreCompletoUsuario != null)
+            return this.getContexto().NombreCompletoUsuario;
         else
             return null;
     }
@@ -171,8 +185,8 @@ export class ContextoService {
      */
     getInstitucion():string {
         // Valida si el nombre de la institución esta en el contexto.
-        if(this.contextoUsuario != null && this.contextoUsuario.NombreInstitucion != null)
-            return this.contextoUsuario.NombreInstitucion;
+        if(this.getContexto() != null && this.getContexto().NombreInstitucion != null)
+            return this.getContexto().NombreInstitucion;
         else
             return null;
     }

@@ -4,7 +4,7 @@
  * @export
  * @enum {number}
  */
-export enum eTipoMensaje{
+export enum eTipoNotificacion{
     Correcto,
     Incorrecto,
     Advertencia,

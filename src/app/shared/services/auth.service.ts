@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
+import { JwtService } from './jwt.service';
 import { ContextoService } from './contexto.service';
 import { LangService } from './lang.service';
 import { Resultado } from '../../shared/models/resultado.model';
@@ -15,11 +16,8 @@ import 'rxjs/add/operator/first';
  * Class AuthService
  * Clase que permite Realizar la autenticacion de usuarios.
  */
-export class AuthService {
-  token: string;
-  // todo: sacar esto a config.json
-  urlBase= 'http://localhost/pruebasRestful';
-
+export class AuthService{
+ 
   /**
    * Constructor de la clase
    * @param router ;
@@ -33,34 +31,27 @@ export class AuthService {
     private http: HttpClient,
     private langService: LangService,
     private contextoService: ContextoService,
-    private notificacionService: NotificacionService ) {}
+    private jwtService: JwtService) {}
 
-
-    /**
-     * loginUser Permite realizar la autenticacion del usuario.
-     * @param username nombre de usuario del sistema
-     * @param password password del usuario para acceder al sistema
-     */
+  /**
+   * loginUser Permite realizar la autenticacion del usuario.
+   * @param username nombre de usuario del sistema
+   * @param password password del usuario para acceder al sistema
+   */
   loginUser(pUsername: string, pPassword: string) {
-
-  //   this.http.post(this.urlBase + '/login.php', null).subscribe((response) => {
-  //     return response;
-  // });
-
-    this.http.post<Resultado>(this.urlBase + '/login.php', {user: pUsername, pass: pPassword}, {
-      headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*'),
-    }).first().subscribe(
-      (response) => {
-        // Llama al servicio de notificacion.
-        this.notificacionService.showSnackbarResultado(response);
-        if (response.esValido) {
-          this.token = 'token';
-          this.contextoService.setContexto(response.datosAdicionales);
-          this.router.navigate(['menu']);
-          console.log('Progress Interceptor Intercept');
+    this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/login.php', {user: pUsername, pass: pPassword})
+      .subscribe(
+        response => {
+          if (response.data) {
+            // Setea el token.
+            localStorage.setItem('user_token', response.data.token);
+            // Setea el contexto.
+            this.contextoService.setContexto(response.data);
+            // Redirecciona al menu.
+            this.router.navigate(['menu']);
+          }
         }
-    }
-  );
+      );
   }
 
   /**
@@ -68,34 +59,22 @@ export class AuthService {
    * Permite realizar el cierre de sesion del usuario
    */
   logoutUser() {
-    this.token = null;
-    this.http.post(this.urlBase + '/logout.php', null).subscribe((response) => {
-      // Llama al servicio de notificacion.
-      this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'loginCerrado'));
-      this.contextoService.finalizarContexto();
-      this.router.navigate(['/login']);
-        return response;
-    });
-
+    this.http.post(this.contextoService.getBackendAPI() + '/logout.php', null).subscribe(
+      response => {
+        // Remueve el token del local storage.  
+        localStorage.removeItem("user_token");
+        // Finaliza el contexto.        
+        this.contextoService.finalizarContexto();
+        // Redirecciona al login.
+        this.router.navigate(['/login']);
+      });
   }
-
-  /**
-   * Funcion getUserToken
-   * Permite recuperar un token para accedr al sistema
-   */
-  getUserToken() {
-    this.http.post(this.urlBase + '/token', null).subscribe((response: string) => {
-        console.log('response');
-        this.token = response;
-    });
-    return this.token;
-  }
-
+  
   /**
    * Funcion isUserAuthenticated
    * Devuelve el token para saber si el usuario esta autentificado o no.
    */
   isUserAuthenticated() {
-    return this.token != null;
+      return !this.jwtService.isTokenExpired();
   }
 }

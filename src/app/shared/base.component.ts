@@ -4,7 +4,7 @@ import { LangService } from '../shared/services/lang.service';
 import { UtilService } from '../shared/services/util.service';
 import { NotificacionService } from '../shared/services/notificacion.service';
 import { Component } from '@angular/core';
-import { eTipoMensaje } from '../shared/enums/tipo-mensaje.enum';
+import { eTipoNotificacion } from '../shared/enums/tipo-notificacion.enum';
 
 /**
  * Clase que sirve de base para los componentes creados.
@@ -28,5 +28,5 @@ export class BaseComponent {
      * @public
      * @memberof BaseComponent
      */
-    public eTipoMensaje = eTipoMensaje;
+    public eTipoNotificacion = eTipoNotificacion;
 }

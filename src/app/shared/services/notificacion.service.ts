@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Resultado } from '../../shared/models/resultado.model';
 import { NotificacionComponent } from '../../base/notificacion/notificacion.component';
-import { eTipoMensaje } from '../../shared/enums/tipo-mensaje.enum';
+import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
 
 /**
  * Servicio para notificar mensajes.
@@ -40,15 +40,15 @@ export class NotificacionService {
    *
    * @param {string} pMensaje Mensaje a notificar.
    * @param {number} [pTiempo=2000] Tiempo de duración de la notificación.
-   * @param {eTipoMensaje} [pTipoMensaje=eTipoMensaje.Correcto] Tipo de mensaje a notificar (segun el tipo, el color e icono cambia)
+   * @param {eTipoNotificacion} [pTipoNotificacion=eTipoMensaje.Correcto] Tipo de mensaje a notificar (segun el tipo, el color e icono cambia)
    * @memberof NotificacionService
    */
-  showSnackbarMensaje(pMensaje: string, pTiempo: number = 2000, pTipoMensaje: eTipoMensaje = eTipoMensaje.Correcto): void {
+  showSnackbarMensaje(pMensaje: string, pTiempo: number = 2000, pTipoNotificacion: eTipoNotificacion = eTipoNotificacion.Correcto): void {
 
     // Arma objeto resultado.
     const resultado = new Resultado();
-    resultado.mensaje = pMensaje;
-    resultado.tipoMensaje = pTipoMensaje;
+    resultado.message = pMensaje;
+    resultado.tipoNotificacion = pTipoNotificacion;
 
     // Abre el snackbar.
     this.snackBar.openFromComponent(NotificacionComponent, {

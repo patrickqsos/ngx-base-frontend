@@ -26,8 +26,8 @@ import {
     MatProgressBarModule
 } from '@angular/material';
 
-import { ClassTipoMensajePipe } from './pipes/class-tipo-mensaje.pipe';
-import { IconTipoMensajePipe } from './pipes/icon-tipo-mensaje.pipe';
+import { ClassTipoNotificacionPipe } from './pipes/class-tipo-notificacion.pipe';
+import { IconTipoNotificacionPipe } from './pipes/icon-tipo-notificacion.pipe';
 import { HoverCardDirective } from './directives/hover-card.directive';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,8 +41,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
  */
 @NgModule({
     declarations: [
-        ClassTipoMensajePipe,
-        IconTipoMensajePipe,
+        ClassTipoNotificacionPipe,
+        IconTipoNotificacionPipe,
         HoverCardDirective,
     ],
     imports: [
@@ -106,8 +106,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ReactiveFormsModule,
         FlexLayoutModule,
 
-        ClassTipoMensajePipe,
-        IconTipoMensajePipe,
+        ClassTipoNotificacionPipe,
+        IconTipoNotificacionPipe,
         HoverCardDirective,
     ],
 })

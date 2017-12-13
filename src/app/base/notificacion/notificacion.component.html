@@ -1,6 +1,6 @@
-<div class="mat-simple-snackbar">
-    <mat-icon [ngClass]="contenido.tipoMensaje | getClassTipoMensaje">
-        {{ contenido.tipoMensaje | getIconTipoMensaje }}
+<div class="mat-simple-snackbar" fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon [ngClass]="contenido.tipoNotificacion | classTipoNotificacion" style="margin-right: 20px">
+        {{ contenido.tipoNotificacion | iconTipoNotificacion }}
     </mat-icon>
-    <span [ngClass]="contenido.tipoMensaje | getClassTipoMensaje">{{ contenido.mensaje }}</span>
+    <span [ngClass]="contenido.tipoNotificacion | classTipoNotificacion">{{ contenido.message }}</span>
 </div>
