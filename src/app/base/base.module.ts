@@ -1,4 +1,4 @@
-import { ProgressComponent } from './progressBar/progressBar.component';
+import { ProgressBarComponent } from './progressbar/progressbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -30,12 +30,12 @@ export const baseRoutes: Routes = [
     SharedModule,
   ],
   declarations: [
-    ProgressComponent,
     LayoutComponent,
     LoginComponent,
     MenuComponent,
     NotificacionComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ProgressBarComponent
   ],
   exports: [
     LayoutComponent,

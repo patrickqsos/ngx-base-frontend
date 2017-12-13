@@ -3,6 +3,10 @@ import { MatSnackBar } from '@angular/material';
 import { Resultado } from '../../shared/models/resultado.model';
 import { NotificacionComponent } from '../../base/notificacion/notificacion.component';
 import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from "rxjs/Observable";
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+
 
 /**
  * Servicio para notificar mensajes.
@@ -12,12 +16,32 @@ import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
  */
 @Injectable()
 export class NotificacionService {
+
+  /**
+   * Observable para notificar el avance del progressbar.
+   * 
+   * @type {(Observable<number | null>)}
+   * @memberof NotificacionService
+   */
+  public progress$: Observable<number | null>;
+
+  /**
+   * Observable para recibir el avance del progressbar desde el backend interceptor.
+   * 
+   * @type {(Subject<number | null>)}
+   * @memberof NotificacionService
+   */
+  public progressSubject: Subject<number | null>;
+  
   /**
    * Creates an instance of NotificacionService.
    * @param {MatSnackBar} snackBar
    * @memberof NotificacionService
    */
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) {
+      this.progressSubject = new ReplaySubject<number | null>(1);
+	  	this.progress$ = this.progressSubject.asObservable();
+  }
 
   /**
    * Notifica una entidad resultado en un snackbar.

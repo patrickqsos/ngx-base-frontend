@@ -5,6 +5,8 @@ import { JwtService } from "../services/jwt.service";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
 import { NotificacionService } from "../services/notificacion.service";
 import { eTipoNotificacion } from "../enums/tipo-notificacion.enum";
 import { Injector } from "@angular/core";
@@ -51,22 +53,43 @@ export class BackendInterceptor implements HttpInterceptor {
         
         // clona el request y adiciona headers.
         let reqClone = req.clone({
-            headers : this.getHeaders()
+            headers : this.getHeaders(),
+            reportProgress: true
         })
 
         // Continua con el request clonado.
         return next
             .handle(reqClone)
-            .do(event => {
-                if (event instanceof HttpResponse) {
-                    // Valida si el body tiene un mensaje para notificarlo.
-                    if(event.body.message)
-                    {
-                        this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
-                    }
-                }
-            })
+            .do((event: HttpEvent<any>) => {
+				switch (event.type) {
+                    case HttpEventType.Sent:
+                        // Hace aparecer un progressbar indeterminado.
+						this.notificacionService.progressSubject.next(null);
+						break;
+                    case HttpEventType.DownloadProgress:
+                        // Si el response especifica su tamaño, se calculo el valor del progressbar. 
+                        if (event.total) {
+                            this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
+                        }
+                        break;
+                    case HttpEventType.UploadProgress:
+                        // No se notifica el upload.
+                        // if (event.total) {
+						// 	this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
+						// }
+						break;
+                    case HttpEventType.Response:
+                        // Hace que el progressbar desaparezca.
+                        this.notificacionService.progressSubject.next(0);
+                        if(event.body.message) {
+                            this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
+                        }
+						break;
+				}
+			})
             .catch(event => {
+                // Hace que el progressbar desaparezca.
+                this.notificacionService.progressSubject.next(0);
                 if (event instanceof HttpErrorResponse) {
                     // Notifica el mensaje del response.
                     if(event.error.message) {

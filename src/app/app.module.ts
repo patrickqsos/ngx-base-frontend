@@ -1,4 +1,3 @@
-import { ProgressInterceptor } from './shared/interceptors/progressbar.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
@@ -16,10 +15,6 @@ import { UtilService } from './shared/services/util.service';
 import { NotificacionService } from './shared/services/notificacion.service';
 import { JwtService } from './shared/services/jwt.service';
 import { BackendInterceptor } from './shared/interceptors/backend.interceptor';
-
-
-const interceptor = new ProgressInterceptor();
-
 
 @NgModule({
   declarations: [
@@ -46,8 +41,6 @@ const interceptor = new ProgressInterceptor();
 		deps: [ContextoService],
 		multi: true
 	},
-	{ provide: ProgressInterceptor, useValue: interceptor },
-	{ provide: HTTP_INTERCEPTORS, useValue: interceptor, multi: true },
 	{ provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true },
 	JwtService
   ],
