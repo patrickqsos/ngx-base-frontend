@@ -67,7 +67,7 @@ export class BackendInterceptor implements HttpInterceptor {
 						this.notificacionService.progressSubject.next(null);
 						break;
                     case HttpEventType.DownloadProgress:
-                        // Si el response especifica su tamaño, se calculo el valor del progressbar. 
+                        // Si el response especifica su tamaño, se calcula el valor del progressbar. 
                         if (event.total) {
                             this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
                         }

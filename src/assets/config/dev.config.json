@@ -1,5 +1,5 @@
 {
-    "backendApi": "http://localhost/restapi",
+    "backendApi": "http://localhost:8000",
     "nombreSistema" : "Sistema base segip",
     "versionSistema" : "1.0.0.0",
     "langs" : [

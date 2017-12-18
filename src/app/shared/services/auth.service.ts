@@ -39,7 +39,7 @@ export class AuthService{
    * @param password password del usuario para acceder al sistema
    */
   loginUser(pUsername: string, pPassword: string) {
-    this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/login.php', {user: pUsername, pass: pPassword})
+    this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/api/v1/login', {user: pUsername, pass: pPassword})
       .subscribe(
         response => {
           if (response.data) {
@@ -59,7 +59,8 @@ export class AuthService{
    * Permite realizar el cierre de sesion del usuario
    */
   logoutUser() {
-    this.http.post(this.contextoService.getBackendAPI() + '/logout.php', null).subscribe(
+    this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/api/v1/logout', { idHistoricoUsuarioSesion: this.contextoService.getIdSesion() } )
+    .subscribe(
       response => {
         // Remueve el token del local storage.  
         localStorage.removeItem("user_token");

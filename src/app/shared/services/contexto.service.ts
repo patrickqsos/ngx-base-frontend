@@ -57,8 +57,6 @@ export class ContextoService {
 
                         resolve(true);
                     });
-
-            
         });
     }  
 
@@ -209,6 +207,20 @@ export class ContextoService {
      */
     getIdiomas():any[] {
         return this.idiomas;
+    }
+
+    /**
+     * Método para obtener el IdHistoricoUsuarioSesion desde el contexto.
+     * 
+     * @returns {number} IdHistoricoUsuarioSesion.
+     * @memberof ContextoService
+     */
+    getIdSesion(): number {
+        // Valida si el nombre del usuario esta en el contexto.
+        if(this.getContexto() != null && this.getContexto().IdHistoricoUsuarioSesion != null)
+            return this.getContexto().IdHistoricoUsuarioSesion;
+        else
+            return null;
     }
     
 }
