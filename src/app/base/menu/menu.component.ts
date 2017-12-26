@@ -39,7 +39,7 @@ export class MenuComponent extends BaseComponent implements OnInit{
     ) { super() }
 
     /**
-     * Evento que sucede cuando se seleccina un item del menu.
+     * Evento que sucede cuando se selecciona un item del menu.
      * 
      * @param {*} pMenu Item seleccionado.
      * @memberof MenuComponent

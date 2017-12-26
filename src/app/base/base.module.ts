@@ -9,12 +9,14 @@ import { NotificacionComponent } from './notificacion/notificacion.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from '../shared/services/auth-guard.service';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 // Configuración de las rutas
 export const baseRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent, canActivate: [AuthGuardService] },
-  { path: 'menu', component: MenuComponent, canActivate: [AuthGuardService]},
+  { path: 'logout', component: LoginComponent, canActivate: [AuthGuardService], data: {checkRecurso: false} },
+  { path: 'menu', component: MenuComponent, canActivate: [AuthGuardService], data: {checkRecurso: false} },
+  { path: 'unauthorized', component: UnauthorizedComponent },
 ];
 
 /**
@@ -35,7 +37,8 @@ export const baseRoutes: Routes = [
     MenuComponent,
     NotificacionComponent,
     NotfoundComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    UnauthorizedComponent
   ],
   exports: [
     LayoutComponent,

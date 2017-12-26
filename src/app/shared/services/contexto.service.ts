@@ -130,6 +130,28 @@ export class ContextoService {
     }
 
     /**
+     * Función que valida si la url esta dentro de los recursos del contexto comun.
+     * 
+     * @param {string} pUrl Url a validar.
+     * @returns {boolean} Bandera que indica si la validación pasó o no.
+     * @memberof ContextoService
+     */
+    checkRecurso(pUrl: string) : boolean {
+        // Valida si el contexto tiene la propiedad de recursos.
+        if(this.getContexto() && this.getContexto().Recursos) {
+            let recursos = this.getContexto().Recursos;
+            // Busca el recurso en el contexto.
+            let result = recursos.filter(obj => {
+                return obj.Uri === pUrl.substring(1);
+            })
+            // Retorna bandera.
+            return result.length > 0;
+        }
+        else
+            return false;
+    }
+
+    /**
      * Método para setear el contexto de usuario recibido desde la autenticación.
      * 
      * @param {*} pContextoUsuario Contexto de usuario.

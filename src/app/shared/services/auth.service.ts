@@ -17,6 +17,14 @@ import 'rxjs/add/operator/first';
  * Clase que permite Realizar la autenticacion de usuarios.
  */
 export class AuthService{
+
+  /**
+   * Url de retorno para cuando se redirecciona al login.
+   * 
+   * @type {string}
+   * @memberof AuthService
+   */
+  public returnUrl : string;
  
   /**
    * Constructor de la clase
@@ -47,8 +55,13 @@ export class AuthService{
             localStorage.setItem('user_token', response.data.token);
             // Setea el contexto.
             this.contextoService.setContexto(response.data);
-            // Redirecciona al menu.
-            this.router.navigate(['menu']);
+
+            // Si existe una url de retorno, se redirecciona ahi.
+            if(this.returnUrl) 
+              this.router.navigate([this.returnUrl]);
+            // Si no se redirecciona al menu.
+            else
+              this.router.navigate(['menu']);
           }
         }
       );
