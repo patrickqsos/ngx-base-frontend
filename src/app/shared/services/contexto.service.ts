@@ -142,7 +142,8 @@ export class ContextoService {
             let recursos = this.getContexto().Recursos;
             // Busca el recurso en el contexto.
             let result = recursos.filter(obj => {
-                return obj.Uri === pUrl.substring(1);
+                return pUrl.includes(obj.Uri);
+                //return obj.Uri === pUrl.substring(1);
             })
             // Retorna bandera.
             return result.length > 0;
