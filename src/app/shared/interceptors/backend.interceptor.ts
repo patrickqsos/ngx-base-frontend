@@ -60,6 +60,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
         // clona el request y adiciona headers.
         let reqClone = req.clone({
+            params: params,
             headers : this.getHeaders(),
             reportProgress: showProgressBar
         })
