@@ -2,15 +2,15 @@
     <header fxFlexFill>
         <mat-toolbar color="primary" fxLayout="row" class="main-toolbar">
             <img class="main-logo" src="../../assets/logo.png" alt="logo">
-            <button mat-icon-button (click)="sidenav.toggle()">
+            <button mat-icon-button (click)="sidenav.toggle()" matTooltip="{{langService.getLang(eModulo.Base,'tit-menu')}}">
                 <mat-icon>menu</mat-icon>
             </button>￼
 
             <div><h1>{{ contextoService.getConfig('nombreSistema') }}</h1></div>
             <span class="flex-spacer"></span>
-            <a mat-button routerLink="/login"  *ngIf="!authService.isUserAuthenticated()"><mat-icon>input</mat-icon> {{langService.getLang(eModulo.Base,'loginMensaje')}}</a>
-            <a mat-button (click)="authService.logoutUser()"  *ngIf="authService.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon> {{langService.getLang(eModulo.Base,'logoutMensaje')}}</a>
-            <a mat-button routerLink="/menu" *ngIf="authService.isUserAuthenticated()"><mat-icon>home</mat-icon></a>
+            <a mat-button routerLink="/login" matTooltip="{{langService.getLang(eModulo.Base,'loginMensaje')}}" *ngIf="!authService.isUserAuthenticated()"><mat-icon>input</mat-icon></a>
+            <a mat-button (click)="authService.logoutUser()" matTooltip="{{langService.getLang(eModulo.Base,'logoutMensaje')}}" *ngIf="authService.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon></a>
+            <a mat-button routerLink="/menu" matTooltip="{{langService.getLang(eModulo.Base,'tit-home')}}" *ngIf="authService.isUserAuthenticated()"><mat-icon>home</mat-icon></a>
         </mat-toolbar>
     </header>
     <app-progress-bar fxFlexFill></app-progress-bar>
