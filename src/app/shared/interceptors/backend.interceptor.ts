@@ -51,10 +51,17 @@ export class BackendInterceptor implements HttpInterceptor {
         this.contextoService = this.inj.get(ContextoService);
         this.langService = this.inj.get(LangService);
         
+        // Verifica si existen los parametros para ocultar el progressbar/notificador.
+        let showProgressBar = (req.params.get('hideProgressBar') == null);
+        let showNotificador = (req.params.get('hideNotificador') == null);
+
+        // Remueve parametros edicionales.
+        let params = req.params.delete('hideProgressBar').delete('hideNotificador');
+
         // clona el request y adiciona headers.
         let reqClone = req.clone({
             headers : this.getHeaders(),
-            reportProgress: true
+            reportProgress: showProgressBar
         })
 
         // Continua con el request clonado.
@@ -63,12 +70,13 @@ export class BackendInterceptor implements HttpInterceptor {
             .do((event: HttpEvent<any>) => {
 				switch (event.type) {
                     case HttpEventType.Sent:
-                        // Hace aparecer un progressbar indeterminado.
-						this.notificacionService.progressSubject.next(null);
+                        if(showProgressBar)
+                            // Hace aparecer un progressbar indeterminado.
+						    this.notificacionService.progressSubject.next(null);
 						break;
                     case HttpEventType.DownloadProgress:
                         // Si el response especifica su tamaño, se calcula el valor del progressbar. 
-                        if (event.total) {
+                        if (event.total && showProgressBar) {
                             this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
                         }
                         break;
@@ -80,10 +88,11 @@ export class BackendInterceptor implements HttpInterceptor {
 						break;
                     case HttpEventType.Response:
                         // Hace que el progressbar desaparezca.
-                        this.notificacionService.progressSubject.next(0);
-                        if(event.body.message) {
+                        if(showProgressBar)
+                            this.notificacionService.progressSubject.next(0);
+                        // Notifica mensaje.
+                        if(event.body.message && showNotificador) 
                             this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
-                        }
 						break;
 				}
 			})
