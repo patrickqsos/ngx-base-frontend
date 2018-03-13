@@ -110,3 +110,7 @@ mat-sidenav-content{
 {
   margin-bottom: 10px;
 }
+
+.mat-drawer-container{
+  background-image: url(/assets/pattern.jpg);
+}
