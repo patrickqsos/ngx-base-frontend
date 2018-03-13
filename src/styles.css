@@ -5,7 +5,6 @@ html, body {
   margin: 0;
 }
 
-/* fallback */
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
@@ -38,9 +37,6 @@ html, body {
   color: white !important;
 }
 
-/* router-outlet + .divInnerRouterOutlet { flex: 1 1 auto ; display: flex ; flex-direction: column ; min-height: 100%; 
-  align-content: center; justify-content: center } */
-
 router-outlet{
   display: none;
 }
@@ -50,8 +46,8 @@ router-outlet{
   height: 100%;
   margin: 0px;
   min-height: 100%;
-  min-width: 100%;
-  width: 100%;
+  min-width: 98%;
+  width: 98%;
 }
 
 .mat-card-header-text {
@@ -70,22 +66,21 @@ mat-sidenav-content{
   align-content: center; 
   justify-content: center;
   align-items: center;
-  /* padding: 10px; */
 }
 
 .correcto{
-  color: greenyellow;
+  color: greenyellow !important;
 }
 
 .incorrecto{
-  color: red;
+  color: #ff6a6a !important;
 }
 
 .advertencia{
-  color: rgb(219, 219, 9);
+  color: rgb(219, 219, 9) !important;
 }
 .informativo{
-  color: rgb(126, 207, 255);
+  color: rgb(126, 207, 255) !important;
 }
 
 .menu-card{
@@ -94,8 +89,8 @@ mat-sidenav-content{
 }
 
 .animate-icon-menu {
-  -ms-transform: scale(1.2); /* IE 9 */
-  -webkit-transform: scale(1.2); /* Chrome, Safari, Opera */
+  -ms-transform: scale(1.2); 
+  -webkit-transform: scale(1.2);
   transform: scale(1.2);
   transition: all 0.5s ease-out;
 }
@@ -113,4 +108,36 @@ mat-sidenav-content{
 
 .mat-drawer-container{
   background-image: url(/assets/pattern.jpg);
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+.table-segip{
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+.table-segip-empty{
+  padding: 25px;
+  font-size: 18px;
+}
+
+.botonera-bottom-segip{
+  padding: 25px;
+}
+
+mat-dialog-content{
+  padding: 25px !important;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}
+
+mat-spinner{
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
 }
