@@ -82,4 +82,25 @@ export class NotificacionService {
       verticalPosition: 'bottom'
     });
   }
+
+  /**
+   * Notifica entidad resultado en un toast con boton para
+   * 
+   * @param {Resultado} pResult 
+   * @param {eTipoNotificacion} [pTipoNotificacion=eTipoNotificacion.Correcto] 
+   * @memberof NotificacionService
+   */
+  showSnackbarConBoton(pResult: Resultado, pTipoNotificacion: eTipoNotificacion = eTipoNotificacion.Correcto): void {
+
+    // Arma objeto resultado.
+    pResult.tipoNotificacion = pTipoNotificacion;
+
+    // Abre el snackbar.
+    this.snackBar.openFromComponent(NotificacionComponent, {
+      data: pResult,
+      //duration: pTiempo,
+      horizontalPosition: 'left',
+      verticalPosition: 'bottom',
+    });
+  }
 }

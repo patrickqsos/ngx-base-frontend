@@ -101,15 +101,20 @@ export class BackendInterceptor implements HttpInterceptor {
                 // Hace que el progressbar desaparezca.
                 this.notificacionService.progressSubject.next(0);
                 if (event instanceof HttpErrorResponse) {
-                    // Notifica el mensaje del response.
-                    if(event.error.message) {
+                    // En event.error deberia esta la entidad result del backend.
+
+                    // Si el result tiene la propiedad error.
+                    if(event.error.error) {
+                        this.notificacionService.showSnackbarConBoton(event.error, eTipoNotificacion.Incorrecto);
+                    }
+                    // Si el result no tiene la propiedad error pero si tiene un mensaje.
+                    else if(event.error.message) {
                         this.notificacionService.showSnackbarMensaje(event.error.message, 3000, this.getTipoNotificacion(event.status));
                     }
-                    else if(event.error && event.error.error && event.error.error.message){
-                        this.notificacionService.showSnackbarMensaje(event.error.error.message, 3000, eTipoNotificacion.Incorrecto);
-                    }
+                    // Si el result no tiene error ni mensaje entonces muestra mensaje genérico.
                     else {
-                        this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'msg-network-error'), 3000, eTipoNotificacion.Incorrecto);
+                        let url = reqClone.url.split('?');
+                        this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'msg-network-error') + url[0], 5000, eTipoNotificacion.Incorrecto);
                     }
                 }
                 // Dispara el error en el observable.

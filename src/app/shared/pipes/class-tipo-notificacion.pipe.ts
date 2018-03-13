@@ -4,18 +4,23 @@ import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
 
 @Pipe({name: 'classTipoNotificacion'})
 export class ClassTipoNotificacionPipe implements PipeTransform {
-  transform(value: eTipoNotificacion): string {
+  transform(value: eTipoNotificacion, initialClass: string): string {
+    let cls = '';
+
+    if(initialClass)
+        cls = initialClass + ' '; 
+
     switch(value){
         case eTipoNotificacion.Correcto:
-            return "correcto";
+            return cls + "correcto";
         case eTipoNotificacion.Incorrecto:
-            return "incorrecto";
+            return cls + "incorrecto";
         case eTipoNotificacion.Advertencia:
-            return "advertencia";
+            return cls + "advertencia";
         case eTipoNotificacion.Informativo:
-            return "informativo";
+            return cls + "informativo";
         default:
-            return "correcto";
+            return cls + "correcto";
     }
   }
 }
