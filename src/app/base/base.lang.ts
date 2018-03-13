@@ -33,7 +33,16 @@ export const BaseLang =
             'desc-not-found' : 'Lo sentimos mucho pero la página que busca no pudo ser encontrada, puede usar el icono de abajo para volver a la página de inicio',
             'msg-network-error' : 'No se pudo completar la operación. Por favor vuelva a intentar',
             'tit-unauthorized' : 'Pagina no autorizada',
-            'desc-unauthorized' : 'Lo sentimos mucho pero no tiene los privilegios suficientes para acceder a la página. Contactese con el administrador para solicitar el acceso'
+            'desc-unauthorized' : 'Lo sentimos mucho pero no tiene los privilegios suficientes para acceder a la página. Contactese con el administrador para solicitar el acceso',
+            'btn-cerrar':'Cerrar',
+            'btn-abrir':'Abrir',
+            'lbl-sinResultados':'No se encontraron resultados',
+            'mat-ITEMS_PER_PAGE':'Items por página',
+            'mat-NEXT_PAGE':'Siguiente página',
+            'mat-PREVIOUS_PAGE':'Página anterior',
+            'mat-FROM':'de',
+            'btn-si':'Si',
+            'btn-no':'No'
         },
         'en': {
             'lang-error':'Lang not found',
@@ -61,15 +70,6 @@ export const BaseLang =
             'desc-not-found' : 'We are sorry but the page you were looking for was not found. You can use the icon below to return to the home page',
             'msg-network-error' : 'Operation could not be completed. Please try again',
             'tit-unauthorized' : 'Page not authorized',
-            'desc-unauthorized' : 'We are sorry but you do not have enough privileges to access the page. Please contact the admin to request access',
-            'btn-cerrar':'Cerrar',
-            'btnAbrir':'Abrir',
-            'lbl-sinResultados':'No se encontraron resultados',
-            'mat-ITEMS_PER_PAGE':'Items por página',
-            'mat-NEXT_PAGE':'Siguiente página',
-            'mat-PREVIOUS_PAGE':'Página anterior',
-            'mat-FROM':'de',
-            'btn-si':'Si',
-            'btn-no':'No',
+            'desc-unauthorized' : 'We are sorry but you do not have enough privileges to access the page. Please contact the admin to request access'
         }
     };

@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from '../shared/services/auth-guard.service';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ErrorViewerComponent } from '../shared/error-viewer/error-viewer.component';
 
 // Configuración de las rutas
 export const baseRoutes: Routes = [
@@ -45,7 +46,8 @@ export const baseRoutes: Routes = [
     RouterModule,
   ],
   entryComponents: [
-    NotificacionComponent
+    NotificacionComponent,
+    ErrorViewerComponent
   ],
 })
 export class BaseModule {}
