@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -14,7 +14,7 @@ import { fadeInAnimation } from '../../shared/animations/template.animation';
     animations: [fadeInAnimation],
     host: { '[@fadeInAnimation]': '' }
 })
-export class LoginComponent extends BaseComponent{
+export class LoginComponent extends BaseComponent implements AfterViewInit{
 
     form = new FormGroup(
         {usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -29,7 +29,9 @@ export class LoginComponent extends BaseComponent{
      */
     constructor(
         public langService: LangService,
-        private authService: AuthService
+        private authService: AuthService,
+        private changeDetector : ChangeDetectorRef,
+
     ) {super(); }
 
 
@@ -40,5 +42,9 @@ export class LoginComponent extends BaseComponent{
      */
     login() {
         this.authService.loginUser(this.form.controls['usuario'].value, this.form.controls['password'].value);
+    }
+
+    ngAfterViewInit() {
+        this.changeDetector.detectChanges();
     }
 }

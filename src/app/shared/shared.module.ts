@@ -35,6 +35,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { JsonViewerComponent } from './json-viewer/json-viewer.component';
 import { ErrorViewerComponent } from './error-viewer/error-viewer.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 
 /**
@@ -46,7 +47,9 @@ import { ErrorViewerComponent } from './error-viewer/error-viewer.component';
     declarations: [
         ClassTipoNotificacionPipe,
         IconTipoNotificacionPipe,
+        
         HoverCardDirective,
+        AutofocusDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
@@ -115,7 +118,9 @@ import { ErrorViewerComponent } from './error-viewer/error-viewer.component';
 
         ClassTipoNotificacionPipe,
         IconTipoNotificacionPipe,
+        
         HoverCardDirective,
+        AutofocusDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
