@@ -1,4 +1,4 @@
-import { trigger, state, animate, transition, style } from '@angular/animations';
+import { trigger, sequence, state, animate, transition, style } from '@angular/animations';
 
 export const fadeInAnimation =
    trigger('fadeInAnimation', [
@@ -30,5 +30,16 @@ export const btnHomeAnimation =
             transform: 'translateX(-100%)'
           }),
           animate(400)
+      ])
+    ]);
+  
+    export const MatTableRowsAnimation = 
+    trigger('animMatTable', [
+      transition('void => *', [
+        style({ height: '*', opacity: '0', transform: 'translateX(-550px)', 'box-shadow': 'none' }),
+        sequence([
+          animate(".35s ease", style({ height: '*', opacity: '.2', transform: 'translateX(0)', 'box-shadow': 'none'  })),
+          animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)' }))
+        ])
       ])
     ]);
