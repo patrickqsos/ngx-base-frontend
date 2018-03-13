@@ -31,7 +31,7 @@ export class Resultado {
      * @type {Error[]}
      * @memberof Resultado
      */
-    public error: Error[];
+    public error: any;
 
     /**
      * Tipo de notificación.
