@@ -1,0 +1,18 @@
+<mat-toolbar color="{{data.color}}">
+    {{ data.title }}
+</mat-toolbar>
+
+<mat-dialog-actions>
+    <button 
+        fxFlex 
+        mat-button 
+        [mat-dialog-close]="true">
+        <span>{{ langService.getLang(eModulo.Base,'btn-si') }}</span>
+    </button>
+    <button 
+        fxFlex 
+        mat-button 
+        [mat-dialog-close] ="false">
+        <span>{{ langService.getLang(eModulo.Base,'btn-no') }}</span>
+    </button>
+</mat-dialog-actions>
