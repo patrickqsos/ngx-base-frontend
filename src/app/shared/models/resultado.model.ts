@@ -10,7 +10,7 @@ import { eTipoNotificacion } from "../enums/tipo-notificacion.enum";
 export class Resultado {
     
     /**
-     * Dato del resultado, puede ser de cualquier tipo.
+     * Datos de la operación, puede ser de cualquier tipo.
      * 
      * @type {*}
      * @memberof Resultado
@@ -26,9 +26,9 @@ export class Resultado {
     public message: string;
 
     /**
-     * Array de errores.
+     * Error de la operación.
      * 
-     * @type {Error[]}
+     * @type {any}
      * @memberof Resultado
      */
     public error: any;

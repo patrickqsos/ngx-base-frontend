@@ -61,6 +61,15 @@ export const BaseLang =
             'desc-not-found' : 'We are sorry but the page you were looking for was not found. You can use the icon below to return to the home page',
             'msg-network-error' : 'Operation could not be completed. Please try again',
             'tit-unauthorized' : 'Page not authorized',
-            'desc-unauthorized' : 'We are sorry but you do not have enough privileges to access the page. Please contact the admin to request access'
+            'desc-unauthorized' : 'We are sorry but you do not have enough privileges to access the page. Please contact the admin to request access',
+            'btn-cerrar':'Cerrar',
+            'btnAbrir':'Abrir',
+            'lbl-sinResultados':'No se encontraron resultados',
+            'mat-ITEMS_PER_PAGE':'Items por página',
+            'mat-NEXT_PAGE':'Siguiente página',
+            'mat-PREVIOUS_PAGE':'Página anterior',
+            'mat-FROM':'de',
+            'btn-si':'Si',
+            'btn-no':'No',
         }
     };
