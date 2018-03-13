@@ -1,15 +1,11 @@
 {
-    "backendApi": "http://localhost:8000",
+    "backendApi": "http://localhost:8000/api/v1",
     "nombreSistema" : "Sistema base segip",
     "versionSistema" : "1.0.0",
     "langs" : [
         {
             "id":"es",
             "etiqueta":"Español"
-        },
-        {
-            "id":"en",
-            "etiqueta":"English"
         }
     ]
 }
