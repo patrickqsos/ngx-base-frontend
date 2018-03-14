@@ -1,5 +1,5 @@
 <div  fxFlex fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center center">
-    <mat-card [@divHome]
+    <mat-card [@divHome] *ngIf="!isHome"
         class="menu-card fixFxLayoutGapBottom" 
         (click)="onHomeSelected()" 
         hoverCard 

@@ -25,6 +25,9 @@ export class MenuComponent extends BaseComponent implements OnInit{
     // Lista de items del menu.
     public listaMenu: any[] = []; 
 
+    // Bandera que controla si el boton de home se muestra o no.
+    public isHome: boolean;
+
     /**
      * Creates an instance of MenuComponent.
      * @param {ContextoService} contextoService 
@@ -45,7 +48,9 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     onMenuSelected(pMenu: any): void {
-        
+        // Cambia bandera.        
+        this.isHome = false;
+
         // Obtiene sus items hijos.
         this.listaMenu = pMenu.RecursosHijos;
         
@@ -70,6 +75,7 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     ngOnInit(){
+        this.isHome = true;
         this.listaMenu = this.contextoService.getListaSchemas();
     }
 }
