@@ -1,5 +1,4 @@
-import { Directive, Input, HostListener, Renderer, ElementRef, Renderer2 } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Directive, Input, HostListener, Renderer, ElementRef, Renderer2, OnInit } from '@angular/core';
 /**
  * Directiva para manejar una card hover.
  * 
@@ -17,7 +16,7 @@ export class HoverCardDirective implements OnInit {
      * @type {string}
      * @memberof HoverCardDirective
      */
-    @Input() hoverClass: string;
+    @Input('hoverCard') hoverClass: string;
 
     /**
      * Clase a agregar cuando el card no tenga hover.
@@ -25,7 +24,7 @@ export class HoverCardDirective implements OnInit {
      * @type {string}
      * @memberof HoverCardDirective
      */
-    @Input() notHoverClass: string;
+    @Input('notHover') notHoverClass: string;
   
     /**
      * Creates an instance of HoverCardDirective.

@@ -2,9 +2,8 @@
     <mat-card [@divHome] *ngIf="!isHome"
         class="menu-card fixFxLayoutGapBottom" 
         (click)="onHomeSelected()" 
-        hoverCard 
-        hoverClass="mat-elevation-z24"
-        notHoverClass="mat-elevation-z8">
+        [hoverCard]="'mat-elevation-z24'"
+        [notHover]="'mat-elevation-z8'">
         <mat-card-header >
             <mat-card-title> 
                 <mat-chip-list>
@@ -22,9 +21,8 @@
     <mat-card [@divMenu]
         class="menu-card fixFxLayoutGapBottom" 
         (click)="onMenuSelected(menu)"
-        hoverCard 
-        hoverClass="mat-elevation-z24"
-        notHoverClass="mat-elevation-z8"
+        [hoverCard]="'mat-elevation-z24'"
+        [notHover]="'mat-elevation-z8'"
          *ngFor="let menu of listaMenu">
         <mat-card-header>
             <mat-card-title> 
