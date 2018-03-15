@@ -36,6 +36,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { JsonViewerComponent } from './json-viewer/json-viewer.component';
 import { ErrorViewerComponent } from './error-viewer/error-viewer.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { CellPositionDirective } from './directives/cell-position.directive';
 
 
 /**
@@ -50,7 +51,8 @@ import { AutofocusDirective } from './directives/autofocus.directive';
         
         HoverCardDirective,
         AutofocusDirective,
-
+        CellPositionDirective,
+        
         ConfirmDialogComponent,
         JsonViewerComponent,
         ErrorViewerComponent
@@ -121,7 +123,8 @@ import { AutofocusDirective } from './directives/autofocus.directive';
         
         HoverCardDirective,
         AutofocusDirective,
-
+        CellPositionDirective,
+        
         ConfirmDialogComponent,
         JsonViewerComponent,
         ErrorViewerComponent
