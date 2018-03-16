@@ -66,6 +66,9 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     onHomeSelected(): void {
+        // Cambia bandera.        
+        this.isHome = true;
+        // Vuelve a cargar menu inicial
         this.listaMenu = this.contextoService.getListaSchemas();
     }
 
@@ -75,7 +78,9 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     ngOnInit(){
+        // Cambia bandera.        
         this.isHome = true;
+        // Vuelve a cargar menu inicial
         this.listaMenu = this.contextoService.getListaSchemas();
     }
 }
