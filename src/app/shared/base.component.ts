@@ -47,5 +47,5 @@ export class BaseComponent {
      * @type {boolean}
      * @memberof BaseComponent
      */
-    protected isLoading: boolean = false;
+    public isLoading: boolean = false;
 }
