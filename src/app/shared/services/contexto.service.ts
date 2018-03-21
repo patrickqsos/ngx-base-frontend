@@ -26,6 +26,9 @@ export class ContextoService {
     // Entorno del sistema.
     private env:Object = null;
 
+    // Bandera que indica si el componente esta cargando algo, util para habilitar/deshabilitar botones
+    public isLoading: boolean = false;
+
     /**
      * Creates an instance of ContextoService.
      * @param {HttpClient} http Servicio HttpClient

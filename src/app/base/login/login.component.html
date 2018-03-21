@@ -1,7 +1,7 @@
 <mat-card class="base-auth mat-elevation-z12">
 	<mat-card-header class="base-auth-header" fxFlexFill>
 		<mat-toolbar color="accent" fxLayout="row">
-				<h2>{{ langService.getLang(eModulo.Base,'tit-autenticacion') }}</h2>
+				<h3>{{ langService.getLang(eModulo.Base,'tit-autenticacion') }}</h3>
 		</mat-toolbar>
 	</mat-card-header>
 	<mat-card-content>	
@@ -24,7 +24,7 @@
 					mat-raised-button 
 					color="accent" 
 					(click)="login()"
-					disabled = "{{ form.invalid }}">
+					disabled = "{{ form.invalid || contextService.isLoading }}">
 						{{ langService.getLang(eModulo.Base,'btnLogin') }}
 				</button>
 			</div>

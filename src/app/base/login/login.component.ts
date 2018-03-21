@@ -6,6 +6,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { LangService } from '../../shared/services/lang.service';
 import { BaseComponent } from '../../shared/base.component';
 import { fadeInAnimation } from '../../shared/animations/template.animation';
+import { ContextoService } from '../../shared/services/contexto.service';
 
 @Component({
     selector: 'app-login',
@@ -29,6 +30,7 @@ export class LoginComponent extends BaseComponent implements AfterViewInit{
      */
     constructor(
         public langService: LangService,
+        public contextService: ContextoService,
         private authService: AuthService,
         private changeDetector : ChangeDetectorRef,
 
@@ -41,6 +43,8 @@ export class LoginComponent extends BaseComponent implements AfterViewInit{
      * @memberof LoginComponent
      */
     login() {
+        this.contextService.isLoading = true;
+
         this.authService.loginUser(this.form.controls['usuario'].value, this.form.controls['password'].value);
     }
 

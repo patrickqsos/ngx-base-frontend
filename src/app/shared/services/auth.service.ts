@@ -48,23 +48,28 @@ export class AuthService{
    */
   loginUser(pUsername: string, pPassword: string) {
     this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/login', {user: pUsername, pass: pPassword})
-      .subscribe(
-        response => {
-          if (response.data) {
-            // Setea el token.
-            localStorage.setItem('user_token', response.data.token);
-            // Setea el contexto.
-            this.contextoService.setContexto(response.data);
-
-            // Si existe una url de retorno, se redirecciona ahi.
-            if(this.returnUrl) 
-              this.router.navigate([this.returnUrl]);
-            // Si no se redirecciona al menu.
-            else
-              this.router.navigate(['menu']);
-          }
-        }
-      );
+        .subscribe(
+            response => {
+                if (response.data) {
+                    // Setea el token.
+                    localStorage.setItem('user_token', response.data.token);
+                    // Setea el contexto.
+                    this.contextoService.setContexto(response.data);
+                    // Cambia estado de badnera loading.
+                    this.contextoService.isLoading = false;
+                    // Si existe una url de retorno, se redirecciona ahi.
+                    if(this.returnUrl) 
+                    this.router.navigate([this.returnUrl]);
+                    // Si no se redirecciona al menu.
+                    else
+                    this.router.navigate(['menu']);
+                }
+            },
+            error => {
+                // Cambia estado de badnera loading.
+                this.contextoService.isLoading = false;
+            }
+        );
   }
 
   /**
@@ -72,16 +77,26 @@ export class AuthService{
    * Permite realizar el cierre de sesion del usuario
    */
   logoutUser() {
+    this.contextoService.isLoading = true;
+      
     this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/logout', { idHistoricoUsuarioSesion: this.contextoService.getIdSesion() } )
-    .subscribe(
-      response => {
-        // Remueve el token del local storage.  
-        localStorage.removeItem("user_token");
-        // Finaliza el contexto.        
-        this.contextoService.finalizarContexto();
-        // Redirecciona al login.
-        this.router.navigate(['/login']);
-      });
+        .subscribe(
+            response => {
+                // Remueve el token del local storage.  
+                localStorage.removeItem("user_token");
+                // Finaliza el contexto.        
+                this.contextoService.finalizarContexto();
+                // Cambia estado de badnera loading.
+                this.contextoService.isLoading = false;
+                
+                // Redirecciona al login.
+                this.router.navigate(['/login']);
+            },
+            error => {
+                // Cambia estado de badnera loading.
+                this.contextoService.isLoading = false;
+            }
+        );
   }
   
   /**
