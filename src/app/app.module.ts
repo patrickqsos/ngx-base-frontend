@@ -15,6 +15,8 @@ import { UtilService } from './shared/services/util.service';
 import { NotificacionService } from './shared/services/notificacion.service';
 import { JwtService } from './shared/services/jwt.service';
 import { BackendInterceptor } from './shared/interceptors/backend.interceptor';
+import { MatPaginatorIntl } from '@angular/material';
+import { CustomMatPaginator} from './shared/custom.matpaginator'
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { BackendInterceptor } from './shared/interceptors/backend.interceptor';
 		multi: true
 	},
 	{ provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true },
-	JwtService
+	JwtService,
+	 { provide: MatPaginatorIntl, useClass: CustomMatPaginator },
   ],
   bootstrap: [AppComponent],
   exports: []

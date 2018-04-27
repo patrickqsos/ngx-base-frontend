@@ -55,8 +55,6 @@ export class AuthService{
                     localStorage.setItem('user_token', response.data.token);
                     // Setea el contexto.
                     this.contextoService.setContexto(response.data);
-                    // Cambia estado de badnera loading.
-                    this.contextoService.isLoading = false;
                     // Si existe una url de retorno, se redirecciona ahi.
                     if(this.returnUrl) 
                     this.router.navigate([this.returnUrl]);
@@ -66,8 +64,6 @@ export class AuthService{
                 }
             },
             error => {
-                // Cambia estado de badnera loading.
-                this.contextoService.isLoading = false;
             }
         );
   }

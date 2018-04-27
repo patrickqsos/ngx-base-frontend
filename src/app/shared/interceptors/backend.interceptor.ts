@@ -50,6 +50,8 @@ export class BackendInterceptor implements HttpInterceptor {
         this.notificacionService = this.inj.get(NotificacionService);
         this.contextoService = this.inj.get(ContextoService);
         this.langService = this.inj.get(LangService);
+
+        
         
         // Verifica si existen los parametros para ocultar el progressbar/notificador.
         let showProgressBar = (req.params.get('hideProgressBar') == null);
@@ -64,13 +66,19 @@ export class BackendInterceptor implements HttpInterceptor {
             headers : this.getHeaders(),
             reportProgress: showProgressBar
         })
-
-        // Continua con el request clonado.
+        
+        
         return next
             .handle(reqClone)
             .do((event: HttpEvent<any>) => {
+                
+                
 				switch (event.type) {
+                    
                     case HttpEventType.Sent:
+                        //cambia el estado a true cuando se ejecuta una peticion http al backend
+                        this.contextoService.isLoading = true;
+                        // Continua con el request clonado.
                         if(showProgressBar)
                             // Hace aparecer un progressbar indeterminado.
 						    this.notificacionService.progressSubject.next(null);
@@ -88,6 +96,8 @@ export class BackendInterceptor implements HttpInterceptor {
 						// }
 						break;
                     case HttpEventType.Response:
+                        //cambia el estado a false cuando la peticion termina correctamente
+                        this.contextoService.isLoading = false;
                         // Hace que el progressbar desaparezca.
                         if(showProgressBar)
                             this.notificacionService.progressSubject.next(0);
@@ -95,9 +105,14 @@ export class BackendInterceptor implements HttpInterceptor {
                         if(event.body.message && showNotificador) 
                             this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
 						break;
-				}
+                }
+                
 			})
             .catch(event => {
+
+                //cambia el estado a false cuando se ocurre un error en la peticion
+                this.contextoService.isLoading = false;
+
                 // Hace que el progressbar desaparezca.
                 this.notificacionService.progressSubject.next(0);
                 if (event instanceof HttpErrorResponse) {

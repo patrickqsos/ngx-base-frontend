@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -15,7 +15,7 @@ import { ContextoService } from '../../shared/services/contexto.service';
     animations: [fadeInAnimation],
     host: { '[@fadeInAnimation]': '' }
 })
-export class LoginComponent extends BaseComponent implements AfterViewInit{
+export class LoginComponent extends BaseComponent implements AfterViewInit, OnInit{
 
     form = new FormGroup(
         {usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -33,6 +33,7 @@ export class LoginComponent extends BaseComponent implements AfterViewInit{
         public contextService: ContextoService,
         private authService: AuthService,
         private changeDetector : ChangeDetectorRef,
+        private router: Router,
 
     ) {super(); }
 
@@ -43,12 +44,17 @@ export class LoginComponent extends BaseComponent implements AfterViewInit{
      * @memberof LoginComponent
      */
     login() {
-        this.contextService.isLoading = true;
-
+        
         this.authService.loginUser(this.form.controls['usuario'].value, this.form.controls['password'].value);
     }
 
     ngAfterViewInit() {
         this.changeDetector.detectChanges();
+    }
+
+    ngOnInit(){
+        if(this.authService.isUserAuthenticated()){
+            this.router.navigate(['menu']);
+        }
     }
 }
