@@ -12,14 +12,7 @@ import { AuthGuardService } from '../shared/services/auth-guard.service';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ErrorViewerComponent } from '../shared/error-viewer/error-viewer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-
-// Configuración de las rutas
-export const baseRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent, canActivate: [AuthGuardService], data: {checkRecurso: false} },
-  { path: 'menu', component: MenuComponent, canActivate: [AuthGuardService], data: {checkRecurso: false} },
-  { path: 'unauthorized', component: UnauthorizedComponent }
-];
+import { baseRoutes } from './base.routing';
 
 /**
  * Modulo base del sistema.
