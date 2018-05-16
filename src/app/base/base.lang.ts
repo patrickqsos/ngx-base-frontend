@@ -42,7 +42,10 @@ export const BaseLang =
             'mat-PREVIOUS_PAGE':'Página anterior',
             'mat-FROM':'de',
             'btn-si':'Si',
-            'btn-no':'No'
+            'btn-no':'No',
+            'lbl-user':'Usuario',
+            'lbl-inst':'Institución',
+            'menu-user':'Información del usuario'
         },
         'en': {
             'lang-error':'Lang not found',

@@ -7,6 +7,25 @@
             <img class="main-logo" src="../../assets/logo.png" alt="logo">
             <h1 style="font-size: 25px">{{ config.nombreSistema }}</h1>
             <span class="flex-spacer"></span>
+            <button mat-button [matMenuTriggerFor]="userInfo" *ngIf="authService.isUserAuthenticated()" matTooltip="{{langService.getLang(eModulo.Base,'menu-user')}}">
+                <mat-icon>person</mat-icon>
+            </button>
+
+            <mat-menu #userInfo="matMenu" xPosition="before" yPosition="below" [overlapTrigger]="false" class="user-info">
+                <button mat-menu-item matTooltip="{{langService.getLang(eModulo.Base,'lbl-user')}} : {{ contextoService.getUsuario() }}" matTooltipShowDelay="500">
+                    <mat-icon>account_circle</mat-icon>
+                    {{ contextoService.getUsuario() }}
+                </button>
+                <button mat-menu-item matTooltip="{{langService.getLang(eModulo.Base,'lbl-inst')}} : {{ contextoService.getInstitucion() }}" matTooltipShowDelay="500">
+                    <mat-icon>work</mat-icon>
+                    {{ contextoService.getInstitucion() }}
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>date_range</mat-icon>
+                    {{ utilService.getFechaActual() | date:'fullDate' }}
+                </button>
+            </mat-menu>
+
             <a mat-button (click)="authService.logoutUser()" matTooltip="{{langService.getLang(eModulo.Base,'logoutMensaje')}}" *ngIf="authService.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon></a>
             <a mat-button routerLink="/login" matTooltip="{{langService.getLang(eModulo.Base,'loginMensaje')}}" *ngIf="!authService.isUserAuthenticated()"><mat-icon>input</mat-icon></a>
             <!-- <app-breadcrumbs *ngIf="authService.isUserAuthenticated()"></app-breadcrumbs> -->
