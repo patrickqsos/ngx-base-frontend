@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -9,13 +9,13 @@ import { fadeInAnimation } from '../../shared/animations/template.animation';
 import { ContextoService } from '../../shared/services/contexto.service';
 
 @Component({
-    selector: 'app-login',
+    selector: 'base-login',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css'],
     animations: [fadeInAnimation],
     host: { '[@fadeInAnimation]': '' }
 })
-export class LoginComponent extends BaseComponent implements AfterViewInit, OnInit{
+export class LoginComponent extends BaseComponent implements OnInit{
 
     form = new FormGroup(
         {usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -32,7 +32,6 @@ export class LoginComponent extends BaseComponent implements AfterViewInit, OnIn
         public langService: LangService,
         public contextService: ContextoService,
         private authService: AuthService,
-        private changeDetector : ChangeDetectorRef,
         private router: Router,
 
     ) {super(); }
@@ -40,18 +39,18 @@ export class LoginComponent extends BaseComponent implements AfterViewInit, OnIn
 
     /**
      * Funcion que permite Realizar el login(autenticacion) utilizando un
-     * servicio del backend
+     * servicio del backend.
      * @memberof LoginComponent
      */
     login() {
-        
         this.authService.loginUser(this.form.controls['usuario'].value, this.form.controls['password'].value);
     }
 
-    ngAfterViewInit() {
-        this.changeDetector.detectChanges();
-    }
-
+    /**
+     * Hook on init del componente.
+     * 
+     * @memberof LoginComponent
+     */
     ngOnInit(){
         if(this.authService.isUserAuthenticated()){
             this.router.navigate(['menu']);

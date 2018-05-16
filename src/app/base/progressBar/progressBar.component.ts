@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import { NotificacionService } from '../../shared/services/notificacion.service';
 
 @Component({
-	selector: 'app-progress-bar',
+	selector: 'base-progress-bar',
 	templateUrl : 'progressBar.component.html',
 })
 export class ProgressBarComponent implements OnInit {

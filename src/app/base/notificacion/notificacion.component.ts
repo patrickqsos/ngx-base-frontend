@@ -13,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
  * @class NotificacionComponent
  */
 @Component({
-  selector: 'app-notificacion',
+  selector: 'base-notificacion',
   templateUrl: './notificacion.component.html',
   styleUrls: ['./notificacion.component.css']
 })

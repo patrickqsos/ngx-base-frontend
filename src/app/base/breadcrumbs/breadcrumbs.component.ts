@@ -13,7 +13,7 @@ import { ContextoService } from '../../shared/services/contexto.service';
  * @implements {OnInit}
  */
 @Component({
-    selector: 'app-breadcrumbs',
+    selector: 'base-breadcrumbs',
     templateUrl: './breadcrumbs.component.html'
 })
 export class BreadcrumbsComponent extends BaseComponent implements OnInit {

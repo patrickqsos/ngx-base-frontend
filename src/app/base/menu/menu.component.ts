@@ -15,7 +15,7 @@ import { btnHomeAnimation, btnMenuAnimation } from '../../shared/animations/temp
  * @implements {OnInit}
  */
 @Component({
-    selector: 'app-menu',
+    selector: 'base-menu',
     templateUrl: 'menu.component.html',
     styleUrls:['menu.component.css'],
     animations: [btnHomeAnimation, btnMenuAnimation]

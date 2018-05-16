@@ -11,7 +11,7 @@ import { fadeInAnimation } from '../../shared/animations/template.animation';
  * @extends {BaseComponent}
  */
 @Component({
-  selector: 'app-unauthorized',
+  selector: 'base-unauthorized',
   templateUrl: './unauthorized.component.html',
   styleUrls: ['./unauthorized.component.css'],
   animations: [fadeInAnimation],

@@ -8,7 +8,7 @@ import { BaseComponent } from '../../shared/base.component';
 import { MatProgressBarModule } from '@angular/material';
 
 @Component({
-    selector: 'app-layout',
+    selector: 'base-layout',
     templateUrl: 'layout.component.html',
     styleUrls: ['layout.component.css']
 })
