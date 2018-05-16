@@ -71,12 +71,9 @@ export class BackendInterceptor implements HttpInterceptor {
         return next
             .handle(reqClone)
             .do((event: HttpEvent<any>) => {
-                
-                
 				switch (event.type) {
-                    
                     case HttpEventType.Sent:
-                        //cambia el estado a true cuando se ejecuta una peticion http al backend
+                        // Cambia el estado a true cuando se ejecuta una peticion http al backend
                         this.contextoService.isLoading = true;
                         // Continua con el request clonado.
                         if(showProgressBar)
@@ -96,11 +93,6 @@ export class BackendInterceptor implements HttpInterceptor {
 						// }
 						break;
                     case HttpEventType.Response:
-                        //cambia el estado a false cuando la peticion termina correctamente
-                        this.contextoService.isLoading = false;
-                        // Hace que el progressbar desaparezca.
-                        if(showProgressBar)
-                            this.notificacionService.progressSubject.next(0);
                         // Notifica mensaje.
                         if(event.body.message && showNotificador) 
                             this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
@@ -109,12 +101,6 @@ export class BackendInterceptor implements HttpInterceptor {
                 
 			})
             .catch(event => {
-
-                //cambia el estado a false cuando se ocurre un error en la peticion
-                this.contextoService.isLoading = false;
-
-                // Hace que el progressbar desaparezca.
-                this.notificacionService.progressSubject.next(0);
                 if (event instanceof HttpErrorResponse) {
                     // En event.error deberia esta la entidad result del backend.
 
@@ -134,6 +120,10 @@ export class BackendInterceptor implements HttpInterceptor {
                 }
                 // Dispara el error en el observable.
                 return Observable.throw(event);
+            })
+            .finally(() => {
+                this.contextoService.isLoading = false;
+                this.notificacionService.progressSubject.next(0);
             });
     }
 
