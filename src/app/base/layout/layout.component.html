@@ -5,7 +5,7 @@
                 <mat-icon>menu</mat-icon>
             </button>￼ -->
             <img class="main-logo" src="../../assets/logo.png" alt="logo">
-            <h1 style="font-size: 25px">{{ contextoService.getConfig('nombreSistema') }}</h1>
+            <h1 style="font-size: 25px">{{ config.nombreSistema }}</h1>
             <span class="flex-spacer"></span>
             <a mat-button (click)="authService.logoutUser()" matTooltip="{{langService.getLang(eModulo.Base,'logoutMensaje')}}" *ngIf="authService.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon></a>
             <a mat-button routerLink="/login" matTooltip="{{langService.getLang(eModulo.Base,'loginMensaje')}}" *ngIf="!authService.isUserAuthenticated()"><mat-icon>input</mat-icon></a>
@@ -95,7 +95,7 @@
 
     <footer fxFlexFill>
         <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >
-            {{ langService.getLang(eModulo.Base ,'msg-copyright') }} |  {{ langService.getLang(eModulo.Base ,'msg-version') }} {{ contextoService.getConfig('versionSistema') }}
+            {{ langService.getLang(eModulo.Base ,'msg-copyright') }} |  {{ langService.getLang(eModulo.Base ,'msg-version') }} {{ config.version }}
         </mat-toolbar>
     </footer>
 </div>

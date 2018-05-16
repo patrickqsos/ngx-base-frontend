@@ -6,6 +6,7 @@ import { NotificacionService } from '../shared/services/notificacion.service';
 import { Component } from '@angular/core';
 import { eTipoNotificacion } from '../shared/enums/tipo-notificacion.enum';
 import { Subject } from 'rxjs/Subject';
+import { baseConfig } from '../base/base.config';
 
 /**
  * Clase que sirve de base para los componentes creados.
@@ -15,6 +16,13 @@ import { Subject } from 'rxjs/Subject';
  */
 export class BaseComponent {
 
+    /**
+     * Objeto que contiene la configuración base
+     * 
+     * @memberof BaseComponent
+     */
+    public config = baseConfig
+    
     /**
      * Enum que contiene lista de modulos.
      *
@@ -39,13 +47,4 @@ export class BaseComponent {
      * @memberof BaseComponent
      */
     protected unsubscribe$: Subject<boolean> = new Subject();
-
-    /**
-     * Bandera que indica si el componente esta cargando algo, util para habilitar/deshabilitar botones
-     * 
-     * @protected
-     * @type {boolean}
-     * @memberof BaseComponent
-     */
-    public isLoading: boolean = false;
 }
