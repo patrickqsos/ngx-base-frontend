@@ -22,12 +22,6 @@ import { btnHomeAnimation, btnMenuAnimation } from '../../shared/animations/temp
 })
 export class MenuComponent extends BaseComponent implements OnInit{
 
-    // Lista de items del menu.
-    public listaMenu: any[] = []; 
-
-    // Bandera que controla si el boton de home se muestra o no.
-    public isHome: boolean;
-
     /**
      * Creates an instance of MenuComponent.
      * @param {ContextoService} contextoService 
@@ -48,14 +42,14 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     onMenuSelected(pMenu: any): void {
-        // Cambia bandera.        
-        this.isHome = false;
+        // Se agrega el menu al array de migas de pan.
+        this.contextoService.breadCrumbs.push(pMenu);
 
         // Obtiene sus items hijos.
-        this.listaMenu = pMenu.RecursosHijos;
+        this.contextoService.listaMenu = pMenu.RecursosHijos;
         
         // Si el item seleccionado tiene una ruta cargada, se usa el router para cargarla.
-        if(pMenu.Ejecutable != null) {
+        if(pMenu.Ejecutable) {
             this.router.navigate([pMenu.Ejecutable])
         }
     }
@@ -66,10 +60,10 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     onHomeSelected(): void {
-        // Cambia bandera.        
-        this.isHome = true;
+        // Vacia array de migas de pan.
+        this.contextoService.breadCrumbs = [];
         // Vuelve a cargar menu inicial
-        this.listaMenu = this.contextoService.getListaSchemas();
+        this.contextoService.listaMenu = this.contextoService.getListaSchemas();
     }
 
     /**
@@ -78,9 +72,7 @@ export class MenuComponent extends BaseComponent implements OnInit{
      * @memberof MenuComponent
      */
     ngOnInit(){
-        // Cambia bandera.        
-        this.isHome = true;
-        // Vuelve a cargar menu inicial
-        this.listaMenu = this.contextoService.getListaSchemas();
+        if(this.contextoService.breadCrumbs.length == 0)
+            this.contextoService.listaMenu = this.contextoService.getListaSchemas();
     }
 }

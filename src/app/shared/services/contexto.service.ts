@@ -26,6 +26,12 @@ export class ContextoService {
     // Entorno del sistema.
     private env:Object = null;
 
+    // Array que contiene todos los menus seleccionado, sirve para armar las migas de pan.
+    public breadCrumbs: any[] = [];
+
+    // Lista de items del menu.
+    public listaMenu: any[] = []; 
+
     // Bandera que indica si el componente esta cargando algo, util para habilitar/deshabilitar botones
     public isLoading: boolean = false;
 
@@ -57,7 +63,9 @@ export class ContextoService {
                         this.idiomas = this.getConfig('langs');
                         // Por defecto selcciona el primer idioma.
                         this.idiomaSeleccionado = this.idiomas[0]['id'];
-
+                        // Carga menu inicial.
+                        this.listaMenu = this.getListaSchemas();
+                        
                         resolve(true);
                     });
         });
@@ -123,9 +131,9 @@ export class ContextoService {
         if(this.getContexto()  != null && this.getContexto().RecursosUsuario != null){
             // Recorre lista de recursos hijos para adiconarlos a la lista a devolver.
             for(let modulo of this.getContexto().RecursosUsuario){
-                for(let schema of modulo.RecursosHijos) {
-                    listaSchemas.push(schema);
-                }
+                //for(let schema of modulo.RecursosHijos) {
+                    listaSchemas.push(modulo);
+                //}
             }
         }
         // Retorna lista.
