@@ -6,7 +6,7 @@
     </mat-card-header>
     <mat-card-content fxLayout="column" fxLayoutAlign="center center">	
       <h3 fxFlexAlign="center" > {{ langService.getLang(eModulo.Base,'desc-not-found') }} </h3>
-      <a mat-fab routerLink="/menu"><mat-icon>home</mat-icon></a>
+      <a mat-fab (click)="onHomeClick()" routerLink="/menu"><mat-icon>home</mat-icon></a>
     </mat-card-content>
 </mat-card>
   

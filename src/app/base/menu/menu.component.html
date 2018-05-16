@@ -1,5 +1,5 @@
 <div  fxFlex fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center center">
-    <mat-card [@divHome] *ngIf="!isHome"
+    <mat-card [@divHome] *ngIf="contextoService.breadCrumbs.length > 0"
         class="menu-card fixFxLayoutGapBottom" 
         (click)="onHomeSelected()" 
         [hoverCard]="'mat-elevation-z24'"
@@ -23,7 +23,7 @@
         (click)="onMenuSelected(menu)"
         [hoverCard]="'mat-elevation-z24'"
         [notHover]="'mat-elevation-z8'"
-         *ngFor="let menu of listaMenu">
+         *ngFor="let menu of contextoService.listaMenu">
         <mat-card-header>
             <mat-card-title> 
                 <mat-chip-list class="alt-theme">
