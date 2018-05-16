@@ -5,6 +5,7 @@ import { JwtService } from "../services/jwt.service";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/finally';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import { NotificacionService } from "../services/notificacion.service";
