@@ -3,6 +3,7 @@ import { LangService } from '../../shared/services/lang.service';
 import { BaseComponent } from '../../shared/base.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { ContextoService } from '../../shared/services/contexto.service';
+import { fadeInLeftAnim, breadItemAnim } from '../../shared/animations/template.animation';
 
 /**
  * Componente para manejar las migas de pan.
@@ -14,7 +15,8 @@ import { ContextoService } from '../../shared/services/contexto.service';
  */
 @Component({
     selector: 'base-breadcrumbs',
-    templateUrl: './breadcrumbs.component.html'
+    templateUrl: './breadcrumbs.component.html',
+    animations: [fadeInLeftAnim, breadItemAnim]
 })
 export class BreadcrumbsComponent extends BaseComponent implements OnInit {
     

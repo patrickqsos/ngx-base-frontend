@@ -33,7 +33,7 @@
     </header>
     
     <base-progress-bar fxFlexFill></base-progress-bar>
-    <base-breadcrumbs *ngIf="authService.isUserAuthenticated() && contextoService.breadCrumbs.length > 0" fxFlexFill></base-breadcrumbs>
+    <base-breadcrumbs [@breadListAnim] *ngIf="authService.isUserAuthenticated() && contextoService.breadCrumbs.length > 0" fxFlexFill></base-breadcrumbs>
         
     <mat-sidenav-container fxFlex="1" class="main-container-nav" fxLayout="column">
         <mat-sidenav #sidenav mode="push" opened="false" >

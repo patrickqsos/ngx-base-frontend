@@ -6,11 +6,13 @@ import { LangService } from '../../shared/services/lang.service';
 import { UtilService } from '../../shared/services/util.service';
 import { BaseComponent } from '../../shared/base.component';
 import { MatProgressBarModule } from '@angular/material';
+import { breadListAnim } from '../../shared/animations/template.animation';
 
 @Component({
     selector: 'base-layout',
     templateUrl: 'layout.component.html',
-    styleUrls: ['layout.component.css']
+    styleUrls: ['layout.component.css'],
+    animations: [breadListAnim]
 })
 export class LayoutComponent extends BaseComponent {
 
