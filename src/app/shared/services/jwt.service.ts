@@ -1,6 +1,6 @@
 /**
  * Servicio para manejar JWT
- * 
+ *
  * @export
  * @class JwtService
  */
@@ -8,13 +8,13 @@ export class JwtService {
 
   /**
    * Método para obtener el token.
-   * 
-   * @returns {string} 
+   *
+   * @returns {string}
    * @memberof JwtService
    */
-  public getToken():string {
+  public getToken(): string {
       return localStorage.getItem('user_token');
-  };
+  }
 
   constructor() {}
 
@@ -33,7 +33,7 @@ export class JwtService {
         break;
       }
       default: {
-        throw 'Illegal base64url string!';
+        throw new Error('Illegal base64url string!');
       }
     }
     return this.b64DecodeUnicode(output);
@@ -41,24 +41,25 @@ export class JwtService {
 
   // credits for decoder goes to https://github.com/atk
   private b64decode(str: string): string {
-    let chars =
+    const chars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    let output: string = '';
+    let output = '';
 
     str = String(str).replace(/=+$/, '');
 
     if (str.length % 4 === 1) {
       throw new Error(
-        "'atob' failed: The string to be decoded is not correctly encoded."
+        '\'atob\' failed: The string to be decoded is not correctly encoded.'
       );
     }
 
     for (
       // initialize result and counters
-      let bc: number = 0, bs: any, buffer: any, idx: number = 0;
+      let bc = 0, bs: any, buffer: any, idx = 0;
       // get next character
       (buffer = str.charAt(idx++));
       // character found in table? initialize bit storage and add its ascii value;
+      // tslint:disable-next-line:no-bitwise
       ~buffer &&
       (
         (bs = bc % 4 ? bs * 64 + buffer : buffer),
@@ -66,6 +67,7 @@ export class JwtService {
         // convert the first 8 bits to one ascii character
         bc++ % 4
       )
+        // tslint:disable-next-line:no-bitwise
         ? (output += String.fromCharCode(255 & (bs >> ((-2 * bc) & 6))))
         : 0
     ) {
@@ -86,13 +88,13 @@ export class JwtService {
   }
 
   public decodeToken(token: string = this.getToken()): any {
-    let parts = token.split('.');
+    const parts = token.split('.');
 
     if (parts.length !== 3) {
       throw new Error('The inspected token doesn\'t appear to be a JWT. Check to make sure it has three parts and see https://jwt.io for more.');
     }
 
-    let decoded = this.urlBase64Decode(parts[1]);
+    const decoded = this.urlBase64Decode(parts[1]);
     if (!decoded) {
       throw new Error('Cannot decode the token.');
     }
@@ -116,20 +118,20 @@ export class JwtService {
 
   /**
    * Método para verificar si el token esta expirado o no.
-   * 
-   * @param {string} [token=this.getToken()] 
-   * @param {number} [offsetSeconds] 
-   * @returns {boolean} 
+   *
+   * @param {string} [token=this.getToken()]
+   * @param {number} [offsetSeconds]
+   * @returns {boolean}
    * @memberof JwtService
    */
   public isTokenExpired(token: string = this.getToken(), offsetSeconds?: number): boolean {
 
-    if(token == null){
+    if (token == null) {
       return true;
     }
 
-    let date = this.getTokenExpirationDate(token);
-    
+    const date = this.getTokenExpirationDate(token);
+
     offsetSeconds = offsetSeconds || 0;
 
     if (date === null) {

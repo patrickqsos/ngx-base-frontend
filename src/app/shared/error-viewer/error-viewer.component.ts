@@ -13,7 +13,7 @@ export class ErrorViewerComponent extends BaseComponent implements OnInit {
         public dialogRef: MatDialogRef<ErrorViewerComponent>,
         @Inject(MAT_DIALOG_DATA) public data: Resultado,
         public langService: LangService,
-    
+
     ) {
         super();
     }
@@ -22,6 +22,6 @@ export class ErrorViewerComponent extends BaseComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    ngOnInit() { 
+    ngOnInit() {
     }
 }

@@ -1,15 +1,15 @@
 import { Observable ,  ReplaySubject ,  Subject, throwError } from 'rxjs';
 import { tap, catchError, finalize } from 'rxjs/operators';
-import { Injectable } from "@angular/core";
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { JwtService } from "../services/jwt.service";
-import { NotificacionService } from "../services/notificacion.service";
-import { eTipoNotificacion } from "../enums/tipo-notificacion.enum";
-import { Injector } from "@angular/core";
-import { ContextoService } from "../services/contexto.service";
-import { LangService } from "../services/lang.service";
-import { eModulo } from "../enums/modulo.enum";
-import { Resultado } from "../models/resultado.model";
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { JwtService } from '../services/jwt.service';
+import { NotificacionService } from '../services/notificacion.service';
+import { eTipoNotificacion } from '../enums/tipo-notificacion.enum';
+import { Injector } from '@angular/core';
+import { ContextoService } from '../services/contexto.service';
+import { LangService } from '../services/lang.service';
+import { eModulo } from '../enums/modulo.enum';
+import { Resultado } from '../models/resultado.model';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
@@ -21,8 +21,8 @@ export class BackendInterceptor implements HttpInterceptor {
 
     /**
      * Creates an instance of BackendInterceptor.
-     * @param {JwtService} jwtService 
-     * @param {Injector} inj 
+     * @param {JwtService} jwtService
+     * @param {Injector} inj
      * @memberof BackendInterceptor
      */
     constructor(
@@ -32,38 +32,35 @@ export class BackendInterceptor implements HttpInterceptor {
 
     /**
      * Método intercept.
-     * 
-     * @param {HttpRequest<any>} req 
-     * @param {HttpHandler} next 
-     * @returns {Observable<HttpEvent<any>>} 
+     *
+     * @param {HttpRequest<any>} req
+     * @param {HttpHandler} next
+     * @returns {Observable<HttpEvent<any>>}
      * @memberof BackendInterceptor
      */
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         // Inyecta servicios.
-        // No se inyecta en el constructor debido a que eso genera una dependencia ciclica. 
+        // No se inyecta en el constructor debido a que eso genera una dependencia ciclica.
         // https://github.com/angular/angular/issues/18224
         this.notificacionService = this.inj.get(NotificacionService);
         this.contextoService = this.inj.get(ContextoService);
         this.langService = this.inj.get(LangService);
 
-        
-        
         // Verifica si existen los parametros para ocultar el progressbar/notificador.
-        let showProgressBar = (req.params.get('hideProgressBar') == null);
-        let showNotificador = (req.params.get('hideNotificador') == null);
+        const showProgressBar = (req.params.get('hideProgressBar') == null);
+        const showNotificador = (req.params.get('hideNotificador') == null);
 
         // Remueve parametros edicionales.
-        let params = req.params.delete('hideProgressBar').delete('hideNotificador');
+        const params = req.params.delete('hideProgressBar').delete('hideNotificador');
 
-        // clona el request y adiciona headers.
-        let reqClone = req.clone({
+        // Clona el request y adiciona headers.
+        const reqClone = req.clone({
             params: params,
             headers : this.getHeaders(),
             reportProgress: showProgressBar
-        })
-        
-        
+        });
+
         return next
             .handle(reqClone).pipe(
                 tap((event: HttpEvent<any>) => {
@@ -72,12 +69,13 @@ export class BackendInterceptor implements HttpInterceptor {
                             // Cambia el estado a true cuando se ejecuta una peticion http al backend
                             this.contextoService.isLoading = true;
                             // Continua con el request clonado.
-                            if(showProgressBar)
+                            if (showProgressBar) {
                                 // Hace aparecer un progressbar indeterminado.
                                 this.notificacionService.progressSubject.next(null);
+                            }
                             break;
                         case HttpEventType.DownloadProgress:
-                            // Si el response especifica su tamaño, se calcula el valor del progressbar. 
+                            // Si el response especifica su tamaño, se calcula el valor del progressbar.
                             if (event.total && showProgressBar) {
                                 this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
                             }
@@ -90,26 +88,23 @@ export class BackendInterceptor implements HttpInterceptor {
                             break;
                         case HttpEventType.Response:
                             // Notifica mensaje.
-                            if(event.body.message && showNotificador) 
+                            if (event.body.message && showNotificador) {
                                 this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
+                            }
                             break;
                     }
                 }),
                 catchError(event => {
                     if (event instanceof HttpErrorResponse) {
                         // En event.error deberia esta la entidad result del backend.
-    
+
                         // Si el result tiene la propiedad error.
-                        if(event.error.error) {
+                        if (event.error.error) {
                             this.notificacionService.showSnackbarConBoton(event.error, eTipoNotificacion.Incorrecto);
-                        }
-                        // Si el result no tiene la propiedad error pero si tiene un mensaje.
-                        else if(event.error.message) {
+                        } else if (event.error.message) {
                             this.notificacionService.showSnackbarMensaje(event.error.message, 3000, this.getTipoNotificacion(event.status));
-                        }
-                        // Si el result no tiene error ni mensaje entonces muestra mensaje genérico.
-                        else {
-                            let url = reqClone.url.split('?');
+                        } else {
+                            const url = reqClone.url.split('?');
                             this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'msg-network-error') + url[0], 5000, eTipoNotificacion.Incorrecto);
                         }
                     }
@@ -125,7 +120,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
     /**
      * Método para obtener headers.
-     * 
+     *
      * @returns {HttpHeaders} Headers.
      * @memberof BackendInterceptor
      */
@@ -139,11 +134,12 @@ export class BackendInterceptor implements HttpInterceptor {
         headers = headers.set('Content-Type', 'application/json');
 
         // Obtiene el token con el servicio jwt.
-        const token = this.jwtService.getToken(); 
+        const token = this.jwtService.getToken();
 
         // Si pudo obtener un token, adiciona el header de autorizacion.
-        if (token) 
+        if (token) {
             headers = headers.set('Authorization', 'Bearer ' + token);
+        }
 
         // Retorna headers.
         return headers;
@@ -151,7 +147,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
     /**
      * Método para obtener el tipo de notificación en base al status code del response.
-     * 
+     *
      * @param {number} pStatus Status code.
      * @returns {eTipoNotificacion} Tipo de Notificación.
      * @memberof BackendInterceptor
@@ -161,8 +157,8 @@ export class BackendInterceptor implements HttpInterceptor {
         let tipoNotificacion: eTipoNotificacion;
 
         // En base al status code asigna un tipo de notificación.
-        switch(pHttpStatus){
-            case 200: 
+        switch (pHttpStatus) {
+            case 200:
             case 201:
             case 204:
                 tipoNotificacion = eTipoNotificacion.Correcto;

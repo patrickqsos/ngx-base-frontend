@@ -6,9 +6,9 @@ import { LangService } from '../../shared/services/lang.service';
 import { zoomInAnim, fadeInLeftAnim } from '../../shared/animations/template.animation';
 
 
-/** 
+/**
  * Componente para mostrar el menu del sistema.
- * 
+ *
  * @export
  * @class MenuComponent
  * @extends {BaseComponent}
@@ -17,27 +17,26 @@ import { zoomInAnim, fadeInLeftAnim } from '../../shared/animations/template.ani
 @Component({
     selector: 'base-menu',
     templateUrl: 'menu.component.html',
-    styleUrls:['menu.component.css'],
     animations: [zoomInAnim, fadeInLeftAnim]
 })
-export class MenuComponent extends BaseComponent implements OnInit{
+export class MenuComponent extends BaseComponent implements OnInit {
 
     /**
      * Creates an instance of MenuComponent.
-     * @param {ContextoService} contextoService 
-     * @param {LangService} langService 
-     * @param {Router} router 
+     * @param {ContextoService} contextoService
+     * @param {LangService} langService
+     * @param {Router} router
      * @memberof MenuComponent
      */
     constructor(
         public contextoService: ContextoService,
         public langService: LangService,
         private router: Router
-    ) { super() }
+    ) { super(); }
 
     /**
      * Evento que sucede cuando se selecciona un item del menu.
-     * 
+     *
      * @param {*} pMenu Item seleccionado.
      * @memberof MenuComponent
      */
@@ -47,16 +46,16 @@ export class MenuComponent extends BaseComponent implements OnInit{
 
         // Obtiene sus items hijos.
         this.contextoService.listaMenu = pMenu.RecursosHijos;
-        
+
         // Si el item seleccionado tiene una ruta cargada, se usa el router para cargarla.
-        if(pMenu.Ejecutable) {
-            this.router.navigate([pMenu.Ejecutable])
+        if (pMenu.Ejecutable) {
+            this.router.navigate([pMenu.Ejecutable]);
         }
     }
 
     /**
      * Evento que sucede cuando se selecciona el item Inicio del menu.
-     * 
+     *
      * @memberof MenuComponent
      */
     onHomeSelected(): void {
@@ -68,11 +67,12 @@ export class MenuComponent extends BaseComponent implements OnInit{
 
     /**
      * Hook on init del componente.
-     * 
+     *
      * @memberof MenuComponent
      */
-    ngOnInit(){
-        if(this.contextoService.breadCrumbs.length == 0)
+    ngOnInit() {
+        if (this.contextoService.breadCrumbs.length === 0) {
             this.contextoService.listaMenu = this.contextoService.getListaSchemas();
+        }
     }
 }

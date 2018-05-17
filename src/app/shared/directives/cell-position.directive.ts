@@ -1,30 +1,30 @@
 import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 /**
  * Directiva para posicionar un mat cell.
- * 
+ *
  * @export
  * @class CellPositionDirective
  */
 @Directive({
-    selector: '[sCellPosition]',
+    selector: '[shCellPosition]',
 })
-export class CellPositionDirective implements OnInit{
-    
-    @Input('sCellPosition') position: string;
+export class CellPositionDirective implements OnInit {
 
-    
+    @Input('shPosition') position: string;
+
+
     /**
      * Ctor de la directiva.
      */
     constructor(
         public elementRef: ElementRef
     ) {
-        
+
     }
 
     /**
      * Evento on init.
-     * 
+     *
      * @memberof CellPositionDirective
      */
     ngOnInit() {

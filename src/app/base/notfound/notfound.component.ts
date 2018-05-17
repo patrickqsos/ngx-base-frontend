@@ -6,30 +6,30 @@ import { ContextoService } from '../../shared/services/contexto.service';
 
 /**
  * Componente para mostrar la pagina 404 not found.
- * 
+ *
  * @export
  * @class NotfoundComponent
  * @extends {BaseComponent}
  */
 @Component({
-  selector: 'base-notfound',
-  templateUrl: './notfound.component.html',
-  styleUrls: ['./notfound.component.css'],
-  animations: [fadeInAnim],
-  host: { '[@fadeInAnim]': '' }
+    selector: 'base-notfound',
+    templateUrl: './notfound.component.html',
+    styleUrls: ['./notfound.component.css'],
+    animations: [fadeInAnim],
+    host: { '[@fadeInAnim]': '' }
 })
 export class NotfoundComponent extends BaseComponent  {
 
     /**
      * Creates an instance of NotfoundComponent.
-     * @param {LangService} langService 
+     * @param {LangService} langService
      * @memberof NotfoundComponent
      */
     constructor(
         public langService: LangService,
         public contextoService: ContextoService,
-        
-    ) { super() }
+
+    ) { super(); }
 
     onHomeClick() {
         this.contextoService.breadCrumbs = [];

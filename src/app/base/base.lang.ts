@@ -1,14 +1,13 @@
 /**
  * Langs del modulo base.
- * 
+ *
  * @export
  * @const BaseLang
  */
-export const BaseLang =
-    {
+export const BaseLang = {
         'es': {
-            'lang-error':'No se pudo encontrar el lang',
-            'lang-param-error':'Faltan parámetros en el langService',
+            'lang-error': 'No se pudo encontrar el lang',
+            'lang-param-error': 'Faltan parámetros en el langService',
             'usuarioLogin': 'Por favor introduzca un usuario valido.',
             'usuarioFormLabel': 'Usuario',
             'usuarioHintLabel' : 'Ingrese el nombre de usuario.',
@@ -23,10 +22,10 @@ export const BaseLang =
             'logoutMensaje': 'Cerrar Sesion',
             'tit-autenticacion': 'Autenticación',
             'loginCerrado': 'Su sesion ha sido cerrada.',
-            'tit-info-sistema':'Información del sistema',
-            'msg-copyright':'Copyright © Segip ' + new Date().getFullYear(),
+            'tit-info-sistema': 'Información del sistema',
+            'msg-copyright': 'Copyright © Segip ' + new Date().getFullYear(),
             'msg-version': 'Versión',
-            'lbl-lenguaje':'Lenguaje',
+            'lbl-lenguaje': 'Lenguaje',
             'tit-home' : 'Página de inicio',
             'tit-menu' : 'Menú',
             'tit-not-found' : 'Página no encontrada',
@@ -34,21 +33,21 @@ export const BaseLang =
             'msg-network-error' : 'No se pudo completar la operación. Por favor vuelva a intentar',
             'tit-unauthorized' : 'Pagina no autorizada',
             'desc-unauthorized' : 'Lo sentimos mucho pero no tiene los privilegios suficientes para acceder a la página. Contactese con el administrador para solicitar el acceso',
-            'btn-cerrar':'Cerrar',
-            'btn-abrir':'Abrir',
-            'lbl-sinResultados':'No se encontraron resultados',
-            'mat-ITEMS_PER_PAGE':'Items por página',
-            'mat-NEXT_PAGE':'Siguiente página',
-            'mat-PREVIOUS_PAGE':'Página anterior',
-            'mat-FROM':'de',
-            'btn-si':'Si',
-            'btn-no':'No',
-            'lbl-user':'Usuario',
-            'lbl-inst':'Institución',
-            'menu-user':'Información del usuario'
+            'btn-cerrar': 'Cerrar',
+            'btn-abrir': 'Abrir',
+            'lbl-sinResultados': 'No se encontraron resultados',
+            'mat-ITEMS_PER_PAGE': 'Items por página',
+            'mat-NEXT_PAGE': 'Siguiente página',
+            'mat-PREVIOUS_PAGE': 'Página anterior',
+            'mat-FROM': 'de',
+            'btn-si': 'Si',
+            'btn-no': 'No',
+            'lbl-user': 'Usuario',
+            'lbl-inst': 'Institución',
+            'menu-user': 'Información del usuario'
         },
         'en': {
-            'lang-error':'Lang not found',
+            'lang-error': 'Lang not found',
             'usuarioLogin': 'Please enter a valid username',
             'usuarioFormLabel': 'Username',
             'usuarioHintLabel' : 'Enter the username',
@@ -63,10 +62,10 @@ export const BaseLang =
             'logoutMensaje': 'Log Out',
             'tit-autenticacion': 'Login',
             'loginCerrado': 'Log out successfully',
-            'tit-info-sistema':'System info',
-            'msg-copyright':'Copyright © Segip ' + new Date().getFullYear(),
+            'tit-info-sistema': 'System info',
+            'msg-copyright': 'Copyright © Segip ' + new Date().getFullYear(),
             'msg-version': 'Version',
-            'lbl-lenguaje':'Language',
+            'lbl-lenguaje': 'Language',
             'tit-home' : 'Home',
             'tit-menu' : 'Menu',
             'tit-not-found' : 'Page not found',

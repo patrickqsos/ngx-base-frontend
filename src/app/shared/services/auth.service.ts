@@ -15,16 +15,16 @@ import { eModulo } from '../../shared/enums/modulo.enum';
  * Class AuthService
  * Clase que permite Realizar la autenticacion de usuarios.
  */
-export class AuthService{
+export class AuthService {
 
   /**
    * Url de retorno para cuando se redirecciona al login.
-   * 
+   *
    * @type {string}
    * @memberof AuthService
    */
-  public returnUrl : string;
- 
+  public returnUrl: string;
+
   /**
    * Constructor de la clase
    * @param router ;
@@ -55,11 +55,11 @@ export class AuthService{
                     // Setea el contexto.
                     this.contextoService.setContexto(response.data);
                     // Si existe una url de retorno, se redirecciona ahi.
-                    if(this.returnUrl) 
+                    if (this.returnUrl) {
                     this.router.navigate([this.returnUrl]);
-                    // Si no se redirecciona al menu.
-                    else
+                    } else {
                     this.router.navigate(['menu']);
+                    }
                 }
             },
             error => {
@@ -73,17 +73,17 @@ export class AuthService{
    */
   logoutUser() {
     this.contextoService.isLoading = true;
-      
+
     this.http.post<Resultado>(this.contextoService.getBackendAPI() + '/logout', { idHistoricoUsuarioSesion: this.contextoService.getIdSesion() } )
         .subscribe(
             response => {
-                // Remueve el token del local storage.  
-                localStorage.removeItem("user_token");
-                // Finaliza el contexto.        
+                // Remueve el token del local storage.
+                localStorage.removeItem('user_token');
+                // Finaliza el contexto.
                 this.contextoService.finalizarContexto();
                 // Cambia estado de badnera loading.
                 this.contextoService.isLoading = false;
-                
+
                 // Redirecciona al login.
                 this.router.navigate(['/login']);
             },
@@ -93,7 +93,7 @@ export class AuthService{
             }
         );
   }
-  
+
   /**
    * Funcion isUserAuthenticated
    * Devuelve el token para saber si el usuario esta autentificado o no.

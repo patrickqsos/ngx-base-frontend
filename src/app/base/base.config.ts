@@ -2,4 +2,4 @@
 export const baseConfig = {
     version: '2.0.0',
     nombreSistema: 'Sistema base segip'
-}
+};

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseLang } from "../../base/base.lang";
+import { BaseLang } from '../../base/base.lang';
 import { eModulo } from '../../shared/enums/modulo.enum';
 import { ContextoService } from './contexto.service';
 
@@ -42,12 +42,13 @@ export class LangService {
     // Valida params de entrada.
     if (pModulo != null && pIdMensaje != null) {
       const lang = this.langs[pModulo].contenido[idioma][pIdMensaje];
-      if (lang != null)
+      if (lang != null) {
         return lang;
-      else
-        return BaseLang[idioma]['lang-error'];  
+      } else {
+        return BaseLang[idioma]['lang-error'];
+      }
+    } else {
+      return BaseLang[idioma]['lang-param-error'];
     }
-    else
-      return BaseLang[idioma]['lang-param-error'];  
   }
 }

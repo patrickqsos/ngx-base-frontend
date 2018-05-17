@@ -1,10 +1,10 @@
 /**
  * Enumerador que contiene los tipos de mensaje.
- * 
+ *
  * @export
  * @enum {number}
  */
-export enum eTipoNotificacion{
+export enum eTipoNotificacion {
     Correcto,
     Incorrecto,
     Advertencia,

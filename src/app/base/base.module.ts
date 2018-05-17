@@ -16,7 +16,7 @@ import { baseRoutes } from './base.routing';
 
 /**
  * Modulo base del sistema.
- * 
+ *
  * @export
  * @class BaseModule
  */

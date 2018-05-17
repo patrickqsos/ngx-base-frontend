@@ -5,17 +5,17 @@ import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
 @Pipe({name: 'iconTipoNotificacion'})
 export class IconTipoNotificacionPipe implements PipeTransform {
   transform(value: eTipoNotificacion): string {
-    switch(value){
+    switch (value) {
         case eTipoNotificacion.Correcto:
-            return "done";
+            return 'done';
         case eTipoNotificacion.Incorrecto:
-            return "close";
+            return 'close';
         case eTipoNotificacion.Advertencia:
-            return "warning";
+            return 'warning';
         case eTipoNotificacion.Informativo:
-            return "info";
+            return 'info';
         default:
-            return "done";
+            return 'done';
     }
   }
 }

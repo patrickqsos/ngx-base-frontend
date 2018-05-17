@@ -5,7 +5,7 @@ import { fadeInAnim } from '../../shared/animations/template.animation';
 
 /**
  * Componente para mostrar la pagina de acceso no autorizado.
- * 
+ *
  * @export
  * @class UnauthorizedComponent
  * @extends {BaseComponent}
@@ -21,11 +21,11 @@ export class UnauthorizedComponent extends BaseComponent  {
 
   /**
    * Creates an instance of NotfoundComponent.
-   * @param {LangService} langService 
+   * @param {LangService} langService
    * @memberof NotfoundComponent
    */
   constructor(
     public langService: LangService
-  ) { super() }
+  ) { super(); }
 
 }

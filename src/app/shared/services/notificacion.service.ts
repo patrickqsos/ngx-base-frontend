@@ -16,7 +16,7 @@ export class NotificacionService {
 
   /**
    * Observable para notificar el avance del progressbar.
-   * 
+   *
    * @type {(Observable<number | null>)}
    * @memberof NotificacionService
    */
@@ -24,12 +24,12 @@ export class NotificacionService {
 
   /**
    * Observable para recibir el avance del progressbar desde el backend interceptor.
-   * 
+   *
    * @type {(Subject<number | null>)}
    * @memberof NotificacionService
    */
   public progressSubject: Subject<number | null>;
-  
+
   /**
    * Creates an instance of NotificacionService.
    * @param {MatSnackBar} snackBar
@@ -37,7 +37,7 @@ export class NotificacionService {
    */
   constructor(private snackBar: MatSnackBar) {
       this.progressSubject = new ReplaySubject<number | null>(1);
-	  	this.progress$ = this.progressSubject.asObservable();
+      this.progress$ = this.progressSubject.asObservable();
   }
 
   /**
@@ -82,9 +82,9 @@ export class NotificacionService {
 
   /**
    * Notifica entidad resultado en un toast con boton para
-   * 
-   * @param {Resultado} pResult 
-   * @param {eTipoNotificacion} [pTipoNotificacion=eTipoNotificacion.Correcto] 
+   *
+   * @param {Resultado} pResult
+   * @param {eTipoNotificacion} [pTipoNotificacion=eTipoNotificacion.Correcto]
    * @memberof NotificacionService
    */
   showSnackbarConBoton(pResult: Resultado, pTipoNotificacion: eTipoNotificacion = eTipoNotificacion.Correcto): void {
@@ -95,7 +95,6 @@ export class NotificacionService {
     // Abre el snackbar.
     this.snackBar.openFromComponent(NotificacionComponent, {
       data: pResult,
-      //duration: pTiempo,
       horizontalPosition: 'left',
       verticalPosition: 'bottom',
     });

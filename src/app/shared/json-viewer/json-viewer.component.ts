@@ -17,7 +17,7 @@ export class JsonViewerComponent implements OnChanges {
 
   @Input()
   json: Array<any> | Object | any;
-  
+
   @Input()
   maxCollapsedLength: number;
 
@@ -32,15 +32,15 @@ export class JsonViewerComponent implements OnChanges {
 
     if (typeof (this.json) !== 'object' && !Array.isArray(this.json)) {
 
-      if(this.json){
-        let msg = this.json;
-  
+      if (this.json) {
+        const msg = this.json;
+
         this.json = {
           Mensaje: msg
-        }
-      }
-      else
+        };
+      } else {
         return;
+      }
     }
 
     this.asset = [];
@@ -56,14 +56,14 @@ export class JsonViewerComponent implements OnChanges {
     }
   }
 
-  
+
   private createItem(key: any, value: any): Item {
-    let item: Item = {
+    const item: Item = {
       key: key || '""',
-      value: value, 
-      title: value, 
+      value: value,
+      title: value,
       type: undefined,
-      isOpened: false 
+      isOpened: false
     };
 
     if (typeof (item.value) === 'string') {
@@ -88,7 +88,7 @@ export class JsonViewerComponent implements OnChanges {
 
     } else if (item.value === null) {
       item.type = 'null';
-      item.title = 'null'
+      item.title = 'null';
 
     } else if (typeof (item.value) === 'object') {
       item.type = 'object';
@@ -96,10 +96,10 @@ export class JsonViewerComponent implements OnChanges {
 
     } else if (item.value === undefined) {
       item.type = 'undefined';
-      item.title = 'undefined'
+      item.title = 'undefined';
     }
 
-    item.title = this.setMaxLength('' + item.title); 
+    item.title = this.setMaxLength('' + item.title);
 
 
     return item;

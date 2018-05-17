@@ -1,8 +1,7 @@
-.base-auth{
+mat-card {
     width: 400px; 
 }
 
-.base-auth-header{
-    margin-bottom: 20px !important;
+mat-card-content {
+    margin-top: 40px;
 }
-  

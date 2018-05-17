@@ -48,11 +48,11 @@ import { CellPositionDirective } from './directives/cell-position.directive';
     declarations: [
         ClassTipoNotificacionPipe,
         IconTipoNotificacionPipe,
-        
+
         HoverCardDirective,
         AutofocusDirective,
         CellPositionDirective,
-        
+
         ConfirmDialogComponent,
         JsonViewerComponent,
         ErrorViewerComponent
@@ -120,11 +120,11 @@ import { CellPositionDirective } from './directives/cell-position.directive';
 
         ClassTipoNotificacionPipe,
         IconTipoNotificacionPipe,
-        
+
         HoverCardDirective,
         AutofocusDirective,
         CellPositionDirective,
-        
+
         ConfirmDialogComponent,
         JsonViewerComponent,
         ErrorViewerComponent

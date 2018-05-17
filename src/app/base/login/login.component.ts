@@ -15,7 +15,7 @@ import { ContextoService } from '../../shared/services/contexto.service';
     animations: [fadeInAnim],
     host: { '[@fadeInAnim]': '' }
 })
-export class LoginComponent extends BaseComponent implements OnInit{
+export class LoginComponent extends BaseComponent implements OnInit {
 
     form = new FormGroup(
         {usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -24,8 +24,8 @@ export class LoginComponent extends BaseComponent implements OnInit{
 
     /**
      * Creates an instance of LoginComponent.
-     * @param {LangService} langService 
-     * @param {AuthService} authService 
+     * @param {LangService} langService
+     * @param {AuthService} authService
      * @memberof LoginComponent
      */
     constructor(
@@ -48,11 +48,11 @@ export class LoginComponent extends BaseComponent implements OnInit{
 
     /**
      * Hook on init del componente.
-     * 
+     *
      * @memberof LoginComponent
      */
-    ngOnInit(){
-        if(this.authService.isUserAuthenticated()){
+    ngOnInit() {
+        if (this.authService.isUserAuthenticated()) {
             this.router.navigate(['menu']);
         }
     }

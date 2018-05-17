@@ -17,11 +17,11 @@ export class BaseComponent {
 
     /**
      * Objeto que contiene la configuración base
-     * 
+     *
      * @memberof BaseComponent
      */
-    public config = baseConfig
-    
+    public config = baseConfig;
+
     /**
      * Enum que contiene lista de modulos.
      *
@@ -40,7 +40,7 @@ export class BaseComponent {
 
     /**
      * Propiedad subject para manejar los unsubscribe de forma general en un componente.
-     * 
+     *
      * @protected
      * @type {Subject<boolean>} Subject que emite valores booleanos.
      * @memberof BaseComponent

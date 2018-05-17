@@ -1,147 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
 /* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 html, body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(/assets/material-icons.woff2) format('woff2');
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/assets/material-icons.woff2) format('woff2');
 }
 
 .material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
 }
 
 
 .mat-expansion-panel-body {
-  padding: 0px !important;
+    padding: 0px !important;
 }
 
-.mat-expansion-panel-header-description, .mat-expansion-indicator, .mat-expansion-indicator:after{
-  color: white !important;
+.mat-expansion-panel-header-description, .mat-expansion-indicator, .mat-expansion-indicator:after {
+    color: white !important;
 }
 
 router-outlet{
-  display: none;
+    display: none;
 }
 
-.container-fluid
-{
-  height: 100%;
-  margin: 0px;
-  min-height: 100%;
-  min-width: 98%;
-  width: 98%;
+.container-fluid {
+    height: 100%;
+    margin: 0px;
+    min-height: 100%;
+    min-width: 98%;
+    width: 98%;
 }
 
 .mat-card-header-text {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 .flex-spacer{
-  flex-grow: 1
+    flex-grow: 1
 }
 
 mat-sidenav-content{
-  flex: 1 1 100%;
-  display: flex !important; 
-  flex-direction: column ;
-  min-height: 100%; 
-  align-content: center; 
-  justify-content: center;
-  align-items: center;
+    flex: 1 1 100%;
+    display: flex !important; 
+    flex-direction: column ;
+    min-height: 100%; 
+    align-content: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 .correcto{
-  color: greenyellow !important;
+    color: greenyellow !important;
 }
 
 .incorrecto{
-  color: #ff6a6a !important;
+    color: #ff6a6a !important;
 }
 
 .advertencia{
-  color: rgb(219, 219, 9) !important;
+    color: rgb(219, 219, 9) !important;
 }
 .informativo{
-  color: rgb(126, 207, 255) !important;
+    color: rgb(126, 207, 255) !important;
 }
 
 .menu-card{
-  cursor: pointer;
-  border-radius: 10px !important;
+    cursor: pointer;
+    border-radius: 10px !important;
 }
 
 .animate-icon-menu {
-  -ms-transform: scale(1.2); 
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  transition: all 0.5s ease-out;
+    -ms-transform: scale(1.2); 
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 0.5s ease-out;
 }
 
 .mat-24 {
-  font-size:5em !important;
-  height:1em !important;
-  width:1em !important;
+    font-size:5em !important;
+    height:1em !important;
+    width:1em !important;
 }
 
-.fixFxLayoutGapBottom
-{
-  margin-bottom: 10px;
+.fixFxLayoutGapBottom{
+    margin-bottom: 10px;
 }
 
 .mat-drawer-container{
-  background-image: url(/assets/pattern.jpg);
+    background-image: url(/assets/pattern.jpg);
 }
 
 .mat-column-select {
-  overflow: initial;
+    overflow: initial;
 }
 
 .table-segip{
-  display: flex;
-  flex-direction: column;
-  min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
 }
 
 .table-segip-empty{
-  padding: 25px;
-  font-size: 18px;
+    padding: 25px;
+    font-size: 18px;
 }
 
 .botonera-bottom-segip{
-  padding: 25px;
+    padding: 25px;
 }
 
 mat-dialog-content{
-  padding: 25px !important;
+    padding: 25px !important;
 }
 
 .mat-header-cell.mat-sort-header-sorted {
-  color: black;
+    color: black;
 }
 
 mat-spinner{
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
 }
 
 .user-info > .mat-menu-content >.mat-menu-item {
-  font-size: 12px;
+    font-size: 12px;
 }

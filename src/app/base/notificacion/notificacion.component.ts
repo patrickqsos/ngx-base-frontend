@@ -6,9 +6,10 @@ import { BaseComponent } from '../../shared/base.component';
 import { ErrorViewerComponent } from '../../shared/error-viewer/error-viewer.component';
 import { LangService } from '../../shared/services/lang.service';
 import { DomSanitizer } from '@angular/platform-browser';
+
 /**
  * Componente para mostrar notificaciones.
- * 
+ *
  * @export
  * @class NotificacionComponent
  */
@@ -19,32 +20,34 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NotificacionComponent extends BaseComponent {
 
-  /**
-   * Creates an instance of NotificacionComponent.
-   * @param {Resultado} contenido 
-   * @memberof NotificacionComponent
-   */
-  constructor(
-    public snackBarRef: MatSnackBarRef<NotificacionComponent>,
-    @Inject(MAT_SNACK_BAR_DATA) public contenido: Resultado,
-    public langService: LangService,
-    private dialog: MatDialog,
-    public sanitizer: DomSanitizer,
-  ) { super() }
+    /**
+    * Creates an instance of NotificacionComponent.
+    * @param {Resultado} contenido
+    * @memberof NotificacionComponent
+    */
+    constructor(
+        public snackBarRef: MatSnackBarRef<NotificacionComponent>,
+        @Inject(MAT_SNACK_BAR_DATA) public contenido: Resultado,
+        public langService: LangService,
+        private dialog: MatDialog,
+        public sanitizer: DomSanitizer,
+    ) {
+        super();
+    }
 
-  /**
-   * Abre el contenido del error en un dialog.
-   * 
-   * @memberof NotificacionComponent
-   */
-  openError() : void {
-    let dialogRef = this.dialog.open(ErrorViewerComponent, {
-      width: '600px',
-      data: this.contenido 
-		});
+    /**
+     * Abre el contenido del error en un dialog.
+     *
+     * @memberof NotificacionComponent
+     */
+    openError(): void {
+        const dialogRef = this.dialog.open(ErrorViewerComponent, {
+            width: '600px',
+            data: this.contenido
+        });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.snackBarRef.dismiss();
-    });
-  }
+        dialogRef.afterClosed().subscribe(result => {
+            this.snackBarRef.dismiss();
+        });
+    }
 }

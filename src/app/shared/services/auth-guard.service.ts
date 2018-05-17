@@ -18,8 +18,8 @@ export class AuthGuardService implements CanActivate {
    * @param router Router.
    */
   constructor(
-      private authService: AuthService, 
-      private contextService: ContextoService,  
+      private authService: AuthService,
+      private contextService: ContextoService,
       private notificacionService: NotificacionService,
       private router: Router
   ) {}
@@ -30,20 +30,20 @@ export class AuthGuardService implements CanActivate {
    */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // Extrae la url actual de la solicitud.
-    let url: string = state.url;
+    const url: string = state.url;
     // Valida si el usuario esta autenticado.
     if (this.authService.isUserAuthenticated()) {
       // Valida si la url deberia ser verificada en el contexto.
-      if(route.data.checkRecurso) {
-        if(this.contextService.checkRecurso(url))
+      if (route.data.checkRecurso) {
+        if (this.contextService.checkRecurso(url)) {
           return true;
-        else {
+        } else {
           this.router.navigate(['/unauthorized']);
           return false;
         }
-      }
-      else
+      } else {
         return true;
+      }
     } else {
       // Setea la url de retorno.
       this.authService.returnUrl = url;
