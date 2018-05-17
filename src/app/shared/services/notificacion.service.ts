@@ -3,10 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { Resultado } from '../../shared/models/resultado.model';
 import { NotificacionComponent } from '../../base/notificacion/notificacion.component';
 import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from "rxjs/Observable";
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-
+import { Subject ,  Observable ,  ReplaySubject } from 'rxjs';
 
 /**
  * Servicio para notificar mensajes.

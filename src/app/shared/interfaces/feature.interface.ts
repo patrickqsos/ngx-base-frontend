@@ -1,4 +1,4 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 /**
  * Interface para los servicios creados por cada feature.

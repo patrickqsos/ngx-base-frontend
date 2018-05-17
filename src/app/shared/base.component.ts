@@ -1,11 +1,10 @@
-
 import { eModulo } from '../shared/enums/modulo.enum';
 import { LangService } from '../shared/services/lang.service';
 import { UtilService } from '../shared/services/util.service';
 import { NotificacionService } from '../shared/services/notificacion.service';
 import { Component } from '@angular/core';
 import { eTipoNotificacion } from '../shared/enums/tipo-notificacion.enum';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { baseConfig } from '../base/base.config';
 
 /**

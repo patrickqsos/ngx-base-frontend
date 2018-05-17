@@ -1,4 +1,4 @@
-import { Component, OnInit, trigger, state, style, transition, animate, keyframes } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '../../shared/base.component';
 import { ContextoService } from '../../shared/services/contexto.service';

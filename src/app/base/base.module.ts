@@ -1,4 +1,4 @@
-import { ProgressBarComponent } from './progressbar/progressbar.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';

@@ -1,13 +1,8 @@
+import { Observable ,  ReplaySubject ,  Subject, throwError } from 'rxjs';
+import { tap, catchError, finalize } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
 import { JwtService } from "../services/jwt.service";
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/finally';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Subject } from 'rxjs/Subject';
 import { NotificacionService } from "../services/notificacion.service";
 import { eTipoNotificacion } from "../enums/tipo-notificacion.enum";
 import { Injector } from "@angular/core";
@@ -70,62 +65,62 @@ export class BackendInterceptor implements HttpInterceptor {
         
         
         return next
-            .handle(reqClone)
-            .do((event: HttpEvent<any>) => {
-				switch (event.type) {
-                    case HttpEventType.Sent:
-                        // Cambia el estado a true cuando se ejecuta una peticion http al backend
-                        this.contextoService.isLoading = true;
-                        // Continua con el request clonado.
-                        if(showProgressBar)
-                            // Hace aparecer un progressbar indeterminado.
-						    this.notificacionService.progressSubject.next(null);
-						break;
-                    case HttpEventType.DownloadProgress:
-                        // Si el response especifica su tamaño, se calcula el valor del progressbar. 
-                        if (event.total && showProgressBar) {
-                            this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
+            .handle(reqClone).pipe(
+                tap((event: HttpEvent<any>) => {
+                    switch (event.type) {
+                        case HttpEventType.Sent:
+                            // Cambia el estado a true cuando se ejecuta una peticion http al backend
+                            this.contextoService.isLoading = true;
+                            // Continua con el request clonado.
+                            if(showProgressBar)
+                                // Hace aparecer un progressbar indeterminado.
+                                this.notificacionService.progressSubject.next(null);
+                            break;
+                        case HttpEventType.DownloadProgress:
+                            // Si el response especifica su tamaño, se calcula el valor del progressbar. 
+                            if (event.total && showProgressBar) {
+                                this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
+                            }
+                            break;
+                        case HttpEventType.UploadProgress:
+                            // No se notifica el upload.
+                            // if (event.total) {
+                            // 	this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
+                            // }
+                            break;
+                        case HttpEventType.Response:
+                            // Notifica mensaje.
+                            if(event.body.message && showNotificador) 
+                                this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
+                            break;
+                    }
+                }),
+                catchError(event => {
+                    if (event instanceof HttpErrorResponse) {
+                        // En event.error deberia esta la entidad result del backend.
+    
+                        // Si el result tiene la propiedad error.
+                        if(event.error.error) {
+                            this.notificacionService.showSnackbarConBoton(event.error, eTipoNotificacion.Incorrecto);
                         }
-                        break;
-                    case HttpEventType.UploadProgress:
-                        // No se notifica el upload.
-                        // if (event.total) {
-						// 	this.notificacionService.progressSubject.next(Math.round((event.loaded / event.total) * 100));
-						// }
-						break;
-                    case HttpEventType.Response:
-                        // Notifica mensaje.
-                        if(event.body.message && showNotificador) 
-                            this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
-						break;
-                }
-                
-			})
-            .catch(event => {
-                if (event instanceof HttpErrorResponse) {
-                    // En event.error deberia esta la entidad result del backend.
-
-                    // Si el result tiene la propiedad error.
-                    if(event.error.error) {
-                        this.notificacionService.showSnackbarConBoton(event.error, eTipoNotificacion.Incorrecto);
+                        // Si el result no tiene la propiedad error pero si tiene un mensaje.
+                        else if(event.error.message) {
+                            this.notificacionService.showSnackbarMensaje(event.error.message, 3000, this.getTipoNotificacion(event.status));
+                        }
+                        // Si el result no tiene error ni mensaje entonces muestra mensaje genérico.
+                        else {
+                            let url = reqClone.url.split('?');
+                            this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'msg-network-error') + url[0], 5000, eTipoNotificacion.Incorrecto);
+                        }
                     }
-                    // Si el result no tiene la propiedad error pero si tiene un mensaje.
-                    else if(event.error.message) {
-                        this.notificacionService.showSnackbarMensaje(event.error.message, 3000, this.getTipoNotificacion(event.status));
-                    }
-                    // Si el result no tiene error ni mensaje entonces muestra mensaje genérico.
-                    else {
-                        let url = reqClone.url.split('?');
-                        this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'msg-network-error') + url[0], 5000, eTipoNotificacion.Incorrecto);
-                    }
-                }
-                // Dispara el error en el observable.
-                return Observable.throw(event);
-            })
-            .finally(() => {
-                this.contextoService.isLoading = false;
-                this.notificacionService.progressSubject.next(0);
-            });
+                    // Dispara el error en el observable.
+                    return throwError(event);
+                }),
+                finalize(() => {
+                    this.contextoService.isLoading = false;
+                    this.notificacionService.progressSubject.next(0);
+                })
+            );
     }
 
     /**

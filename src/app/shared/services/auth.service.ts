@@ -1,4 +1,3 @@
-
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
@@ -9,7 +8,7 @@ import { LangService } from './lang.service';
 import { Resultado } from '../../shared/models/resultado.model';
 import { NotificacionService } from './notificacion.service';
 import { eModulo } from '../../shared/enums/modulo.enum';
-import 'rxjs/add/operator/first';
+
 
 @Injectable()
 /**
