@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BaseComponent } from '../../shared/base.component';
 import { ContextoService } from '../../shared/services/contexto.service';
 import { LangService } from '../../shared/services/lang.service';
-import { btnHomeAnimation, btnMenuAnimation } from '../../shared/animations/template.animation';
+import { zoomInAnim, fadeInLeftAnim } from '../../shared/animations/template.animation';
 
 
 /** 
@@ -18,7 +18,7 @@ import { btnHomeAnimation, btnMenuAnimation } from '../../shared/animations/temp
     selector: 'base-menu',
     templateUrl: 'menu.component.html',
     styleUrls:['menu.component.css'],
-    animations: [btnHomeAnimation, btnMenuAnimation]
+    animations: [zoomInAnim, fadeInLeftAnim]
 })
 export class MenuComponent extends BaseComponent implements OnInit{
 

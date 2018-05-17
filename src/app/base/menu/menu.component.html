@@ -1,5 +1,5 @@
 <div  fxFlex fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center center">
-    <mat-card [@divHome] *ngIf="contextoService.breadCrumbs.length > 0"
+    <mat-card [@fadeInLeftAnim] *ngIf="contextoService.breadCrumbs.length > 0"
         class="menu-card fixFxLayoutGapBottom" 
         (click)="onHomeSelected()" 
         [hoverCard]="'mat-elevation-z24'"
@@ -18,7 +18,7 @@
         </mat-card-content>
     </mat-card>
 
-    <mat-card [@divMenu]
+    <mat-card [@zoomInAnim]
         class="menu-card fixFxLayoutGapBottom" 
         (click)="onMenuSelected(menu)"
         [hoverCard]="'mat-elevation-z24'"

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '../../shared/base.component';
 import { LangService } from '../../shared/services/lang.service';
-import { fadeInAnimation } from '../../shared/animations/template.animation';
+import { fadeInAnim } from '../../shared/animations/template.animation';
 import { ContextoService } from '../../shared/services/contexto.service';
 
 /**
@@ -15,8 +15,8 @@ import { ContextoService } from '../../shared/services/contexto.service';
   selector: 'base-notfound',
   templateUrl: './notfound.component.html',
   styleUrls: ['./notfound.component.css'],
-  animations: [fadeInAnimation],
-  host: { '[@fadeInAnimation]': '' }
+  animations: [fadeInAnim],
+  host: { '[@fadeInAnim]': '' }
 })
 export class NotfoundComponent extends BaseComponent  {
 
