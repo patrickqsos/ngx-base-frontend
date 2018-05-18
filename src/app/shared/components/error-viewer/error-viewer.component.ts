@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Resultado } from '../../shared/models/resultado.model';
-import { LangService } from '../../shared/services/lang.service';
-import { BaseComponent } from '../../shared/base.component';
+import { Resultado } from '../../../shared/models/resultado.model';
+import { LangService } from '../../../shared/services/lang.service';
+import { BaseComponent } from '../../../shared/base.component';
 
 @Component({
     selector: 'shared-error-viewer',

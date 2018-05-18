@@ -32,9 +32,9 @@ import { HoverCardDirective } from './directives/hover-card.directive';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { JsonViewerComponent } from './json-viewer/json-viewer.component';
-import { ErrorViewerComponent } from './error-viewer/error-viewer.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { JsonViewerComponent } from './components/json-viewer/json-viewer.component';
+import { ErrorViewerComponent } from './components/error-viewer/error-viewer.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { CellPositionDirective } from './directives/cell-position.directive';
 

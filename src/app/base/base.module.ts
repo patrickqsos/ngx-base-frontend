@@ -10,7 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from '../shared/services/auth-guard.service';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { ErrorViewerComponent } from '../shared/error-viewer/error-viewer.component';
+import { ErrorViewerComponent } from '../shared/components/error-viewer/error-viewer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { baseRoutes } from './base.routing';
 

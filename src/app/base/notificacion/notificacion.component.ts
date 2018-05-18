@@ -3,7 +3,7 @@ import {MAT_SNACK_BAR_DATA, MatDialog, MatSnackBarRef} from '@angular/material';
 import { Resultado } from '../../shared/models/resultado.model';
 import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
 import { BaseComponent } from '../../shared/base.component';
-import { ErrorViewerComponent } from '../../shared/error-viewer/error-viewer.component';
+import { ErrorViewerComponent } from '../../shared/components/error-viewer/error-viewer.component';
 import { LangService } from '../../shared/services/lang.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
