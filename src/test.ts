@@ -17,7 +17,11 @@ declare const __karma__: any;
 declare const require: any;
 
 // Prevent Karma from running prematurely.
-__karma__.loaded = function () {};
+
+// tslint:disable-next-line:typedef
+__karma__.loaded = function() {
+  //
+};
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(

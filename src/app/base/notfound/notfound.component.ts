@@ -27,11 +27,11 @@ export class NotfoundComponent extends BaseComponent  {
      */
     constructor(
         public langService: LangService,
-        public contextoService: ContextoService,
+        public contextoService: ContextoService
 
     ) { super(); }
 
-    onHomeClick() {
+    onHomeClick(): void {
         this.contextoService.breadCrumbs = [];
     }
 }

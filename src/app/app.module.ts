@@ -14,7 +14,7 @@ import { NotificacionService } from './shared/services/notificacion.service';
 import { JwtService } from './shared/services/jwt.service';
 import { BackendInterceptor } from './shared/interceptors/backend.interceptor';
 import { MatPaginatorIntl } from '@angular/material';
-import { CustomMatPaginator} from './shared/custom.matpaginator';
+import { CustomMatPaginator } from './shared/custom.matpaginator';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { LayoutComponent } from './base/layout/layout.component';

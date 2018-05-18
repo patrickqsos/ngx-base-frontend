@@ -20,7 +20,7 @@ export class NotificacionService {
    * @type {(Observable<number | null>)}
    * @memberof NotificacionService
    */
-  public progress$: Observable<number | null>;
+  progress$: Observable<number | null>;
 
   /**
    * Observable para recibir el avance del progressbar desde el backend interceptor.
@@ -28,7 +28,7 @@ export class NotificacionService {
    * @type {(Subject<number | null>)}
    * @memberof NotificacionService
    */
-  public progressSubject: Subject<number | null>;
+  progressSubject: Subject<number | null>;
 
   /**
    * Creates an instance of NotificacionService.
@@ -61,7 +61,7 @@ export class NotificacionService {
    *
    * @param {string} pMensaje Mensaje a notificar.
    * @param {number} [pTiempo=2000] Tiempo de duración de la notificación.
-   * @param {eTipoNotificacion} [pTipoNotificacion=eTipoMensaje.Correcto] Tipo de mensaje a notificar (segun el tipo, el color e icono cambia)
+   * @param {eTipoNotificacion} pTipoNotificacion Tipo de mensaje a notificar (segun el tipo, el color e icono cambia)
    * @memberof NotificacionService
    */
   showSnackbarMensaje(pMensaje: string, pTiempo: number = 2000, pTipoNotificacion: eTipoNotificacion = eTipoNotificacion.Correcto): void {
@@ -96,7 +96,7 @@ export class NotificacionService {
     this.snackBar.openFromComponent(NotificacionComponent, {
       data: pResult,
       horizontalPosition: 'left',
-      verticalPosition: 'bottom',
+      verticalPosition: 'bottom'
     });
   }
 }

@@ -13,7 +13,7 @@ export class Error {
      * @type {string}
      * @memberof Error
      */
-    public code: string;
+    code: string;
 
     /**
      * Descripción del error.
@@ -21,5 +21,5 @@ export class Error {
      * @type {string}
      * @memberof Error
      */
-    public description: string;
+    description: string;
 }

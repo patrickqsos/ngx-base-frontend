@@ -37,7 +37,7 @@ export class HoverCardDirective implements OnInit {
         private renderer: Renderer2
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.renderer.addClass(this.elementRef.nativeElement, this.notHoverClass);
     }
 
@@ -46,7 +46,7 @@ export class HoverCardDirective implements OnInit {
      *
      * @memberof HoverCardDirective
      */
-    @HostListener('mouseover') cardHover() {
+    @HostListener('mouseover') cardHover(): void {
 
         this.renderer.addClass(this.elementRef.nativeElement.lastElementChild, 'animate-icon-menu');
         this.renderer.removeClass(this.elementRef.nativeElement, this.notHoverClass);
@@ -58,7 +58,7 @@ export class HoverCardDirective implements OnInit {
      *
      * @memberof HoverCardDirective
      */
-    @HostListener('mouseout') cardNotHover() {
+    @HostListener('mouseout') cardNotHover(): void {
         this.renderer.removeClass(this.elementRef.nativeElement.lastElementChild, 'animate-icon-menu');
         this.renderer.removeClass(this.elementRef.nativeElement, this.hoverClass);
         this.renderer.addClass(this.elementRef.nativeElement, this.notHoverClass);

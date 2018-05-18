@@ -6,12 +6,11 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
  * @class CellPositionDirective
  */
 @Directive({
-    selector: '[shCellPosition]',
+    selector: '[shCellPosition]'
 })
 export class CellPositionDirective implements OnInit {
 
     @Input('shPosition') position: string;
-
 
     /**
      * Ctor de la directiva.
@@ -27,7 +26,7 @@ export class CellPositionDirective implements OnInit {
      *
      * @memberof CellPositionDirective
      */
-    ngOnInit() {
+    ngOnInit(): void {
         this.elementRef.nativeElement.style.display = 'flex';
         this.elementRef.nativeElement.style.justifyContent = this.position;
     }

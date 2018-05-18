@@ -38,7 +38,6 @@ import { ErrorViewerComponent } from './components/error-viewer/error-viewer.com
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { CellPositionDirective } from './directives/cell-position.directive';
 
-
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
  * @export

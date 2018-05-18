@@ -15,7 +15,7 @@ export class Resultado {
      * @type {*}
      * @memberof Resultado
      */
-    public data: any;
+    data: any;
 
     /**
      * Mensaje asociado al resultado.
@@ -23,7 +23,7 @@ export class Resultado {
      * @type {string}
      * @memberof Resultado
      */
-    public message: string;
+    message: string;
 
     /**
      * Error de la operación.
@@ -31,7 +31,7 @@ export class Resultado {
      * @type {any}
      * @memberof Resultado
      */
-    public error: any;
+    error: any;
 
     /**
      * Tipo de notificación.
@@ -39,5 +39,5 @@ export class Resultado {
      * @type {eTipoNotificacion}
      * @memberof Resultado
      */
-    public tipoNotificacion: eTipoNotificacion;
+    tipoNotificacion: eTipoNotificacion;
 }

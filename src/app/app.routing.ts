@@ -7,6 +7,3 @@ export const appRoutes: Routes = [
   { path: 'notfound', component: NotfoundComponent, pathMatch: 'full'},
   { path: '**', redirectTo: 'notfound' }
 ];
-
-export const appRoutingProviders: any[] = [
-];

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {MAT_SNACK_BAR_DATA, MatDialog, MatSnackBarRef} from '@angular/material';
+import { MAT_SNACK_BAR_DATA, MatDialog, MatSnackBarRef } from '@angular/material';
 import { Resultado } from '../../shared/models/resultado.model';
 import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
 import { BaseComponent } from '../../shared/base.component';
@@ -30,7 +30,7 @@ export class NotificacionComponent extends BaseComponent {
         @Inject(MAT_SNACK_BAR_DATA) public contenido: Resultado,
         public langService: LangService,
         private dialog: MatDialog,
-        public sanitizer: DomSanitizer,
+        public sanitizer: DomSanitizer
     ) {
         super();
     }

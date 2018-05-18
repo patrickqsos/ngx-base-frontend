@@ -11,7 +11,7 @@ export class UtilService {
      *
      * @memberof UtilService
      */
-    getFechaActual() {
+    getFechaActual(): Date {
         return new Date();
     }
 }

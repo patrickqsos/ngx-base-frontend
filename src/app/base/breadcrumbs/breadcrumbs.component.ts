@@ -18,7 +18,7 @@ import { fadeInLeftAnim, breadItemAnim } from '../../shared/animations/template.
     templateUrl: './breadcrumbs.component.html',
     animations: [fadeInLeftAnim, breadItemAnim]
 })
-export class BreadcrumbsComponent extends BaseComponent implements OnInit {
+export class BreadcrumbsComponent extends BaseComponent {
 
     /**
      * Creates an instance of BreadcrumbsComponent.
@@ -42,7 +42,7 @@ export class BreadcrumbsComponent extends BaseComponent implements OnInit {
      * @param {any} pindex Index dle item clickeado.
      * @memberof BreadcrumbsComponent
      */
-    onBreadClick(pItem, pindex) {
+    onBreadClick(pItem, pindex): void {
         // Carga los recursos hijos del elemento clickeado.
         this.contextoService.listaMenu = pItem.RecursosHijos;
         // Remuevo los items que esten despues del item clickeado en el array de migas de pan.
@@ -54,17 +54,10 @@ export class BreadcrumbsComponent extends BaseComponent implements OnInit {
      *
      * @memberof BreadcrumbsComponent
      */
-    onHomeClick() {
+    onHomeClick(): void {
         // Vacia el array de migas de pan.
         this.contextoService.breadCrumbs = [];
         // Carga el menu inicial.
         this.contextoService.listaMenu = this.contextoService.getListaSchemas();
     }
-
-    /**
-     * Hook on init del componente.
-     *
-     * @memberof BreadcrumbsComponent
-     */
-    ngOnInit(): void { }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseLang } from '../../base/base.lang';
+import { baseLang } from '../../base/base.lang';
 import { eModulo } from '../../shared/enums/modulo.enum';
 import { ContextoService } from './contexto.service';
 
@@ -13,7 +13,7 @@ import { ContextoService } from './contexto.service';
 export class LangService {
 
   // Langs de todos los modulos.
-  private langs: { id: any, contenido: any }[] = [];
+  private langs: Array<{ id: eModulo, contenido: any }> = [];
 
   /**
    * Ctor del servicio, carga los langs de todos los módulos.
@@ -23,7 +23,7 @@ export class LangService {
     this.langs.push(
       {
         id: eModulo.Base,
-        contenido: BaseLang
+        contenido: baseLang
       });
   }
 
@@ -40,15 +40,15 @@ export class LangService {
     // Obtiene idioma actual.
     const idioma = this.contextoService.getIdiomaActual();
     // Valida params de entrada.
-    if (pModulo != null && pIdMensaje != null) {
+    if (pModulo !== undefined && pIdMensaje !== undefined) {
       const lang = this.langs[pModulo].contenido[idioma][pIdMensaje];
-      if (lang != null) {
+      if (lang) {
         return lang;
       } else {
-        return BaseLang[idioma]['lang-error'];
+        return baseLang[idioma]['lang-error'];
       }
     } else {
-      return BaseLang[idioma]['lang-param-error'];
+      return baseLang[idioma]['lang-param-error'];
     }
   }
 }

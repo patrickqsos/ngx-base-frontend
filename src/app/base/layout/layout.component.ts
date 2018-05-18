@@ -1,5 +1,4 @@
-
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { ContextoService } from '../../shared/services/contexto.service';
 import { LangService } from '../../shared/services/lang.service';

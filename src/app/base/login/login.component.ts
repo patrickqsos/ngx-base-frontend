@@ -32,17 +32,16 @@ export class LoginComponent extends BaseComponent implements OnInit {
         public langService: LangService,
         public contextService: ContextoService,
         private authService: AuthService,
-        private router: Router,
+        private router: Router
 
     ) {super(); }
-
 
     /**
      * Funcion que permite Realizar el login(autenticacion) utilizando un
      * servicio del backend.
      * @memberof LoginComponent
      */
-    login() {
+    login(): void {
         this.authService.loginUser(this.form.controls['usuario'].value, this.form.controls['password'].value);
     }
 
@@ -51,7 +50,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
      *
      * @memberof LoginComponent
      */
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.authService.isUserAuthenticated()) {
             this.router.navigate(['menu']);
         }

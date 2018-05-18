@@ -8,5 +8,5 @@ export enum eTipoNotificacion {
     Correcto,
     Incorrecto,
     Advertencia,
-    Informativo,
+    Informativo
 }

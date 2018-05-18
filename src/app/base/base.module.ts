@@ -24,7 +24,7 @@ import { baseRoutes } from './base.routing';
   imports: [
     CommonModule,
     RouterModule.forChild(baseRoutes),
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     LayoutComponent,
@@ -38,11 +38,11 @@ import { baseRoutes } from './base.routing';
   ],
   exports: [
     LayoutComponent,
-    RouterModule,
+    RouterModule
   ],
   entryComponents: [
     NotificacionComponent,
     ErrorViewerComponent
-  ],
+  ]
 })
 export class BaseModule {}

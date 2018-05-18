@@ -2,9 +2,9 @@
  * Langs del modulo base.
  *
  * @export
- * @const BaseLang
+ * @const baseLang
  */
-export const BaseLang = {
+export const baseLang = {
         'es': {
             'lang-error': 'No se pudo encontrar el lang',
             'lang-param-error': 'Faltan parámetros en el langService',
@@ -23,15 +23,17 @@ export const BaseLang = {
             'tit-autenticacion': 'Autenticación',
             'loginCerrado': 'Su sesion ha sido cerrada.',
             'tit-info-sistema': 'Información del sistema',
-            'msg-copyright': 'Copyright © Segip ' + new Date().getFullYear(),
+            'msg-copyright': `Copyright © Segip ${new Date().getFullYear()}`,
             'msg-version': 'Versión',
             'lbl-lenguaje': 'Lenguaje',
             'tit-home' : 'Página de inicio',
             'tit-menu' : 'Menú',
             'tit-not-found' : 'Página no encontrada',
+            // tslint:disable-next-line:max-line-length
             'desc-not-found' : 'Lo sentimos mucho pero la página que busca no pudo ser encontrada, puede usar el icono de abajo para volver a la página de inicio',
             'msg-network-error' : 'No se pudo completar la operación. Por favor vuelva a intentar',
             'tit-unauthorized' : 'Pagina no autorizada',
+            // tslint:disable-next-line:max-line-length
             'desc-unauthorized' : 'Lo sentimos mucho pero no tiene los privilegios suficientes para acceder a la página. Contactese con el administrador para solicitar el acceso',
             'btn-cerrar': 'Cerrar',
             'btn-abrir': 'Abrir',
@@ -63,15 +65,17 @@ export const BaseLang = {
             'tit-autenticacion': 'Login',
             'loginCerrado': 'Log out successfully',
             'tit-info-sistema': 'System info',
-            'msg-copyright': 'Copyright © Segip ' + new Date().getFullYear(),
+            'msg-copyright': `Copyright © Segip ${new Date().getFullYear()}`,
             'msg-version': 'Version',
             'lbl-lenguaje': 'Language',
             'tit-home' : 'Home',
             'tit-menu' : 'Menu',
             'tit-not-found' : 'Page not found',
+            // tslint:disable-next-line:max-line-length
             'desc-not-found' : 'We are sorry but the page you were looking for was not found. You can use the icon below to return to the home page',
             'msg-network-error' : 'Operation could not be completed. Please try again',
             'tit-unauthorized' : 'Page not authorized',
+            // tslint:disable-next-line:max-line-length
             'desc-unauthorized' : 'We are sorry but you do not have enough privileges to access the page. Please contact the admin to request access'
         }
     };

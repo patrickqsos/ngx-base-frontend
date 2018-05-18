@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { eTipoNotificacion } from '../../shared/enums/tipo-notificacion.enum';
 
-
 @Pipe({name: 'iconTipoNotificacion'})
 export class IconTipoNotificacionPipe implements PipeTransform {
   transform(value: eTipoNotificacion): string {

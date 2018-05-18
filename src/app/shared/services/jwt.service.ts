@@ -12,13 +12,11 @@ export class JwtService {
    * @returns {string}
    * @memberof JwtService
    */
-  public getToken(): string {
+  getToken(): string {
       return localStorage.getItem('user_token');
   }
 
-  constructor() {}
-
-  public urlBase64Decode(str: string): string {
+  urlBase64Decode(str: string): string {
     let output = str.replace(/-/g, '+').replace(/_/g, '/');
     switch (output.length % 4) {
       case 0: {
@@ -77,21 +75,22 @@ export class JwtService {
     return output;
   }
 
-  private b64DecodeUnicode(str: any) {
+  private b64DecodeUnicode(str: any): string {
     return decodeURIComponent(
       Array.prototype.map
         .call(this.b64decode(str), (c: any) => {
+          // tslint:disable-next-line:prefer-template
           return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         })
         .join('')
     );
   }
 
-  public decodeToken(token: string = this.getToken()): any {
+  decodeToken(token: string = this.getToken()): any {
     const parts = token.split('.');
 
     if (parts.length !== 3) {
-      throw new Error('The inspected token doesn\'t appear to be a JWT. Check to make sure it has three parts and see https://jwt.io for more.');
+      throw new Error('The inspected token doesn\'t appear to be a JWT. Check to make sure it has three parts.');
     }
 
     const decoded = this.urlBase64Decode(parts[1]);
@@ -102,12 +101,12 @@ export class JwtService {
     return JSON.parse(decoded);
   }
 
-  public getTokenExpirationDate(token: string = this.getToken()): Date {
+  getTokenExpirationDate(token: string = this.getToken()): Date {
     let decoded: any;
     decoded = this.decodeToken(token);
 
     if (!decoded.hasOwnProperty('exp')) {
-      return null;
+      return undefined;
     }
 
     const date = new Date(0);
@@ -124,9 +123,9 @@ export class JwtService {
    * @returns {boolean}
    * @memberof JwtService
    */
-  public isTokenExpired(token: string = this.getToken(), offsetSeconds?: number): boolean {
+  isTokenExpired(token: string = this.getToken(), offsetSeconds?: number): boolean {
 
-    if (token == null) {
+    if (token === null) {
       return true;
     }
 
@@ -134,7 +133,7 @@ export class JwtService {
 
     offsetSeconds = offsetSeconds || 0;
 
-    if (date === null) {
+    if (date === undefined) {
       return false;
     }
 

@@ -8,7 +8,7 @@ import { BaseComponent } from '../../../shared/base.component';
     selector: 'shared-confirm-dialog',
     templateUrl: './confirm-dialog.component.html'
 })
-export class ConfirmDialogComponent extends BaseComponent implements OnInit {
+export class ConfirmDialogComponent extends BaseComponent {
 
     /**
      * Creates an instance of ConfirmDialogComponent.
@@ -20,12 +20,9 @@ export class ConfirmDialogComponent extends BaseComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<ConfirmDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
-        public langService: LangService,
+        public langService: LangService
 
     ) {
         super();
-    }
-
-    ngOnInit() {
     }
 }

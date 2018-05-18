@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { BaseLang } from '../../base/base.lang';
+import { baseLang } from '../../base/base.lang';
 
 /**
  * Servicio para interactuar con el contexto del sistema.
@@ -21,19 +21,19 @@ export class ContextoService {
     private idiomas = [];
 
     // Configuración leida del archivo de configuración.
-    private config: Object = null;
+    private config: Object = undefined;
 
     // Entorno del sistema.
-    private env: Object = null;
+    private env: Object = undefined;
 
     // Array que contiene todos los menus seleccionado, sirve para armar las migas de pan.
-    public breadCrumbs: any[] = [];
+    breadCrumbs: Array<any> = [];
 
     // Lista de items del menu.
-    public listaMenu: any[] = [];
+    listaMenu: Array<any> = [];
 
     // Bandera que indica si el componente esta cargando algo, util para habilitar/deshabilitar botones
-    public isLoading = false;
+    isLoading = false;
 
     /**
      * Creates an instance of ContextoService.
@@ -48,7 +48,7 @@ export class ContextoService {
      * @returns Archivo de configuración.
      * @memberof ContextoService
      */
-    public load() {
+    load(): Promise<boolean> {
         return new Promise((resolve, reject) => {
             // Define entorno: desarrollo o producción.
             this.env = 'dev';
@@ -56,7 +56,8 @@ export class ContextoService {
                 this.env = 'prod';
             }
             // Lee el archivo de configuración.
-            this.http.get('../../../assets/config/' + this.env + '.config.json')
+
+            this.http.get(`../../../assets/config/${this.env}.config.json`)
                     .subscribe((responseData) => {
                         // Guarda localmente la configuración leida.
                         this.config = responseData;
@@ -79,11 +80,11 @@ export class ContextoService {
      * @returns Valor de la variable en el archivo de configuración.
      * @memberof ContextoService
      */
-    public getConfig(key: string): any {
+    getConfig(key: string): any {
         return this.config[key];
     }
 
-    public getBackendAPI(): string {
+    getBackendAPI(): string {
         return this.config['backendApi'];
     }
 
@@ -102,7 +103,7 @@ export class ContextoService {
      *
      * @memberof ContextoService
      */
-    getIdiomaActual() {
+    getIdiomaActual(): string {
         return this.idiomaSeleccionado ;
     }
 
@@ -112,8 +113,8 @@ export class ContextoService {
      * @returns {any[]} Lista de modulos.
      * @memberof ContextoService
      */
-    getListaModulos(): any[] {
-        if (this.getContexto() != null && this.getContexto().RecursosUsuario != null) {
+    getListaModulos(): Array<any> {
+        if (this.getContexto() && this.getContexto().RecursosUsuario) {
             return this.getContexto().RecursosUsuario;
         } else {
             return [];
@@ -126,11 +127,11 @@ export class ContextoService {
      * @returns {any[]} Lista de recursos hijos.
      * @memberof ContextoService
      */
-    getListaSchemas(): any[] {
+    getListaSchemas(): Array<any> {
         // Instancia lista.
         const listaSchemas = [];
         // Valida si existe elementos en la lista.
-        if (this.getContexto()  != null && this.getContexto().RecursosUsuario != null) {
+        if (this.getContexto() && this.getContexto().RecursosUsuario) {
             // Recorre lista de recursos hijos para adiconarlos a la lista a devolver.
             for (const modulo of this.getContexto().RecursosUsuario) {
                 // for(let schema of modulo.RecursosHijos) {
@@ -182,7 +183,7 @@ export class ContextoService {
      * @returns
      * @memberof ContextoService
      */
-    getContexto() {
+    getContexto(): any {
         // Obtiene desde el local storage el contexto.
         return JSON.parse(localStorage.getItem('context'));
     }
@@ -205,10 +206,10 @@ export class ContextoService {
      */
     getUsuario(): string {
         // Valida si el nombre del usuario esta en el contexto.
-        if (this.getContexto() != null && this.getContexto().NombreCompletoUsuario != null) {
+        if (this.getContexto() && this.getContexto().NombreCompletoUsuario) {
             return this.getContexto().NombreCompletoUsuario;
         } else {
-            return null;
+            return undefined;
         }
     }
 
@@ -220,10 +221,10 @@ export class ContextoService {
      */
     getInstitucion(): string {
         // Valida si el nombre de la institución esta en el contexto.
-        if (this.getContexto() != null && this.getContexto().NombreInstitucion != null) {
+        if (this.getContexto() && this.getContexto().NombreInstitucion) {
             return this.getContexto().NombreInstitucion;
         } else {
-            return null;
+            return undefined;
         }
     }
 
@@ -243,7 +244,7 @@ export class ContextoService {
      * @returns {*}
      * @memberof ContextoService
      */
-    getIdiomas(): any[] {
+    getIdiomas(): Array<any> {
         return this.idiomas;
     }
 
@@ -255,10 +256,10 @@ export class ContextoService {
      */
     getIdSesion(): number {
         // Valida si el nombre del usuario esta en el contexto.
-        if (this.getContexto() != null && this.getContexto().IdHistoricoUsuarioSesion != null) {
+        if (this.getContexto() && this.getContexto().IdHistoricoUsuarioSesion) {
             return this.getContexto().IdHistoricoUsuarioSesion;
         } else {
-            return null;
+            return undefined;
         }
     }
 

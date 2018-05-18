@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 export interface Item {
     key: string;
@@ -24,11 +24,9 @@ export class JsonViewerComponent implements OnChanges {
     @Input()
     expandAll: false;
 
-    public asset: Array<Item> = [];
+    asset: Array<Item> = [];
 
-    constructor() { }
-
-    ngOnChanges() {
+    ngOnChanges(): void {
 
         if (typeof (this.json) !== 'object' && !Array.isArray(this.json)) {
             if (this.json) {
@@ -89,7 +87,7 @@ export class JsonViewerComponent implements OnChanges {
             item.title = 'undefined';
         }
 
-        item.title = this.setMaxLength('' + item.title);
+        item.title = this.setMaxLength(item.title);
 
         return item;
     }
@@ -98,17 +96,17 @@ export class JsonViewerComponent implements OnChanges {
         return ['object', 'array'].indexOf(item.type) !== -1;
     }
 
-    clickHandle(item: Item) {
+    clickHandle(item: Item): void {
         if (!this.isObject(item)) {
             return;
         }
         item.isOpened = !item.isOpened;
     }
 
-    setMaxLength(str: string) {
+    setMaxLength(str: string): string {
         if (!this.maxCollapsedLength || str.length < this.maxCollapsedLength) {
             return str;
         }
-            return str.substring(0, this.maxCollapsedLength) + '...';
+        return `${str.substring(0, this.maxCollapsedLength)} ...`;
     }
 }

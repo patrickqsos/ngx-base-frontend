@@ -26,7 +26,7 @@ export class ProgressBarComponent extends BaseComponent implements OnInit {
 	 * @type {Observable<number>}
 	 * @memberof ProgressComponent
 	 */
-    public progressPercentage$: Observable<number>;
+    progressPercentage$: Observable<number>;
 
     /**
 	 * Creates an instance of ProgressComponent.
@@ -42,11 +42,11 @@ export class ProgressBarComponent extends BaseComponent implements OnInit {
 	 * de incializar el componente
 	 * @memberof ProgressComponent
 	 */
-    ngOnInit() {
+    ngOnInit(): void {
         // Enlaza observable local a observable del servicio de notificación.
         this.progressPercentage$ = this.notificacionService.progress$.pipe(
-            map( progress => {
-                if (progress === null) {
+            map(progress => {
+                if (progress === undefined) {
                     this.progressBar.mode = 'indeterminate';
                     return 100;
                 } else {

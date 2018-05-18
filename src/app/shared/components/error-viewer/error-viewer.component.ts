@@ -6,22 +6,18 @@ import { BaseComponent } from '../../../shared/base.component';
 
 @Component({
     selector: 'shared-error-viewer',
-    templateUrl: './error-viewer.component.html',
+    templateUrl: './error-viewer.component.html'
 })
-export class ErrorViewerComponent extends BaseComponent implements OnInit {
+export class ErrorViewerComponent extends BaseComponent {
     constructor(
         public dialogRef: MatDialogRef<ErrorViewerComponent>,
         @Inject(MAT_DIALOG_DATA) public data: Resultado,
-        public langService: LangService,
-
+        public langService: LangService
     ) {
         super();
     }
 
     onClose(): void {
         this.dialogRef.close();
-    }
-
-    ngOnInit() {
     }
 }

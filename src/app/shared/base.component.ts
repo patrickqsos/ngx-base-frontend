@@ -20,7 +20,7 @@ export class BaseComponent {
      *
      * @memberof BaseComponent
      */
-    public config = baseConfig;
+    config = baseConfig;
 
     /**
      * Enum que contiene lista de modulos.
@@ -28,7 +28,7 @@ export class BaseComponent {
      * @public
      * @memberof BaseComponent
      */
-    public eModulo = eModulo;
+    eModulo = eModulo;
 
     /**
      * Enum que contiene los tipos de mensaje.
@@ -36,7 +36,7 @@ export class BaseComponent {
      * @public
      * @memberof BaseComponent
      */
-    public eTipoNotificacion = eTipoNotificacion;
+    eTipoNotificacion = eTipoNotificacion;
 
     /**
      * Propiedad subject para manejar los unsubscribe de forma general en un componente.

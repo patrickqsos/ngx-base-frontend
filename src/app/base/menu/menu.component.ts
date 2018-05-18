@@ -5,7 +5,6 @@ import { ContextoService } from '../../shared/services/contexto.service';
 import { LangService } from '../../shared/services/lang.service';
 import { zoomInAnim, fadeInLeftAnim } from '../../shared/animations/template.animation';
 
-
 /**
  * Componente para mostrar el menu del sistema.
  *
@@ -70,7 +69,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
      *
      * @memberof MenuComponent
      */
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.contextoService.breadCrumbs.length === 0) {
             this.contextoService.listaMenu = this.contextoService.getListaSchemas();
         }

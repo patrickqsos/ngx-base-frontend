@@ -1,11 +1,17 @@
 import { Observable ,  ReplaySubject ,  Subject, throwError } from 'rxjs';
 import { tap, catchError, finalize } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable, Injector } from '@angular/core';
+import {    HttpInterceptor,
+            HttpRequest,
+            HttpHandler,
+            HttpEvent,
+            HttpEventType,
+            HttpResponse,
+            HttpErrorResponse,
+            HttpHeaders } from '@angular/common/http';
 import { JwtService } from '../services/jwt.service';
 import { NotificacionService } from '../services/notificacion.service';
 import { eTipoNotificacion } from '../enums/tipo-notificacion.enum';
-import { Injector } from '@angular/core';
 import { ContextoService } from '../services/contexto.service';
 import { LangService } from '../services/lang.service';
 import { eModulo } from '../enums/modulo.enum';
@@ -48,16 +54,13 @@ export class BackendInterceptor implements HttpInterceptor {
         this.langService = this.inj.get(LangService);
 
         // Verifica si existen los parametros para ocultar el progressbar/notificador.
-        const showProgressBar = (req.params.get('hideProgressBar') == null);
-        const showNotificador = (req.params.get('hideNotificador') == null);
-
-        // Remueve parametros edicionales.
-        const params = req.params.delete('hideProgressBar').delete('hideNotificador');
+        const showProgressBar = !req.headers.has('progressBar');
+        const showNotificador = !req.headers.has('notificador');
 
         // Clona el request y adiciona headers.
         const reqClone = req.clone({
-            params: params,
-            headers : this.getHeaders(),
+            params: req.params,
+            headers : this.getHeaders(req.headers),
             reportProgress: showProgressBar
         });
 
@@ -71,7 +74,7 @@ export class BackendInterceptor implements HttpInterceptor {
                             // Continua con el request clonado.
                             if (showProgressBar) {
                                 // Hace aparecer un progressbar indeterminado.
-                                this.notificacionService.progressSubject.next(null);
+                                this.notificacionService.progressSubject.next(undefined);
                             }
                             break;
                         case HttpEventType.DownloadProgress:
@@ -92,6 +95,8 @@ export class BackendInterceptor implements HttpInterceptor {
                                 this.notificacionService.showSnackbarMensaje(event.body.message, 3000, eTipoNotificacion.Correcto);
                             }
                             break;
+                        default:
+                            break;
                     }
                 }),
                 catchError(event => {
@@ -105,7 +110,8 @@ export class BackendInterceptor implements HttpInterceptor {
                             this.notificacionService.showSnackbarMensaje(event.error.message, 3000, this.getTipoNotificacion(event.status));
                         } else {
                             const url = reqClone.url.split('?');
-                            this.notificacionService.showSnackbarMensaje(this.langService.getLang(eModulo.Base, 'msg-network-error') + url[0], 5000, eTipoNotificacion.Incorrecto);
+                            // tslint:disable-next-line:max-line-length
+                            this.notificacionService.showSnackbarMensaje(`${this.langService.getLang(eModulo.Base, 'msg-network-error')}${url[0]}`, 5000, eTipoNotificacion.Incorrecto);
                         }
                     }
                     // Dispara el error en el observable.
@@ -124,21 +130,31 @@ export class BackendInterceptor implements HttpInterceptor {
      * @returns {HttpHeaders} Headers.
      * @memberof BackendInterceptor
      */
-    getHeaders(): HttpHeaders {
+    getHeaders(pReqHeaders: HttpHeaders): HttpHeaders {
         // Instancia httpheaders.
         let headers = new HttpHeaders;
 
         // Adiciona headers.
-        headers = headers.set('Accept', 'application/json');
         headers = headers.set('Accept-Language', this.contextoService.getIdiomaActual());
-        headers = headers.set('Content-Type', 'application/json');
+
+        if (pReqHeaders.has('Content-Type')) {
+            headers =  headers.set('Content-Type', pReqHeaders.get('Content-Type'));
+        } else {
+            headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        }
+
+        if (pReqHeaders.has('Accept')) {
+            headers =  headers.set('Accept', pReqHeaders.get('Accept'));
+        } else {
+            headers = headers.set('Accept', 'application/json; charset=utf-8');
+        }
 
         // Obtiene el token con el servicio jwt.
         const token = this.jwtService.getToken();
 
         // Si pudo obtener un token, adiciona el header de autorizacion.
         if (token) {
-            headers = headers.set('Authorization', 'Bearer ' + token);
+            headers = headers.set('Authorization', `Bearer ${token}`);
         }
 
         // Retorna headers.
