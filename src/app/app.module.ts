@@ -3,8 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AppComponent } from './app.component';
-
 import { BaseModule } from './base/base.module';
 import { appRoutes } from './app.routing';
 import { AuthService } from './shared/services/auth.service';
@@ -19,13 +17,12 @@ import { MatPaginatorIntl } from '@angular/material';
 import { CustomMatPaginator} from './shared/custom.matpaginator';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { LayoutComponent } from './base/layout/layout.component';
 
 registerLocaleData(localeEs);
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
+    declarations: [],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -62,7 +59,7 @@ registerLocaleData(localeEs);
         }
     ],
     bootstrap: [
-        AppComponent
+        LayoutComponent
     ],
     exports: []
 })
