@@ -1,9 +1,10 @@
-image: alexsuch/angular-cli:latest
-# cache:
-#   untracked: true
-#   key: "$CI_BUILD_REF_NAME"
-#   paths:
-#     - node_modules/
+image: zaguee/ngcli:6.0.3
+
+cache:
+  untracked: true
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - node_modules/
 
 stages:
   - setup
@@ -17,10 +18,7 @@ setup:
     - ng --version
     - rm -rf node-modules
     - npm install
-  cache:
-    paths:
-      - node_modules
-
+ 
 lint:
   stage: lint
   script:
