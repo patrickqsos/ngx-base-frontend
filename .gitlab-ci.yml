@@ -21,14 +21,14 @@ lint:
   stage: lint
   script:
     - node --version
-    - ng --version
+    #- ng --version
     - ng lint
 
 build:
   stage: build
   script:
     - node --version
-    - ng --version
+    #- ng --version
     - ng build --prod
   artifacts:
     paths:
