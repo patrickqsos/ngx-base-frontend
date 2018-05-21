@@ -6,22 +6,24 @@ image: johnpapa/angular-cli
 #     - node_modules/
 
 stages:
-  # - setup
+  - setup
   - lint
   - build
   
-# setup:
-#   stage: setup
-#   script:
-#     - node --version
-#     - npm cache verify
-#     - rm -rf node-modules
-#     - npm install
+setup:
+  stage: setup
+  script:
+    - node --version
+    - ng --version
+    - rm -rf node-modules
+    - npm install
 
 lint:
   stage: lint
   script:
-    - node --version
-    - rm -rf node-modules
-    - npm install
     - ng lint
+
+build:
+  stage: build
+  script:
+    - ng build --prod
