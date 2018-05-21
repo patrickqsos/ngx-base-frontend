@@ -1,4 +1,4 @@
-image: alexsuch/angular-cli
+image: alexsuch/angular-cli:6.0.1
 # cache:
 #   untracked: true
 #   key: "$CI_BUILD_REF_NAME"
@@ -17,9 +17,6 @@ setup:
     - ng --version
     - rm -rf node-modules
     - npm install
-  artifacts:
-    paths:
-      - node_modules 
   cache:
     paths:
       - node_modules
