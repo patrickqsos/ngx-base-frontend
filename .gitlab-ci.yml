@@ -1,0 +1,27 @@
+image: johnpapa/angular-cli
+# cache:
+#   untracked: true
+#   key: "$CI_BUILD_REF_NAME"
+#   paths:
+#     - node_modules/
+
+stages:
+  # - setup
+  - lint
+  - build
+  
+# setup:
+#   stage: setup
+#   script:
+#     - node --version
+#     - npm cache verify
+#     - rm -rf node-modules
+#     - npm install
+
+lint:
+  stage: lint
+  script:
+    - node --version
+    - rm -rf node-modules
+    - npm install
+    - ng lint
