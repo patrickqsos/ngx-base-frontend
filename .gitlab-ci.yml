@@ -8,7 +8,7 @@ image: zaguee/ngcli:6.0.3
 
 stages:
   - setup
-  - lint
+  #- lint
   - build
   
 setup:
@@ -20,12 +20,12 @@ setup:
     paths:
       - node_modules
  
-lint:
-  stage: lint
-  script:
-    - node --version
-    #- ng --version
-    - ng lint
+# lint:
+#   stage: lint
+#   script:
+#     - node --version
+#     #- ng --version
+#     - ng lint
 
 build:
   stage: build
