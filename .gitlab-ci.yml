@@ -7,9 +7,9 @@ stages:
 ci:
   stage: ci
   script:
-    - npm ci
+    - npm install
     - ng lint
-    - ng build --prod
+    - ng build --prod --no-progress
   artifacts:
     paths:
       - dist
