@@ -1,4 +1,4 @@
-image: zaguee/base2
+image: zaguee/base3
 
 
 stages:
@@ -7,7 +7,7 @@ stages:
 ci:
   stage: ci
   script:
-    - npm install
+    #- npm install
     - ng lint
     - ng build --prod --no-progress
   artifacts:
