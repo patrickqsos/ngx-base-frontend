@@ -1,45 +1,20 @@
 image: zaguee/base9
 
-
 stages:
-  - ci
+  - lint
+  - build
   
-ci:
-  stage: ci
+lint:
+  stage: lint
   script:
-    #- npm install
-    # - echo $NODE_PATH
-    # - export NODE_PATH=/usr/local/lib/node_modules
-    # - echo $NODE_PATH
-    # - ng lint
     - tar -zxf /root/dev/mods.tar.gz
     - ng lint
+
+build:
+  stage: build
+  script:
+    - tar -zxf /root/dev/mods.tar.gz
     - ng build --prod --no-progress
   artifacts:
     paths:
       - dist
-
-# stages:
-#   - setup
-#   - lint
-#   - build
-  
-# setup:
-#   stage: setup
-#   script:
-#     - npm ci
- 
-# lint:
-#   stage: lint
-#   script:
-#     - node --version
-#     - ng lint
- 
-# build:
-#   stage: build
-#   script:
-#     - node --version
-#     - ng build --prod
-#   artifacts:
-#     paths:
-#       - dist
