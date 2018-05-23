@@ -1,43 +1,40 @@
-image: zaguee/ngcli:6.0.3
+image: zaguee/base:0.0.1
 
-cache:
-  paths:
-    - node_modules
 
 stages:
-  - setup
-  - lint
-  - build
+  - ci
   
-setup:
-  stage: setup
+ci:
+  stage: ci
   script:
-    - rm -rf node-modules
-    - npm cache clear --force
-    - npm install
-  # cache:
-  #   paths:
-  #     - node_modules
- 
-lint:
-  stage: lint
-  script:
-    - node --version
-    #- ng --version
+    - npm ci
     - ng lint
-  # cache:
-  #   paths:
-  #     - node_modules
- 
-build:
-  stage: build
-  script:
-    - node --version
-    #- ng --version
     - ng build --prod
-  # cache:
-  #   paths:
-  #     - node_modules
   artifacts:
     paths:
       - dist
+
+# stages:
+#   - setup
+#   - lint
+#   - build
+  
+# setup:
+#   stage: setup
+#   script:
+#     - npm ci
+ 
+# lint:
+#   stage: lint
+#   script:
+#     - node --version
+#     - ng lint
+ 
+# build:
+#   stage: build
+#   script:
+#     - node --version
+#     - ng build --prod
+#   artifacts:
+#     paths:
+#       - dist
