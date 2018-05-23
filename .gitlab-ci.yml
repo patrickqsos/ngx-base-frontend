@@ -1,4 +1,4 @@
-image: zaguee/ngcli:6.03
+image: zaguee/ngcli:6.0.3
 
 cache:
   paths:
