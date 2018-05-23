@@ -1,4 +1,4 @@
-image: zaguee/ngcli:6.0.3
+image: zaguee/ngcli:0.0.1
 
 # cache:
 #   untracked: true
@@ -7,37 +7,37 @@ image: zaguee/ngcli:6.0.3
 #     - node_modules/
 
 stages:
-  - setup
+  #- setup
   - lint
   - build
   
-setup:
-  stage: setup
-  script:
-    - npm install
-  cache:
-    paths:
-      - node_modules
+# setup:
+#   stage: setup
+#   script:
+#     - npm install
+#   cache:
+#     paths:
+#       - node_modules
  
 lint:
   stage: lint
   script:
     - node --version
-    #- ng --version
+    - ng --version
     - ng lint
-  cache:
-    paths:
-      - node_modules
+  # cache:
+  #   paths:
+  #     - node_modules
  
 build:
   stage: build
   script:
     - node --version
-    #- ng --version
+    - ng --version
     - ng build --prod
-  cache:
-    paths:
-      - node_modules
+  # cache:
+  #   paths:
+  #     - node_modules
   artifacts:
     paths:
       - dist
