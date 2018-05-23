@@ -8,10 +8,10 @@ ci:
   stage: ci
   script:
     #- npm install
-    - echo $NODE_PATH
-    - export NODE_PATH=/usr/local/lib/node_modules
-    - echo $NODE_PATH
-    - ng lint
+    # - echo $NODE_PATH
+    # - export NODE_PATH=/usr/local/lib/node_modules
+    # - echo $NODE_PATH
+    # - ng lint
     - ng build --prod --no-progress
   artifacts:
     paths:
