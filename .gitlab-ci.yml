@@ -13,7 +13,7 @@ docs:
   script:
     - npm run compodoc
   artifacts:
-    name: "DOCS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHA"
+    name: "DOCS_$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA"
     paths:
       - docs
 lint:
@@ -26,6 +26,6 @@ build:
   script:
     - ng build --prod --no-progress
   artifacts:
-    name: "DIST_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHA"
+    name: "DIST_$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA"
     paths:
       - dist
