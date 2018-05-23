@@ -1,4 +1,4 @@
-image: zaguee/base6
+image: zaguee/base9
 
 
 stages:
@@ -12,6 +12,8 @@ ci:
     # - export NODE_PATH=/usr/local/lib/node_modules
     # - echo $NODE_PATH
     # - ng lint
+    - tar -zxf /root/dev/mods.tar.gz
+    - ng lint
     - ng build --prod --no-progress
   artifacts:
     paths:
