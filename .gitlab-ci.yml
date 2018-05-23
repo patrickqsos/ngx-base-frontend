@@ -9,13 +9,17 @@ image: zaguee/ngcli:6.0.3
 stages:
   - setup
   #- lint
-  - build
+  #- build
   
 setup:
   stage: setup
   script:
     - rm -rf node-modules
     - npm install
+    - ng build --prod
+  artifacts:
+    paths:
+      - dist
   cache:
     paths:
       - node_modules
@@ -27,12 +31,12 @@ setup:
 #     #- ng --version
 #     - ng lint
 
-build:
-  stage: build
-  script:
-    - node --version
-    #- ng --version
-    - ng build --prod
-  artifacts:
-    paths:
-      - dist
+# build:
+#   stage: build
+#   script:
+#     - node --version
+#     #- ng --version
+#     - ng build --prod
+#   artifacts:
+#     paths:
+#       - dist
