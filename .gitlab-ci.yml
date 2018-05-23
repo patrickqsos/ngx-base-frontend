@@ -15,9 +15,6 @@ setup:
   stage: setup
   script:
     - npm install
-  artifacts:
-    paths:
-      - dist
   cache:
     paths:
       - node_modules
@@ -28,13 +25,19 @@ lint:
     - node --version
     #- ng --version
     - ng lint
-
+  cache:
+    paths:
+      - node_modules
+ 
 build:
   stage: build
   script:
     - node --version
     #- ng --version
     - ng build --prod
+  cache:
+    paths:
+      - node_modules
   artifacts:
     paths:
       - dist
