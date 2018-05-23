@@ -4,11 +4,19 @@ before_script:
   - tar -zxf /root/dev/mods.tar.gz
 
 stages:
-  - lint
+  - docs
+  - tests
   - build
   
+docs:
+  stage: docs
+  script:
+    - npm run compodoc
+  artifacts:
+    paths:
+      - docs
 lint:
-  stage: lint
+  stage: tests
   script:
     - ng lint
 
