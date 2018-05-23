@@ -1,5 +1,8 @@
 image: zaguee/base9
 
+before_script:
+  - tar -zxf /root/dev/mods.tar.gz
+
 stages:
   - lint
   - build
@@ -7,13 +10,11 @@ stages:
 lint:
   stage: lint
   script:
-    - tar -zxf /root/dev/mods.tar.gz
     - ng lint
 
 build:
   stage: build
   script:
-    - tar -zxf /root/dev/mods.tar.gz
     - ng build --prod --no-progress
   artifacts:
     paths:
