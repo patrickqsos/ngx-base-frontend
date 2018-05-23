@@ -12,6 +12,7 @@ stages:
 setup:
   stage: setup
   script:
+    - rm -rf node-modules
     - npm install
   # cache:
   #   paths:
