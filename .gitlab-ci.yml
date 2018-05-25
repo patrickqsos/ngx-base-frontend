@@ -1,7 +1,7 @@
-image: zaguee/base9
+image: registry.segip.gob.bo/base/frontend:1.0.0
 
 before_script:
-  - tar -zxf /root/dev/mods.tar.gz
+  - tar -zxf /root/mods.tar.gz
 
 stages:
   - docs
@@ -13,7 +13,7 @@ docs:
   script:
     - npm run compodoc
   artifacts:
-    name: "DOCS_$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA"
+    name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
       - docs
 lint:
@@ -26,6 +26,6 @@ build:
   script:
     - ng build --prod --no-progress
   artifacts:
-    name: "DIST_$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA"
+    name: "DIST($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
       - dist
