@@ -1,4 +1,4 @@
-image: registry.segip.gob.bo/base/frontend:1.0.0
+image: registry.segip.gob.bo/base/frontend-ci:1.0.0
 
 before_script:
   - tar -zxf /root/mods.tar.gz
