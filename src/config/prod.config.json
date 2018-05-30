@@ -4,10 +4,6 @@
         {
             "id":"es",
             "etiqueta":"Español"
-        },
-        {
-            "id":"en",
-            "etiqueta":"English"
         }
     ]
 }

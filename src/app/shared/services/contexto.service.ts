@@ -56,8 +56,7 @@ export class ContextoService {
                 this.env = 'prod';
             }
             // Lee el archivo de configuración.
-
-            this.http.get(`../../../assets/config/${this.env}.config.json`)
+            this.http.get(`../../../config/${this.env}.config.json`)
                     .subscribe((responseData) => {
                         // Guarda localmente la configuración leida.
                         this.config = responseData;
