@@ -1,13 +1,14 @@
-image: registry.segip.gob.bo/base/frontend-ci:1.0.0
+image: registry.segip.gob.bo/base/frontend-ci:1.0.1
 
 before_script:
   - tar -zxf /root/mods.tar.gz
 
 stages:
-  - docs
-  - tests
+  #- docs
+  #- tests
   - build
-  
+  - deploy
+
 docs:
   stage: docs
   script:
@@ -29,3 +30,9 @@ build:
     name: "DIST($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
       - dist
+
+deploy:
+  stage: deploy
+  script:
+    - docker info
+    - docker build -t registry.segip.gob.bo/base/frontend:stable .
