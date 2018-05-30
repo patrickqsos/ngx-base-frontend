@@ -9,18 +9,18 @@ stages:
   - build
   - deploy
 
-docs:
-  stage: docs
-  script:
-    - npm run compodoc
-  artifacts:
-    name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
-    paths:
-      - docs
-lint:
-  stage: tests
-  script:
-    - ng lint
+# docs:
+#   stage: docs
+#   script:
+#     - npm run compodoc
+#   artifacts:
+#     name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
+#     paths:
+#       - docs
+# lint:
+#   stage: tests
+#   script:
+#     - ng lint
 
 build:
   stage: build
