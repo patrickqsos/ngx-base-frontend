@@ -1,8 +1,5 @@
 image: registry.segip.gob.bo/base/frontend-ci:1.0.1
 
-before_script:
-  - tar -zxf /root/mods.tar.gz
-
 stages:
   - tests
   - build
@@ -11,11 +8,15 @@ stages:
 
 lint:
   stage: tests
+  before_script:
+  - tar -zxf /root/mods.tar.gz
   script:
     - ng lint
 
 compodoc:
   stage: docs
+  before_script:
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
   script:
     - npm run compodoc
     - docker build -t registry.segip.gob.bo/base/frontend:docs --build-arg ENV=docs .
@@ -27,6 +28,8 @@ compodoc:
 
 build-dev:
   stage: build
+  before_script:
+    - tar -zxf /root/mods.tar.gz
   script:
     - npm run build:dev
   artifacts:
@@ -36,6 +39,8 @@ build-dev:
 
 build-anl:
   stage: build
+  before_script:
+    - tar -zxf /root/mods.tar.gz
   script:
     - npm run build:anl
   artifacts:
@@ -45,6 +50,8 @@ build-anl:
 
 build-test:
   stage: build
+  before_script:
+    - tar -zxf /root/mods.tar.gz
   script:
     - npm run build:test
   artifacts:
@@ -54,18 +61,24 @@ build-test:
 
 docker-anl:
   stage: docker
+  before_script:
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
   script:
     - docker build -t registry.segip.gob.bo/base/frontend:stable-analisis --build-arg ENV=anl .
     - docker push registry.segip.gob.bo/base/frontend:stable-analisis
 
 docker-dev:
   stage: docker
+  before_script:
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
   script:
     - docker build -t registry.segip.gob.bo/base/frontend:stable-dev --build-arg ENV=dev .
     - docker push registry.segip.gob.bo/base/frontend:stable-dev
 
 docker-test:
   stage: docker
+  before_script:
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
   script:
     - docker build -t registry.segip.gob.bo/base/frontend:stable-test --build-arg ENV=test .
     - docker push registry.segip.gob.bo/base/frontend:stable-test
