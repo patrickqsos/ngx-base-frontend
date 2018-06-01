@@ -1,0 +1,9 @@
+{
+    "backendApi": "http://172.15.24.15:8000/api/v1",
+    "langs" : [
+        {
+            "id":"es",
+            "etiqueta":"Español"
+        }
+    ]
+}

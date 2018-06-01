@@ -1,0 +1,9 @@
+{
+    "backendApi": "http://localhost:8000/api/v1",
+    "langs" : [
+        {
+            "id":"es",
+            "etiqueta":"Español"
+        }
+    ]
+}

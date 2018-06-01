@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { environment } from '../../../environments/environment';
 import { baseLang } from '../../base/base.lang';
 
@@ -50,13 +49,11 @@ export class ContextoService {
      */
     load(): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            // Define entorno: desarrollo o producción.
-            this.env = 'dev';
-            if (environment.production) {
-                this.env = 'prod';
-            }
+            // Obtiene entorno de ejecución.
+            this.env = environment.env;
+
             // Lee el archivo de configuración.
-            this.http.get(`../../../config/${this.env}.config.json`)
+            this.http.get(`../../../configs/config.${this.env}.json`)
                     .subscribe((responseData) => {
                         // Guarda localmente la configuración leida.
                         this.config = responseData;
@@ -66,7 +63,7 @@ export class ContextoService {
                         this.idiomaSeleccionado = this.idiomas[0]['id'];
                         // Carga menu inicial.
                         this.listaMenu = this.getListaSchemas();
-
+                        // Resuelve promesa.
                         resolve(true);
                     });
         });
