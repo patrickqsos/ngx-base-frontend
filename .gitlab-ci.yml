@@ -7,7 +7,7 @@ stages:
   #- docs
   #- tests
   - build
-  - deploy
+  #- deploy
 
 # docs:
 #   stage: docs
@@ -22,17 +22,34 @@ stages:
 #   script:
 #     - ng lint
 
-build:
+build-dev:
   stage: build
   script:
-    - ng build --prod --no-progress
+    - npm run build:dev
   artifacts:
-    name: "DIST($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
+    name: "DISTDEV($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
-      - dist
+      - dist-dev
 
-deploy:
-  stage: deploy
+build-anl:
+  stage: build
   script:
-    - docker info
-    - docker build -t registry.segip.gob.bo/base/frontend:stable .
+    - npm run build:anl
+  artifacts:
+    name: "DISTANL($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
+    paths:
+      - dist-anl
+
+build-test:
+  stage: build
+  script:
+    - npm run build:test
+  artifacts:
+    name: "DISTTEST($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
+    paths:
+      - dist-test
+# deploy:
+#   stage: deploy
+#   script:
+#     - docker info
+#     - docker build -t registry.segip.gob.bo/base/frontend:stable .
