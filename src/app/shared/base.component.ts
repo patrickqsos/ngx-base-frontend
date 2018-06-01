@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { eTipoNotificacion } from '../shared/enums/tipo-notificacion.enum';
 import { Subject } from 'rxjs';
 import { baseConfig } from '../base/base.config';
+import { environment } from '../../environments/environment';
 
 /**
  * Clase que sirve de base para los componentes creados.
@@ -16,11 +17,18 @@ import { baseConfig } from '../base/base.config';
 export class BaseComponent {
 
     /**
-     * Objeto que contiene la configuración base
+     * Objeto que contiene la configuración base.
      *
      * @memberof BaseComponent
      */
     config = baseConfig;
+
+    /**
+     * Objeto que contiene el environment de ejecución.
+     *
+     * @memberof BaseComponent
+     */
+    environment = environment;
 
     /**
      * Enum que contiene lista de modulos.

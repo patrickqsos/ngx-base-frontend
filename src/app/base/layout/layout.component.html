@@ -114,7 +114,7 @@
 
     <footer fxFlexFill>
         <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >
-            {{ langService.getLang(eModulo.Base ,'msg-copyright') }} |  {{ langService.getLang(eModulo.Base ,'msg-version') }} {{ config.version }}
+            <span>{{ langService.getLang(eModulo.Base ,'msg-copyright') }}</span>&nbsp;|&nbsp;<span matTooltip="Env: {{environment.env}}" [matTooltipShowDelay]="2000">{{ langService.getLang(eModulo.Base ,'msg-version') }} {{ config.version }}</span>
         </mat-toolbar>
     </footer>
 </div>
