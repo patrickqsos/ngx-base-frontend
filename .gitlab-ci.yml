@@ -4,23 +4,26 @@ before_script:
   - tar -zxf /root/mods.tar.gz
 
 stages:
-  #- docs
-  #- tests
+  - tests
   - build
-  #- deploy
+  - docker
+  - docs
 
-# docs:
-#   stage: docs
-#   script:
-#     - npm run compodoc
-#   artifacts:
-#     name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
-#     paths:
-#       - docs
-# lint:
-#   stage: tests
-#   script:
-#     - ng lint
+lint:
+  stage: tests
+  script:
+    - ng lint
+
+compodoc:
+  stage: docs
+  script:
+    - npm run compodoc
+    - docker build -t registry.segip.gob.bo/base/frontend:docs --build-arg ENV=docs .
+    - docker push registry.segip.gob.bo/base/frontend:docs
+  artifacts:
+    name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
+    paths:
+      - docs
 
 build-dev:
   stage: build
@@ -48,8 +51,21 @@ build-test:
     name: "DISTTEST($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
       - dist-test
-# deploy:
-#   stage: deploy
-#   script:
-#     - docker info
-#     - docker build -t registry.segip.gob.bo/base/frontend:stable .
+
+docker-anl:
+  stage: docker
+  script:
+    - docker build -t registry.segip.gob.bo/base/frontend:stable-analisis --build-arg ENV=anl .
+    - docker push registry.segip.gob.bo/base/frontend:stable-analisis
+
+docker-dev:
+  stage: docker
+  script:
+    - docker build -t registry.segip.gob.bo/base/frontend:stable-dev --build-arg ENV=dev .
+    - docker push registry.segip.gob.bo/base/frontend:stable-dev
+
+docker-test:
+  stage: docker
+  script:
+    - docker build -t registry.segip.gob.bo/base/frontend:stable-test --build-arg ENV=test .
+    - docker push registry.segip.gob.bo/base/frontend:stable-test

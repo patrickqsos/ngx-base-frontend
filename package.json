@@ -13,8 +13,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./docs",
-    "compodoc:serve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./docs -s"
+    "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./dist-docs",
+    "compodoc:serve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./dist-docs -s"
   },
   "private": true,
   "dependencies": {
