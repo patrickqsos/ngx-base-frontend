@@ -13,7 +13,7 @@ lint:
   script:
     - ng lint
 
-compodoc:
+docs:
   stage: docs
   before_script:
     - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
@@ -24,7 +24,7 @@ compodoc:
   artifacts:
     name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
-      - docs
+      - dist-docs
 
 build-dev:
   stage: build
