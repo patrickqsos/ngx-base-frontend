@@ -2,6 +2,10 @@
 
 # compiled output
 /dist
+/dist-prod
+/dist-anl
+/dist-dev
+/dist-test
 /tmp
 /out-tsc
 
