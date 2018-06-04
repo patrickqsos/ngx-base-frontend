@@ -1,5 +1,5 @@
 {
-    "backendApi": "http://172.15.24.15:8000/api/v1",
+    "backendApi": "http://api.base.test.local/v1",
     "langs" : [
         {
             "id":"es",
