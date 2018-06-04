@@ -68,7 +68,7 @@ docker-anl:
     - docker push registry.segip.gob.bo/base/frontend:stable-analisis
   environment:
     name: analisis
-    url: https://base.analisis.local
+    url: http://base.analisis.local
 
 docker-dev:
   stage: docker
@@ -79,7 +79,7 @@ docker-dev:
     - docker push registry.segip.gob.bo/base/frontend:stable-dev
   environment:
     name: dev
-    url: https://base.dev.local
+    url: http://base.dev.local
 
 docker-test:
   stage: docker
@@ -90,4 +90,4 @@ docker-test:
     - docker push registry.segip.gob.bo/base/frontend:stable-test
   environment:
     name: test
-    url: https://base.test.local
+    url: http://base.test.local
