@@ -66,6 +66,9 @@ docker-anl:
   script:
     - docker build -t registry.segip.gob.bo/base/frontend:stable-analisis --build-arg ENV=anl .
     - docker push registry.segip.gob.bo/base/frontend:stable-analisis
+  environment:
+    name: analisis
+    url: https://base.analisis.local
 
 docker-dev:
   stage: docker
@@ -74,6 +77,9 @@ docker-dev:
   script:
     - docker build -t registry.segip.gob.bo/base/frontend:stable-dev --build-arg ENV=dev .
     - docker push registry.segip.gob.bo/base/frontend:stable-dev
+  environment:
+    name: dev
+    url: https://base.dev.local
 
 docker-test:
   stage: docker
@@ -82,3 +88,6 @@ docker-test:
   script:
     - docker build -t registry.segip.gob.bo/base/frontend:stable-test --build-arg ENV=test .
     - docker push registry.segip.gob.bo/base/frontend:stable-test
+  environment:
+    name: test
+    url: https://base.test.local
