@@ -1,4 +1,4 @@
-image: registry.segip.gob.bo/base/frontend-ci:1.0.1
+image: registry.segip.gob.bo/base/frontend-ci:latest
 
 stages:
   - tests
@@ -25,6 +25,9 @@ docs:
     name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
       - dist-docs
+  after_script:
+    - docker logout https://registry.segip.gob.bo
+  
 
 build-dev:
   stage: build
@@ -69,7 +72,9 @@ docker-anl:
   environment:
     name: svr-analisis
     url: http://base.analisis.local
-
+  after_script:
+    - docker logout https://registry.segip.gob.bo
+  
 docker-dev:
   stage: docker
   before_script:
@@ -80,7 +85,9 @@ docker-dev:
   environment:
     name: svr-dev
     url: http://base.dev.local
-
+  after_script:
+    - docker logout https://registry.segip.gob.bo
+  
 docker-test:
   stage: docker
   before_script:
@@ -91,3 +98,6 @@ docker-test:
   environment:
     name: svr-test
     url: http://base.test.local
+  after_script:
+    - docker logout https://registry.segip.gob.bo
+  
