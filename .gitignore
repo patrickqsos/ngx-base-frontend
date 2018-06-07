@@ -1,11 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/dist-prod
-/dist-anl
-/dist-dev
-/dist-test
+/dist*
 /tmp
 /out-tsc
 
@@ -44,4 +40,3 @@ Thumbs.db
 
 # Compodoc docs
 /docs
-/dist-docs
