@@ -4,7 +4,6 @@ stages:
   - tests
   - build
   - docker
-  - docs
 
 lint:
   stage: tests
@@ -12,22 +11,6 @@ lint:
   - tar -zxf /root/mods.tar.gz
   script:
     - ng lint
-
-docs:
-  stage: docs
-  before_script:
-    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
-  script:
-    - npm run compodoc
-    - docker build -t registry.segip.gob.bo/base/frontend:docs --build-arg ENV=docs .
-    - docker push registry.segip.gob.bo/base/frontend:docs
-  artifacts:
-    name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
-    paths:
-      - dist-docs
-  after_script:
-    - docker logout https://registry.segip.gob.bo
-  
 
 build-dev:
   stage: build
@@ -101,3 +84,19 @@ docker-test:
   after_script:
     - docker logout https://registry.segip.gob.bo
   
+docs:
+  only:
+    - tags
+  stage: docker
+  before_script:
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
+  script:
+    - npm run compodoc
+    - docker build -t registry.segip.gob.bo/base/frontend:docs --build-arg ENV=docs .
+    - docker push registry.segip.gob.bo/base/frontend:docs
+  artifacts:
+    name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
+    paths:
+      - dist-docs
+  after_script:
+    - docker logout https://registry.segip.gob.bo
