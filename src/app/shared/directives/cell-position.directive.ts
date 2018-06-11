@@ -10,16 +10,14 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 })
 export class CellPositionDirective implements OnInit {
 
-    @Input('shPosition') position: string;
+    @Input('shCellPosition') position: string;
 
     /**
      * Ctor de la directiva.
      */
     constructor(
         public elementRef: ElementRef
-    ) {
-
-    }
+    ) { }
 
     /**
      * Evento on init.
