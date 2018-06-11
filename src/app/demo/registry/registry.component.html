@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-header class="mat-elevation-z2 alt-theme">
+        <mat-toolbar color="primary" fxLayout="row">
+            <h3>{{ langService.getLang(eModulo.Demo, 'tit-registry') }}</h3>
+            <span class=flex-spacer></span>
+            <a mat-button routerLink="/menu" matTooltip="{{ langService.getLang(eModulo.Base, 'btn-cerrar') }}"><mat-icon>close</mat-icon></a>
+        </mat-toolbar>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="table-segip" > 
+            <div class="loading-spinner" *ngIf="contextService.isLoading">
+                <mat-spinner color="accent"></mat-spinner>
+            </div>
+            
+            <mat-form-field style="padding: 25px;">
+                <input autofocus matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ langService.getLang(eModulo.Demo, 'input-buscar') }}">
+            </mat-form-field>
+
+            <mat-table #table [dataSource]="dataSource" >
+
+                <ng-container matColumnDef="repository">
+                    <mat-header-cell *matHeaderCellDef [shCellPosition]="'center'" fxFlex="80">
+                        {{ langService.getLang(eModulo.Demo,'label-repo') }}
+                    </mat-header-cell>
+                    <mat-cell [shCellPosition]="'center'" *matCellDef="let row" fxFlex="80"> 
+                        {{ row }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <mat-header-cell *matHeaderCellDef [shCellPosition]="'center'" fxFlex="20" >
+                        {{ langService.getLang(eModulo.Base,'label-accion') }}
+                    </mat-header-cell>
+                    <mat-cell [shCellPosition]="'center'" *matCellDef="let row" fxFlex="20" >
+                        <a mat-icon-button (click)="onTag(row)" matTooltip="{{ langService.getLang(eModulo.Demo, 'tooltip-tags') }}">
+                            <mat-icon color="accent">search</mat-icon>
+                        </a>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row  [@slideInLeftAnim]="" *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+            </mat-table>
+
+            <div class="table-segip-empty" *ngIf="dataSource?.data.length == 0">{{ langService.getLang(eModulo.Base, 'lbl-sinResultados') }}</div>
+            
+            <mat-paginator #paginator
+                [length]="dataSource?.data.length"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 20]"
+                [showFirstLastButtons]="'true'">
+            </mat-paginator>
+        </div>   
+    </mat-card-content>
+</mat-card>

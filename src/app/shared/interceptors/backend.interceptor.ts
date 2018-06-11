@@ -131,22 +131,14 @@ export class BackendInterceptor implements HttpInterceptor {
      * @memberof BackendInterceptor
      */
     getHeaders(pReqHeaders: HttpHeaders): HttpHeaders {
-        // Instancia httpheaders.
-        let headers = new HttpHeaders;
-
         // Adiciona headers.
-        headers = headers.set('Accept-Language', this.contextoService.getIdiomaActual());
+        pReqHeaders = pReqHeaders.set('Accept-Language', this.contextoService.getIdiomaActual());
 
-        if (pReqHeaders.has('Content-Type')) {
-            headers =  headers.set('Content-Type', pReqHeaders.get('Content-Type'));
-        } else {
-            headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        if (!pReqHeaders.has('Content-Type')) {
+            pReqHeaders = pReqHeaders.set('Content-Type', 'application/json; charset=utf-8');
         }
-
-        if (pReqHeaders.has('Accept')) {
-            headers =  headers.set('Accept', pReqHeaders.get('Accept'));
-        } else {
-            headers = headers.set('Accept', 'application/json; charset=utf-8');
+        if (!pReqHeaders.has('Accept')) {
+            pReqHeaders = pReqHeaders.set('Accept', 'application/json; charset=utf-8');
         }
 
         // Obtiene el token con el servicio jwt.
@@ -154,11 +146,11 @@ export class BackendInterceptor implements HttpInterceptor {
 
         // Si pudo obtener un token, adiciona el header de autorizacion.
         if (token) {
-            headers = headers.set('Authorization', `Bearer ${token}`);
+            pReqHeaders = pReqHeaders.set('Authorization', `Bearer ${token}`);
         }
 
         // Retorna headers.
-        return headers;
+        return pReqHeaders;
     }
 
     /**

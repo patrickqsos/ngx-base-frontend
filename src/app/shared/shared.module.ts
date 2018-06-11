@@ -23,7 +23,9 @@ import {
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatTabsModule
 } from '@angular/material';
 
 import { ClassTipoNotificacionPipe } from './pipes/class-tipo-notificacion.pipe';
@@ -82,10 +84,11 @@ import { CellPositionDirective } from './directives/cell-position.directive';
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
-        // Modulos para formularios.
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatTabsModule,
         FormsModule,
         ReactiveFormsModule,
-        // Modulo para flex layout.
         FlexLayoutModule
     ],
     exports: [
@@ -112,18 +115,16 @@ import { CellPositionDirective } from './directives/cell-position.directive';
         MatSortModule,
         MatPaginatorModule,
         MatProgressBarModule,
-
+        MatProgressSpinnerModule,
+        MatTabsModule,
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-
         ClassTipoNotificacionPipe,
         IconTipoNotificacionPipe,
-
         HoverCardDirective,
         AutofocusDirective,
         CellPositionDirective,
-
         ConfirmDialogComponent,
         JsonViewerComponent,
         ErrorViewerComponent

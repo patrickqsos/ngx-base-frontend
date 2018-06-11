@@ -18,6 +18,7 @@ import { CustomMatPaginator } from './shared/custom.matpaginator';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { LayoutComponent } from './base/layout/layout.component';
+import { DemoModule } from './demo/demo.module';
 
 registerLocaleData(localeEs);
 
@@ -28,6 +29,7 @@ registerLocaleData(localeEs);
         BrowserAnimationsModule,
         HttpClientModule,
         BaseModule,
+       // DemoModule,
         RouterModule.forRoot(appRoutes)
     ],
     providers: [

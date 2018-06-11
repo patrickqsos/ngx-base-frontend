@@ -5,5 +5,6 @@
  * @enum {number}
  */
 export enum eModulo {
-    Base
+    Base,
+    Demo
 }
