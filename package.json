@@ -1,6 +1,6 @@
 {
-  "name": "segip-proyecto-base",
-  "version": "0.0.0",
+  "name": "segip-base-frontend",
+  "version": "2.1.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -16,6 +16,9 @@
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./dist-docs",
     "compodoc:serve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./dist-docs -s"
   },
+  "authors": [
+    "Patricio Quispe Sosa <patricio.quispe@segip.gob.bo>"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
