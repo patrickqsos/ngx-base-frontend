@@ -40,3 +40,6 @@ Thumbs.db
 
 # Compodoc docs
 /docs
+
+# version.ts
+#/src/environments/version.ts

@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    env: 'devlocal'
+    env: 'devlocal',
+    semver: false
 };

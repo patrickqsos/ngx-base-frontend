@@ -1,5 +1,7 @@
+import { VERSION } from '../../environments/version';
+
 // Objeto que contiene datos de la aplicacion.
 export const baseConfig = {
-    version: '2.1.2',
+    version: VERSION,
     nombreSistema: 'Sistema base segip'
 };
