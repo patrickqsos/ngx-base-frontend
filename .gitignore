@@ -42,4 +42,4 @@ Thumbs.db
 /docs
 
 # version.ts
-#/src/environments/version.ts
+/src/environments/version.ts
