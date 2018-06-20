@@ -117,7 +117,8 @@
     <footer fxFlexFill>
         <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >
             <span>{{ langService.getLang(eModulo.Base ,'msg-copyright') }}</span>
-            <span>&nbsp;|&nbsp;{{ langService.getLang(eModulo.Base ,'msg-version') }} {{ config.version }}</span>
+            <span *ngIf="environment.semver">&nbsp;|&nbsp;{{ config.version["semver"]["raw"] }}</span>
+            <span *ngIf="!environment.semver">&nbsp;|&nbsp;{{ config.version["raw"] }}</span>
             <span>&nbsp;|&nbsp;{{ environment.env }}</span>
         </mat-toolbar>
     </footer>

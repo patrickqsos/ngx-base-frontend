@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    env: 'analisis'
+    env: 'analisis',
+    semver: false
 };

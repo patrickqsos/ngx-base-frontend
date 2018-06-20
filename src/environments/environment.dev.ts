@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    env: 'dev'
+    env: 'dev',
+    semver: false
 };

@@ -84,9 +84,9 @@ import { CellPositionDirective } from './directives/cell-position.directive';
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
-        MatProgressBarModule,
         MatProgressSpinnerModule,
         MatTabsModule,
+        // Modulos para formularios.
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule

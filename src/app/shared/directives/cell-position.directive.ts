@@ -17,9 +17,7 @@ export class CellPositionDirective implements OnInit {
      */
     constructor(
         public elementRef: ElementRef
-    ) {
-
-    }
+    ) { }
 
     /**
      * Evento on init.
