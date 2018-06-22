@@ -156,3 +156,7 @@ mat-spinner{
 .user-info > .mat-menu-content >.mat-menu-item {
     font-size: 12px;
 }
+
+mat-card-content {
+    padding-top: 15px;
+}
