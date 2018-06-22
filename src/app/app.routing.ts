@@ -5,6 +5,6 @@ import { NotfoundComponent } from './base/notfound/notfound.component';
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'notfound', component: NotfoundComponent, pathMatch: 'full'},
-  { path: 'registry', loadChildren: './demo/demo.module#DemoModule'},
+  { path: 'demo', loadChildren: './demo/demo.module#DemoModule'},
   { path: '**', component: NotfoundComponent, pathMatch: 'full' }
 ];

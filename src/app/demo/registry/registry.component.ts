@@ -31,7 +31,7 @@ export class RegistryComponent extends BaseComponent implements OnInit {
 
     onTag(row: string): void {
         this.demoService.selectedRepo = row;
-        this.router.navigate([row, 'tags']);
+        this.router.navigate(['row', 'tags'], {relativeTo: this.route});
     }
 
     applyFilter(filterValue: string): void {

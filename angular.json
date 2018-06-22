@@ -25,7 +25,9 @@
                         "src/styles.css",
                         "src/segip-base-theme.scss"
                     ],
-                    "scripts": []
+                    "scripts": [
+                        "src/assets/tinymce/tinymce.min.js"
+                    ]
                 },
                 "configurations": {
                     "production": {

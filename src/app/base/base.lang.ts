@@ -47,7 +47,8 @@ export const baseLang = {
             'lbl-user': 'Usuario',
             'lbl-inst': 'Institución',
             'menu-user': 'Información del usuario',
-            'label-accion': 'Acciones'
+            'label-accion': 'Acciones',
+            'demo': 'Ver demo'
         },
         'en': {
             'lang-error': 'Lang not found',

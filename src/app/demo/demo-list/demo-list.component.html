@@ -1,0 +1,43 @@
+<div  fxFlex fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center center">
+    <!-- <mat-card [@fadeInLeftAnim] *ngIf="contextoService.breadCrumbs.length > 0"
+        class="menu-card fixFxLayoutGapBottom" 
+        (click)="onHomeSelected()" 
+        [shHover]="'mat-elevation-z24'"
+        [shNotHover]="'mat-elevation-z8'">
+        <mat-card-header >
+            <mat-card-title> 
+                <mat-chip-list>
+                    <mat-chip selected="true" color="accent">
+                        {{ langService.getLang(eModulo.Base, 'tit-home') }}
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-card-title> 
+        </mat-card-header>
+        <mat-card-content fxLayoutAlign="center center">
+            <mat-icon class="mat-24" color="primary">home</mat-icon>
+        </mat-card-content>
+    </mat-card> -->
+
+    <mat-card [@zoomInAnim]
+        class="menu-card fixFxLayoutGapBottom" 
+        (click)="onDemoSelected(menu)"
+        [shHover]="'mat-elevation-z24'"
+        [shNotHover]="'mat-elevation-z8'"
+         *ngFor="let menu of listaDemo">
+        <mat-card-header>
+            <mat-card-title> 
+                <mat-chip-list class="alt-theme">
+                    <mat-chip selected="true" color="primary">
+                        {{ menu.demoNombre }}
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayoutAlign="center center">
+                <mat-icon class="mat-24" color="primary" *ngIf="menu.Imagen != null; else noImage">{{ menu.Imagen }}</mat-icon>
+                <ng-template #noImage>
+                    <mat-icon class="mat-24" color="primary" >extension</mat-icon>
+                </ng-template> 
+        </mat-card-content>
+    </mat-card>
+</div>

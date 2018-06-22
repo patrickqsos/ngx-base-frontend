@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-header class="mat-elevation-z2 alt-theme">
+        <mat-toolbar color="primary" fxLayout="row">
+            <h3>{{ langService.getLang(eModulo.Demo, 'tit-editor') }}</h3>
+            <span class=flex-spacer></span>
+            <a mat-button routerLink="/demo" matTooltip="{{ langService.getLang(eModulo.Base, 'btn-cerrar') }}"><mat-icon>close</mat-icon></a>
+        </mat-toolbar>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- plugins="fullscreen image textcolor link table print lists" -->
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Favorite food" value="Sushi">
+        </mat-form-field>
+
+        <editor
+            [init]="editorConfig"
+            plugins="print preview fullpage searchreplace autolink directionality visualchars fullscreen image link media template table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern"
+            toolbar="undo redo | link image | print | formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat"
+        ></editor>
+    </mat-card-content>
+</mat-card>

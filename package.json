@@ -34,6 +34,7 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@tinymce/tinymce-angular": "^2.0.0",
     "core-js": "^2.5.4",
     "ng-animate": "^0.3.1",
     "rxjs": "^6.0.0",

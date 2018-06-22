@@ -6,16 +6,22 @@ import { demoRoutes } from './demo.routing';
 import { SharedModule } from '../shared/shared.module';
 import { DemoService } from './services/demo.service';
 import { TagsComponent } from './tags/tags.component';
+import { DemoListComponent } from './demo-list/demo-list.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { TextEditorComponent } from './text-editor/text-editor.component';
 
 @NgModule({
     declarations: [
+        DemoListComponent,
         RegistryComponent,
-        TagsComponent
+        TagsComponent,
+        TextEditorComponent
     ],
     imports: [
         CommonModule,
         RouterModule.forChild(demoRoutes),
-        SharedModule
+        SharedModule,
+        EditorModule
     ],
     providers: [
         DemoService

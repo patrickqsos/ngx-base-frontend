@@ -26,7 +26,7 @@
                 </button>
             </mat-menu>
 
-            <a mat-button routerLink="/registry" ><mat-icon>build</mat-icon></a>
+            <a mat-button routerLink="/demo" matTooltip="{{langService.getLang(eModulo.Base,'demo')}}"><mat-icon>build</mat-icon></a>
             
             <a mat-button (click)="authService.logoutUser()" matTooltip="{{langService.getLang(eModulo.Base,'logoutMensaje')}}" *ngIf="authService.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon></a>
             <a mat-button routerLink="/login" matTooltip="{{langService.getLang(eModulo.Base,'loginMensaje')}}" *ngIf="!authService.isUserAuthenticated()"><mat-icon>input</mat-icon></a>
