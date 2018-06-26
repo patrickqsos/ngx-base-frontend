@@ -7,6 +7,7 @@ stages:
 
 lint:
   only:
+    - tags
     - develop
   stage: tests
   before_script:
@@ -16,6 +17,7 @@ lint:
 
 build-dev:
   only:
+    - tags
     - develop
   stage: build
   before_script:
@@ -29,6 +31,7 @@ build-dev:
 
 build-anl:
   only:
+    - tags
     - develop
   stage: build
   before_script:
@@ -42,6 +45,7 @@ build-anl:
 
 build-test:
   only:
+    - tags
     - develop
   stage: build
   before_script:
@@ -55,6 +59,7 @@ build-test:
 
 docker-anl:
   only:
+    - tags
     - develop
   stage: docker
   before_script:
@@ -70,6 +75,7 @@ docker-anl:
   
 docker-dev:
   only:
+    - tags
     - develop
   stage: docker
   before_script:
@@ -85,6 +91,7 @@ docker-dev:
   
 docker-test:
   only:
+    - tags
     - develop
   stage: docker
   before_script:
