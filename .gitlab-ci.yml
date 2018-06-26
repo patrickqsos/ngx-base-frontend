@@ -6,6 +6,8 @@ stages:
   - docker
 
 lint:
+  only:
+    - develop
   stage: tests
   before_script:
   - tar -zxf /root/mods.tar.gz
@@ -13,6 +15,8 @@ lint:
     - ng lint
 
 build-dev:
+  only:
+    - develop
   stage: build
   before_script:
     - tar -zxf /root/mods.tar.gz
@@ -24,6 +28,8 @@ build-dev:
       - dist-dev
 
 build-anl:
+  only:
+    - develop
   stage: build
   before_script:
     - tar -zxf /root/mods.tar.gz
@@ -35,6 +41,8 @@ build-anl:
       - dist-anl
 
 build-test:
+  only:
+    - develop
   stage: build
   before_script:
     - tar -zxf /root/mods.tar.gz
@@ -46,6 +54,8 @@ build-test:
       - dist-test
 
 docker-anl:
+  only:
+    - develop
   stage: docker
   before_script:
     - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
@@ -59,6 +69,8 @@ docker-anl:
     - docker logout https://registry.segip.gob.bo
   
 docker-dev:
+  only:
+    - develop
   stage: docker
   before_script:
     - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
@@ -72,6 +84,8 @@ docker-dev:
     - docker logout https://registry.segip.gob.bo
   
 docker-test:
+  only:
+    - develop
   stage: docker
   before_script:
     - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
