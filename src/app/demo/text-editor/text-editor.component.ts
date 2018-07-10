@@ -36,18 +36,6 @@ export class TextEditorComponent extends BaseComponent implements OnInit {
             success('http://moxiecode.cachefly.net/tinymce/v9/images/logo.png');
             }, 2000);
         }
-        // setup: (editor) => {
-        //     editor.on('click', (e) => {
-        //       console.log('Editor was clicked');
-        //     });
-
-        //     editor.addButton('mybutton', {
-        //         text: 'My Button',
-        //         onclick: () => {
-        //            alert('My Button clicked!');
-        //         }
-        //       });
-        //   }
     };
 
     constructor(
@@ -60,7 +48,7 @@ export class TextEditorComponent extends BaseComponent implements OnInit {
     }
 
     submitForm(): void {
-        console.log('asd');
+        console.log('form submitted');
     }
 
     ngOnInit(): void {
