@@ -54,8 +54,8 @@ export class BackendInterceptor implements HttpInterceptor {
         this.langService = this.inj.get(LangService);
 
         // Verifica si existen los parametros para ocultar el progressbar/notificador.
-        const showProgressBar = !req.headers.has('progressBar');
-        const showNotificador = !req.headers.has('notificador');
+        const showProgressBar = !req.headers.has('X-ProgressBar');
+        const showNotificador = !req.headers.has('X-Notificador');
 
         // Clona el request y adiciona headers.
         const reqClone = req.clone({
@@ -139,6 +139,13 @@ export class BackendInterceptor implements HttpInterceptor {
         }
         if (!pReqHeaders.has('Accept')) {
             pReqHeaders = pReqHeaders.set('Accept', 'application/json; charset=utf-8');
+        }
+        if (pReqHeaders.has('X-Notificador')) {
+            pReqHeaders = pReqHeaders.delete('X-Notificador');
+        }
+
+        if (pReqHeaders.has('X-ProgressBar')) {
+            pReqHeaders = pReqHeaders.delete('X-ProgressBar');
         }
 
         // Obtiene el token con el servicio jwt.
