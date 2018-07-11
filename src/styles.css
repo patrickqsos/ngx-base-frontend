@@ -116,6 +116,7 @@ mat-sidenav-content{
     display: flex;
     flex-direction: column;
     min-width: 100%;
+    position: relative;
 }
 
 .table-segip-empty{
