@@ -10,17 +10,14 @@
         <form [formGroup]="form">
                     
             <mat-form-field fxFlexFill>
-                <input matInput placeholder="Titulo" formControlName="title" disable>
+                <input matInput placeholder="Titulo" formControlName="title">
             </mat-form-field>
 
             <mat-form-field fxFlexFill >
                     <editor
                     [init]="editorConfig"
-                    apiKey="test"
-                    name="content"
                     formControlName="content"
                     placeholder="Content"
-                    disabled
                   ></editor>
             </mat-form-field>
         </form>

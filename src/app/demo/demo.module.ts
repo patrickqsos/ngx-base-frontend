@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DemoService } from './services/demo.service';
 import { TagsComponent } from './tags/tags.component';
 import { DemoListComponent } from './demo-list/demo-list.component';
-import { EditorModule } from '@tinymce/tinymce-angular';
+import { EditorModule } from 'tinymce-material';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 
 @NgModule({
