@@ -42,8 +42,8 @@ export const baseLang = {
             'mat-NEXT_PAGE': 'Siguiente página',
             'mat-PREVIOUS_PAGE': 'Página anterior',
             'mat-FROM': 'de',
-            'btn-si': 'Si',
-            'btn-no': 'No',
+            'btn-si': 'Aceptar',
+            'btn-no': 'Cancelar',
             'lbl-user': 'Usuario',
             'lbl-inst': 'Institución',
             'menu-user': 'Información del usuario'
