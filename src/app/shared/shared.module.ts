@@ -42,6 +42,7 @@ import { CellPositionDirective } from './directives/cell-position.directive';
 import { ToolbarModalDirective } from './directives/toolbar-modal.directive';
 import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinner.component';
 import { TableEmptyComponent } from './components/table-empty/table-empty.component';
+import { TableDirective } from './directives/table.directive';
 
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
@@ -57,6 +58,7 @@ import { TableEmptyComponent } from './components/table-empty/table-empty.compon
         AutofocusDirective,
         CellPositionDirective,
         ToolbarModalDirective,
+        TableDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
@@ -136,6 +138,7 @@ import { TableEmptyComponent } from './components/table-empty/table-empty.compon
         AutofocusDirective,
         CellPositionDirective,
         ToolbarModalDirective,
+        TableDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
