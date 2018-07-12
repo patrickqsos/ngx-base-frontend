@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../../shared/services/auth.service';
@@ -17,10 +17,7 @@ import { ContextoService } from '../../shared/services/contexto.service';
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 
-    form = new FormGroup(
-        {usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        password : new FormControl('', [Validators.required, Validators.minLength(6)])}
-    );
+    form: FormGroup;
 
     /**
      * Creates an instance of LoginComponent.
@@ -32,8 +29,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
         public langService: LangService,
         public contextService: ContextoService,
         private authService: AuthService,
-        private router: Router
-
+        private router: Router,
+        private formbuilder: FormBuilder
     ) {super(); }
 
     /**
@@ -54,5 +51,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
         if (this.authService.isUserAuthenticated()) {
             this.router.navigate(['menu']);
         }
+
+        this.form = this.formbuilder.group({
+            usuario: ['', Validators.required],
+            password: ['', Validators.required]
+        });
     }
 }
