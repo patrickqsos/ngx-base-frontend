@@ -161,3 +161,7 @@ mat-spinner{
 mat-card-content {
     padding-top: 15px;
 }
+
+.toolbar-modal {
+    height: 45px !important
+}
