@@ -40,6 +40,7 @@ import { ErrorViewerComponent } from './components/error-viewer/error-viewer.com
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { CellPositionDirective } from './directives/cell-position.directive';
 import { ToolbarModalDirective } from './directives/toolbar-modal.directive';
+import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinner.component';
 
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
@@ -58,7 +59,8 @@ import { ToolbarModalDirective } from './directives/toolbar-modal.directive';
 
         ConfirmDialogComponent,
         JsonViewerComponent,
-        ErrorViewerComponent
+        ErrorViewerComponent,
+        LoaderSpinnerComponent
     ],
     imports: [
         CommonModule,
@@ -135,7 +137,8 @@ import { ToolbarModalDirective } from './directives/toolbar-modal.directive';
 
         ConfirmDialogComponent,
         JsonViewerComponent,
-        ErrorViewerComponent
+        ErrorViewerComponent,
+        LoaderSpinnerComponent
     ],
     entryComponents: [
         ConfirmDialogComponent

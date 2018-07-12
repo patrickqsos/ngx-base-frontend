@@ -124,7 +124,7 @@ mat-sidenav-content{
     font-size: 18px;
 }
 
-.loading-spinner {
+.loader-spinner {
     position: absolute;
     top: 0;
     left: 0;
