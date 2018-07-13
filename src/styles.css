@@ -155,3 +155,15 @@ mat-card-content {
     height: 45px !important;
     font-size: 16px;
 }
+
+.form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-outline{
+    color: #00527a;
+}
+
+.form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > input{
+    color: #00527a;
+}
+
+.form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > .mat-form-field-label-wrapper > label{
+    color: #00527a;
+}
