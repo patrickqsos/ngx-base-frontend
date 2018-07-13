@@ -112,13 +112,6 @@ mat-sidenav-content{
     overflow: initial;
 }
 
-.table-segip{
-    display: flex;
-    flex-direction: column;
-    min-width: 100%;
-    position: relative;
-}
-
 .table-empty{
     padding: 25px;
     font-size: 18px;
@@ -135,10 +128,6 @@ mat-sidenav-content{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.botonera-bottom-segip{
-    padding: 25px;
 }
 
 mat-dialog-content{
