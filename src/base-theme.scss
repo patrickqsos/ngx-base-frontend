@@ -1,17 +1,7 @@
 @import '~@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue.
-
-
-$sg-pallete-primary: (
+$main-palette-primary: (
     50 : #e0eaef,
     100 : #b3cbd7,
     200 : #80a9bd,
@@ -44,7 +34,7 @@ $sg-pallete-primary: (
     )
 );
 
-$sg-palette-secondary: (
+$main-palette-accent: (
     50 : #fff4e6,
     100 : #ffe3c0,
     200 : #ffd096,
@@ -77,7 +67,15 @@ $sg-palette-secondary: (
     )
 );
 
-$sg-palette-alt-primary: (
+$main-primary: mat-palette($main-palette-primary);
+$main-accent:  mat-palette($main-palette-accent);
+$main-warn: mat-palette($mat-red);
+
+$main-theme: mat-light-theme($main-primary, $main-accent, $main-warn);
+
+@include angular-material-theme($main-theme);
+
+$alt-palette-primary: (
     50 : #e9f7fd,
     100 : #c7ecfb,
     200 : #a2dff8,
@@ -110,7 +108,7 @@ $sg-palette-alt-primary: (
     )
 );
 
-$sg-palette-alt-accent: (
+$alt-palette-accent: (
     50 : #fef7ed,
     100 : #fdecd2,
     200 : #fbdfb4,
@@ -143,26 +141,49 @@ $sg-palette-alt-accent: (
     )
 );
 
+$alt-palette-warn: (
+    50 : #fefdfc,
+    100 : #fcfbf8,
+    200 : #faf9f3,
+    300 : #f8f6ee,
+    400 : #f7f4eb,
+    500 : #f5f2e7,
+    600 : #f4f0e4,
+    700 : #f2eee0,
+    800 : #f0ecdd,
+    900 : #eee8d7,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
 
-$segip-app-primary: mat-palette($sg-pallete-primary);
-$segip-app-accent:  mat-palette($sg-palette-secondary);
+$alt-primary: mat-palette($alt-palette-primary);
+$alt-accent:  mat-palette($alt-palette-accent);
+$alt-warn:  mat-palette($alt-palette-warn);
 
-// The warn palette is optional (defaults to red).
-$segip-app-warn:    mat-palette($mat-red);
+$alt-theme: mat-light-theme($alt-primary, $alt-accent, $alt-warn);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$segip-app-theme: mat-light-theme($segip-app-primary, $segip-app-accent, $segip-app-warn);
+$button-theme: mat-light-theme($alt-primary, $main-accent, $alt-warn);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($segip-app-theme);
+@include mat-button-theme($button-theme);
 
 .alt-theme {
-    $alt-primary: mat-palette($sg-palette-alt-primary);
-    $alt-accent:  mat-palette($sg-palette-alt-accent);
-    
-    $alt-theme: mat-light-theme($alt-primary, $alt-accent);
-  
     @include angular-material-theme($alt-theme);
 }

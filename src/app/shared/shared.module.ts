@@ -39,6 +39,11 @@ import { JsonViewerComponent } from './components/json-viewer/json-viewer.compon
 import { ErrorViewerComponent } from './components/error-viewer/error-viewer.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { CellPositionDirective } from './directives/cell-position.directive';
+import { ToolbarModalDirective } from './directives/toolbar-modal.directive';
+import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinner.component';
+import { TableEmptyComponent } from './components/table-empty/table-empty.component';
+import { TableDirective } from './directives/table.directive';
+import { DisabledDirective } from './directives/disabled.directive';
 
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
@@ -53,10 +58,15 @@ import { CellPositionDirective } from './directives/cell-position.directive';
         HoverCardDirective,
         AutofocusDirective,
         CellPositionDirective,
+        ToolbarModalDirective,
+        TableDirective,
+        DisabledDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
-        ErrorViewerComponent
+        ErrorViewerComponent,
+        LoaderSpinnerComponent,
+        TableEmptyComponent
     ],
     imports: [
         CommonModule,
@@ -125,9 +135,15 @@ import { CellPositionDirective } from './directives/cell-position.directive';
         HoverCardDirective,
         AutofocusDirective,
         CellPositionDirective,
+        ToolbarModalDirective,
+        TableDirective,
+        DisabledDirective,
+
         ConfirmDialogComponent,
         JsonViewerComponent,
-        ErrorViewerComponent
+        ErrorViewerComponent,
+        LoaderSpinnerComponent,
+        TableEmptyComponent
     ],
     entryComponents: [
         ConfirmDialogComponent

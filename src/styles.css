@@ -112,18 +112,12 @@ mat-sidenav-content{
     overflow: initial;
 }
 
-.table-segip{
-    display: flex;
-    flex-direction: column;
-    min-width: 100%;
-}
-
-.table-segip-empty{
+.table-empty{
     padding: 25px;
     font-size: 18px;
 }
 
-.loading-spinner {
+.loader-spinner {
     position: absolute;
     top: 0;
     left: 0;
@@ -134,10 +128,6 @@ mat-sidenav-content{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.botonera-bottom-segip{
-    padding: 25px;
 }
 
 mat-dialog-content{
@@ -159,4 +149,21 @@ mat-spinner{
 
 mat-card-content {
     padding-top: 15px;
+}
+
+.toolbar-modal {
+    height: 45px !important;
+    font-size: 16px;
+}
+
+.form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-outline{
+    color: #00527a;
+}
+
+.form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > input{
+    color: #00527a;
+}
+
+.form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > .mat-form-field-label-wrapper > label{
+    color: #00527a;
 }

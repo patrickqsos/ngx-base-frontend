@@ -23,7 +23,7 @@
                     ],
                     "styles": [
                         "src/styles.css",
-                        "src/segip-base-theme.scss"
+                        "src/base-theme.scss"
                     ],
                     "scripts": [
                         "src/assets/tinymce/tinymce.min.js"
@@ -138,7 +138,7 @@
                     "scripts": [],
                     "styles": [
                         "src/styles.css",
-                        "src/segip-base-theme.scss"
+                        "src/base-theme.scss"
                     ],
                     "assets": [
                         "src/assets",
