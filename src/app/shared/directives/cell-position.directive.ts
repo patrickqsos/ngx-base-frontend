@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Renderer2, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 /**
  * Directiva para posicionar un mat cell.
  *
@@ -8,7 +8,7 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 @Directive({
     selector: '[shCellPosition]'
 })
-export class CellPositionDirective implements OnInit {
+export class CellPositionDirective implements OnInit, OnChanges {
 
     @Input('shCellPosition') position: string;
 
@@ -27,5 +27,11 @@ export class CellPositionDirective implements OnInit {
     ngOnInit(): void {
         this.elementRef.nativeElement.style.display = 'flex';
         this.elementRef.nativeElement.style.justifyContent = this.position;
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.position) {
+            this.elementRef.nativeElement.style.justifyContent = this.position;
+        }
     }
  }

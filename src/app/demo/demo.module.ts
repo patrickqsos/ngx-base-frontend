@@ -9,13 +9,21 @@ import { TagsComponent } from './tags/tags.component';
 import { DemoListComponent } from './demo-list/demo-list.component';
 import { EditorModule } from 'tinymce-material';
 import { TextEditorComponent } from './text-editor/text-editor.component';
+import { GridEmptyComponent } from './grids/grid-empty/grid-empty.component';
+import { GridFullComponent } from './grids/grid-full/grid-full.component';
+import { GridModalComponent } from './grids/grid-full/grid-modal/grid-modal.component';
+import { GridNuevoComponent } from './grids/grid-full/grid-nuevo/grid-nuevo.component';
 
 @NgModule({
     declarations: [
         DemoListComponent,
         RegistryComponent,
         TagsComponent,
-        TextEditorComponent
+        TextEditorComponent,
+        GridEmptyComponent,
+        GridFullComponent,
+        GridModalComponent,
+        GridNuevoComponent
     ],
     imports: [
         CommonModule,
@@ -25,6 +33,9 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
     ],
     providers: [
         DemoService
+    ],
+    entryComponents: [
+        GridModalComponent
     ]
 })
 export class DemoModule {}

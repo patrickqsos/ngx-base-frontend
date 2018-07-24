@@ -1,0 +1,50 @@
+<mat-toolbar class="alt-theme" color="primary">
+	<h3>{{data.titulo}}</h3>
+	<span class="flex-spacer"></span>
+	<button mat-button mat-dialog-close matTooltip="{{ langService.getLang(eModulo.Base, 'btn-cerrar') }}">
+        <mat-icon>close</mat-icon>
+	</button>
+</mat-toolbar>
+<mat-dialog-content>
+	<form [formGroup]="form">
+		<mat-form-field fxFlexFill> 
+			<input matInput formControlName="id" placeholder="Id" />
+			<mat-error *ngIf="form.controls['id'].errors?.required">Campo requerido</mat-error>
+			<mat-error *ngIf="form.controls['id'].errors?.pattern">Caracteres inválidos</mat-error>
+			<mat-error *ngIf="form.controls['id'].errors?.maxlength">Tamaño maximo excedido</mat-error>
+		</mat-form-field>
+
+		<mat-form-field fxFlexFill>
+			<input matInput formControlName="userId" placeholder="Id del usuario" />
+			<mat-error *ngIf="form.controls['userId'].errors?.required">Campo requerido</mat-error>
+			<mat-error *ngIf="form.controls['userId'].errors?.pattern">Caracteres inválidos</mat-error>
+			<mat-error *ngIf="form.controls['userId'].errors?.maxlength">Tamaño maximo excedido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlexFill>
+			<input matInput formControlName="title" placeholder="Titulo" />
+			<mat-error *ngIf="form.controls['title'].errors?.required">Campo requerido</mat-error>
+			<mat-error *ngIf="form.controls['title'].errors?.pattern">Caracteres inválidos</mat-error>
+			<mat-error *ngIf="form.controls['title'].errors?.maxlength">Tamaño maximo excedido</mat-error>
+		</mat-form-field>
+	</form>
+
+	
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutGap="20px"> 
+	<button 
+		fxFlex 
+		mat-raised-button 
+		color="accent" 
+		disabled = "{{ form.invalid || form.pristine || contextService.isLoading }}">
+        Aceptar
+    </button>
+	<button 
+		fxFlex 
+		mat-raised-button 
+		color="warn" 
+		mat-dialog-close
+		disabled = "{{ contextService.isLoading }}">
+        Cancelar
+    </button>
+</mat-dialog-actions>

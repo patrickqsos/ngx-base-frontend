@@ -26,6 +26,14 @@ export class DemoListComponent extends BaseComponent implements OnInit {
     ngOnInit(): void {
         this.listaDemo.push(
             {
+                demoRoute: 'grid-empty',
+                demoNombre: 'Grilla sin datos'
+            },
+            {
+                demoRoute: 'grid-full',
+                demoNombre: 'Grilla completa'
+            },
+            {
                 demoRoute: 'registry',
                 demoNombre: 'Registry'
             },

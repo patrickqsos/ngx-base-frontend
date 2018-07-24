@@ -28,11 +28,6 @@ html, body {
     font-feature-settings: 'liga'
 }
 
-
-.mat-expansion-panel-body {
-    padding: 0px !important;
-}
-
 .mat-expansion-panel-header-description, .mat-expansion-indicator, .mat-expansion-indicator:after {
     color: white !important;
 }

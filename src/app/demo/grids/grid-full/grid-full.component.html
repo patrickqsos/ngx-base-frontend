@@ -1,0 +1,162 @@
+<mat-card>
+        <mat-card-header class="alt-theme">
+          <mat-toolbar color="primary">
+            <h3>{{ langService.getLang(eModulo.Demo, 'tit-grid-full') }}</h3>
+            <span class="flex-spacer"></span>
+            <a mat-button matTooltip="Nuevo registro" (click)="openModalAdicionar()">
+                <mat-icon>add</mat-icon>
+            </a>
+            <a mat-button routerLink="/menu" matTooltip="{{ langService.getLang(eModulo.Base, 'btn-cerrar') }}">
+                <mat-icon>close</mat-icon>
+            </a>
+          </mat-toolbar>
+        </mat-card-header>
+        <mat-card-content shTable fxLayout="column">
+
+           
+            
+            <div fxLayout="row" *ngIf="search == 'single'">
+                <mat-form-field fxFlex appearance="outline">
+                    <span matPrefix><mat-icon>search</mat-icon>&nbsp;</span>
+                    <mat-label>{{langService.getLang(eModulo.Demo, 'grid-search')}}</mat-label>
+                    <input matInput (keyup)="applyFilter($event.target.value)"/>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="20px" *ngIf="search == 'multiple'">
+                <mat-form-field fxFlex appearance="outline">
+                    <span matPrefix><mat-icon>search</mat-icon>&nbsp;</span>
+                    <mat-label>Titulo</mat-label>
+                    <input matInput (keyup)="applyFilterTitle($event.target.value)" [(ngModel)]="searchTitle"/>
+                    <button mat-button *ngIf="searchTitle" matSuffix mat-icon-button (click)="clearSearch()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field fxFlex appearance="outline">
+                    <span matPrefix><mat-icon>search</mat-icon>&nbsp;</span>
+                    <mat-label>Id</mat-label>
+                    <input type="number" matInput (keyup)="applyFilterId($event.target.value)" [(ngModel)]="searchId"/>
+                    <button mat-button *ngIf="searchId" matSuffix mat-icon-button (click)="clearSearch()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+                
+            <shared-loader-spinner></shared-loader-spinner>
+            <mat-table #table [dataSource]="dataSource">
+    
+                <ng-container matColumnDef="select" >
+                    <mat-header-cell *matHeaderCellDef fxFlex="5">
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection?.hasValue() && isAllSelected()"
+                            [indeterminate]="selection?.hasValue() && !isAllSelected()">
+                        </mat-checkbox>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="5">
+                        <mat-checkbox color="accent" (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)">
+                        </mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="id">
+                    <mat-header-cell [shCellPosition]="alignSelected" *matHeaderCellDef fxFlex="20">{{langService.getLang(eModulo.Demo, 'grid-id')}} </mat-header-cell>
+                    <mat-cell [shCellPosition]="alignSelected" *matCellDef="let row" fxFlex="20"> {{row.id}} </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="userId">
+                    <mat-header-cell [shCellPosition]="alignSelected" *matHeaderCellDef fxFlex="20">{{langService.getLang(eModulo.Demo, 'grid-userid')}} </mat-header-cell>
+                    <mat-cell [shCellPosition]="alignSelected" *matCellDef="let row" fxFlex="20"> {{row.userId}} </mat-cell>
+                </ng-container>
+            
+                <ng-container matColumnDef="title">
+                    <mat-header-cell [shCellPosition]="alignSelected" *matHeaderCellDef fxFlex="40">{{langService.getLang(eModulo.Demo, 'grid-title')}} </mat-header-cell>
+                    <mat-cell [shCellPosition]="alignSelected" *matCellDef="let row" fxFlex="40"> {{row.title}} </mat-cell>
+                </ng-container>
+            
+                <!-- <ng-container matColumnDef="completed">
+                    <mat-header-cell *matHeaderCellDef fxFlex="20">{{langService.getLang(eModulo.Demo, 'grid-completed')}} </mat-header-cell>
+                    <mat-cell *matCellDef="let row" fxFlex="20"> {{row.completed}} </mat-cell>
+                </ng-container> -->
+            
+                <ng-container matColumnDef="actions">
+            
+                    <mat-header-cell *matHeaderCellDef fxFlex="15" [shCellPosition]="alignSelected"> {{langService.getLang(eModulo.Demo,'grid-actions')}} </mat-header-cell>
+                    <mat-cell *matCellDef="let row; let i=index;" [shCellPosition]="alignSelected" fxFlex="15">
+                    <mat-slide-toggle color="accent" matTooltip="{{langService.getLang(eModulo.Demo,'tlt-completar')}}" checked="{{row.completed}}"></mat-slide-toggle>
+            
+                    <button mat-icon-button (click)="openModalModificar(row,i)" matTooltip="{{langService.getLang(eModulo.Demo,'tlt-editar')}}">
+                        <mat-icon >mode_edit</mat-icon>
+                    </button>
+            
+                    <button mat-icon-button (click)="openEditFull(row)" matTooltip="{{langService.getLang(eModulo.Demo,'tlt-editar-full')}}">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+            
+                    <button mat-icon-button (click)="openModalEliminacion(row,i)" matTooltip="{{langService.getLang(eModulo.Demo,'tlt-eliminar')}}">
+                        <mat-icon >delete</mat-icon>
+                    </button>
+                    </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row  [@fadeInAnim]="" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            
+            <shared-table-empty [datasource]="dataSource"></shared-table-empty>
+        
+            <mat-paginator #paginator [pageSize]="config.paginatorSize" [pageSizeOptions]="config.paginatorOptions" [showFirstLastButtons]="true"></mat-paginator>
+            
+            <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{langService.getLang(eModulo.Demo, 'tit-config')}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                    
+                        <div fxLayout="row" fxLayoutGap="10px">
+    
+                            <mat-form-field fxFlex>
+                                <mat-select placeholder="{{langService.getLang(eModulo.Demo, 'grid-align')}}" [(value)]="alignSelected">
+                                    <mat-option *ngFor="let align of aligns" [value]="align">
+                                        {{align}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+    
+                            <mat-slide-toggle fxFlex
+                                color="accent"
+                                checked="false"
+                                (change)="emptyChanged($event)">
+                                Grilla sin datos
+                            </mat-slide-toggle>
+    
+                            <mat-slide-toggle fxFlex
+                                color="accent"
+                                checked="false"
+                                (change)="loadingChanged($event)">
+                                Grilla cargando
+                            </mat-slide-toggle>
+    
+                            <mat-slide-toggle fxFlex
+                                color="accent"
+                                checked="true"
+                                (change)="checkChanged($event)">
+                                Mostrar columna de selcción
+                            </mat-slide-toggle>
+                            
+                            <mat-form-field fxFlex>
+                                <mat-select placeholder="Tipo de buscador" [(value)]="search">
+                                    <mat-option value="none">Ninguno</mat-option>
+                                    <mat-option value="single">Un solo campo</mat-option>
+                                    <mat-option value="multiple">Varios campos</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+        </mat-card-content>
+    </mat-card>

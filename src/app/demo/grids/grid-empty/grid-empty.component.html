@@ -1,0 +1,80 @@
+<mat-card>
+    <mat-card-header class="alt-theme">
+      <mat-toolbar color="primary">
+        <h3>{{ langService.getLang(eModulo.Demo, 'tit-grid-empty') }}</h3>
+        <span class="flex-spacer"></span>
+        <a mat-button routerLink="/menu" matTooltip="{{ langService.getLang(eModulo.Base, 'btn-cerrar') }}">
+            <mat-icon>close</mat-icon>
+        </a>
+      </mat-toolbar>
+    </mat-card-header>
+    <mat-card-content shTable fxLayout="column">
+        <!-- <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex appearance="outline">
+                <span matPrefix><mat-icon>search</mat-icon>&nbsp;</span>
+                <mat-label>{{langService.getLang(eModulo.Params, 'grid-nombre')}}</mat-label>
+                <input matInput (keyup)="applyFilter($event.target.value)"/>
+            </mat-form-field>
+            <mat-form-field fxFlex appearance="outline">
+                <span matPrefix><mat-icon>search</mat-icon>&nbsp;</span>
+                <mat-label>{{langService.getLang(eModulo.Params, 'grid-cite')}}</mat-label>
+                <mat-select (selectionChange)="filtradoPorCite($event)">
+                    <mat-option *ngFor="let item of comboListadoCite" [value]="item.idCite">
+                    {{item.cite}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>  -->
+        <shared-loader-spinner></shared-loader-spinner>
+        <mat-table #table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="userId">
+                <mat-header-cell *matHeaderCellDef fxFlex="25">{{langService.getLang(eModulo.Demo, 'grid-userid')}} </mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="25"> {{element.userId}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef fxFlex="25">{{langService.getLang(eModulo.Demo, 'grid-id')}} </mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="25"> {{element.id}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef fxFlex="35">{{langService.getLang(eModulo.Demo, 'grid-title')}} </mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="35"> {{element.title}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="completed">
+                <mat-header-cell *matHeaderCellDef fxFlex="35">{{langService.getLang(eModulo.Demo, 'grid-completed')}} </mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="35"> {{element.completed}} </mat-cell>
+            </ng-container>
+        
+                <!-- <ng-container matColumnDef="Acciones">
+        
+                <mat-header-cell *matHeaderCellDef fxFlex="15" [shCellPosition]="'center'"> {{langService.getLang(eModulo.Params,'grid-accion')}} </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i=index;" [shCellPosition]="'center'" fxFlex="15">
+                <mat-slide-toggle color="accent" matTooltip="{{langService.getLang(eModulo.Params,'tlt-activar')}}" checked="{{element.estado | estadosPipe}}"
+                    (change)="onChangeActivarDesactivarRegistro($event,element,i);"></mat-slide-toggle>
+        
+                <button mat-icon-button (click)="openModalModificar(element,i)" matTooltip="{{langService.getLang(eModulo.Params,'tlt-editar')}}">
+                    <mat-icon >mode_edit</mat-icon>
+                </button>
+        
+                <button mat-icon-button (click)="openVistaConfigurarPlantilla(element,i)" matTooltip="{{langService.getLang(eModulo.Params,'tlt-configurar')}}">
+                    <mat-icon>settings</mat-icon>
+                </button>
+        
+                <button mat-icon-button (click)="openModalEliminacion(element,i)" matTooltip="{{langService.getLang(eModulo.Params,'tlt-eliminar')}}">
+                    <mat-icon color="accent">delete</mat-icon>
+                </button>
+                </mat-cell>
+            </ng-container> -->
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row  [@slideInLeftAnim]="" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        
+        <shared-table-empty [datasource]="dataSource"></shared-table-empty>
+    
+        <mat-paginator #paginator [pageSize]="config.paginatorSize" [pageSizeOptions]="config.paginatorOptions" [showFirstLastButtons]="true"></mat-paginator>
+    </mat-card-content>
+</mat-card>

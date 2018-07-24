@@ -25,7 +25,8 @@ import {
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSlideToggleModule
 } from '@angular/material';
 
 import { ClassTipoNotificacionPipe } from './pipes/class-tipo-notificacion.pipe';
@@ -96,6 +97,7 @@ import { DisabledDirective } from './directives/disabled.directive';
         MatPaginatorModule,
         MatProgressSpinnerModule,
         MatTabsModule,
+        MatSlideToggleModule,
         // Modulos para formularios.
         FormsModule,
         ReactiveFormsModule,
@@ -127,11 +129,14 @@ import { DisabledDirective } from './directives/disabled.directive';
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatTabsModule,
+        MatSlideToggleModule,
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
+
         ClassTipoNotificacionPipe,
         IconTipoNotificacionPipe,
+
         HoverCardDirective,
         AutofocusDirective,
         CellPositionDirective,
