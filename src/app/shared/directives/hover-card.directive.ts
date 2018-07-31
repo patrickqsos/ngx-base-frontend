@@ -37,6 +37,11 @@ export class HoverCardDirective implements OnInit {
         private renderer: Renderer2
     ) {}
 
+    /**
+     * Hook OnInit.
+     *
+     * @memberof HoverCardDirective
+     */
     ngOnInit(): void {
         this.renderer.addClass(this.elementRef.nativeElement, this.notHoverClass);
     }

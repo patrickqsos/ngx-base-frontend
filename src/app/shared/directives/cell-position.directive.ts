@@ -10,6 +10,12 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 })
 export class CellPositionDirective implements OnInit {
 
+    /**
+     * Posición para la celda: flex-start, center, flex-end.
+     *
+     * @type {string}
+     * @memberof CellPositionDirective
+     */
     @Input('shCellPosition') position: string;
 
     /**

@@ -1,5 +1,12 @@
 import { Directive, OnInit, ElementRef, Renderer2 } from '@angular/core';
 
+/**
+ * Directiva para los mat-table.
+ *
+ * @export
+ * @class TableDirective
+ * @implements {OnInit}
+ */
 @Directive({
     selector: '[shTable]'
 })

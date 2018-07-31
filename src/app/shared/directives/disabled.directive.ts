@@ -1,5 +1,12 @@
 import { Directive, OnInit, ElementRef, Renderer2 } from '@angular/core';
 
+/**
+ * Directiva para dar formato a un input deshabilitado.
+ *
+ * @export
+ * @class DisabledDirective
+ * @implements {OnInit}
+ */
 @Directive({
     selector: '[shDisabled]'
 })
@@ -11,7 +18,6 @@ export class DisabledDirective implements OnInit {
     constructor(
         public elementRef: ElementRef,
         public renderer: Renderer2
-
     ) { }
 
     /**
@@ -21,7 +27,5 @@ export class DisabledDirective implements OnInit {
      */
     ngOnInit(): void {
         this.renderer.addClass(this.elementRef.nativeElement, 'form-field-disabled');
-//        console.log(this.elementRef.nativeElement);
-
     }
 }

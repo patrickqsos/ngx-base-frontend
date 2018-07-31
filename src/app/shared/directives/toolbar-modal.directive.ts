@@ -1,5 +1,12 @@
 import { Directive, OnInit, ElementRef, Renderer2 } from '@angular/core';
 
+/**
+ * Directiva para los toolbar de una modal.
+ *
+ * @export
+ * @class ToolbarModalDirective
+ * @implements {OnInit}
+ */
 @Directive({
     selector: '[shToolbarModal]'
 })
