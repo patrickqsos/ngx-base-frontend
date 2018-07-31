@@ -1,5 +1,5 @@
-<div class="main-page" fxLayout='column' fxLayoutAlign="center center"  >
-    <header fxFlexFill>
+<div class="main-page" fxLayout='column' fxLayoutAlign="center stretch"  >
+    <header>
         <mat-toolbar color="primary" fxLayout="row" class="main-toolbar">
             <!-- <button mat-icon-button (click)="sidenav.toggle()" matTooltip="{{langService.getLang(eModulo.Base,'tit-menu')}}">
                 <mat-icon>menu</mat-icon>
@@ -32,87 +32,14 @@
         </mat-toolbar>
     </header>
     
-    <base-progress-bar fxFlexFill></base-progress-bar>
-    <base-breadcrumbs [@breadListAnim] *ngIf="authService.isUserAuthenticated() && contextoService.breadCrumbs.length > 0" fxFlexFill></base-breadcrumbs>
+    <base-progress-bar></base-progress-bar>
+    <base-breadcrumbs [@breadListAnim] *ngIf="authService.isUserAuthenticated() && contextoService.breadCrumbs.length > 0"></base-breadcrumbs>
         
-    <mat-sidenav-container fxFlex="1" class="main-container-nav" fxLayout="column">
-        <mat-sidenav #sidenav mode="push" opened="false" >
-            <!-- <mat-accordion>
-                <mat-expansion-panel hideToggle="true">
-                    <mat-expansion-panel-header class="mat-accent" >
-                        <mat-panel-title >
-                            {{ langService.getLang(eModulo.Base ,'tit-info-sistema') }}
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            <span class=flex-spacer></span>
-                            <mat-icon>settings</mat-icon>
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-
-                    <mat-list dense>
-                        <mat-list-item>
-                            <mat-icon matListIcon>apps</mat-icon>
-                            <span>{{ contextoService.getConfig('nombreSistema') }}</span>
-                        </mat-list-item>
-                        
-                        <mat-list-item>
-                                <mat-icon matListIcon>date_range</mat-icon>
-                                <span>{{ utilService.getFechaActual() | date:'dd/MM/yyyy' }}</span>
-                        </mat-list-item>
-
-                        <mat-list-item *ngIf="contextoService.getUsuario() != null">
-                                <mat-icon matListIcon>account_circle</mat-icon>
-                                <span>{{ contextoService.getUsuario()  }}</span>
-                        </mat-list-item>
-
-                        <mat-list-item *ngIf="contextoService.getInstitucion() != null">
-                                <mat-icon matListIcon>work</mat-icon>
-                                <span>{{ contextoService.getInstitucion()  }}</span>
-                        </mat-list-item>
-
-                        <mat-list-item *ngIf="contextoService.esMultiIdioma()">
-                                <mat-form-field >
-                                    <mat-select (selectionChange)="contextoService.setNuevoIdioma($event.value)" placeholder="{{ langService.getLang(eModulo.Base ,'lbl-lenguaje') }}">
-                                        <mat-option *ngFor="let idioma of contextoService.getIdiomas()" [value]="idioma.id">
-                                        {{ idioma.etiqueta }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                        </mat-list-item>
-                    </mat-list>
-                    
-                </mat-expansion-panel>
-                
-                <mat-expansion-panel hideToggle="true" *ngFor="let modulo of contextoService.getListaModulos()" >
-                    <mat-expansion-panel-header class="mat-accent" >
-                        <mat-panel-title >
-                            {{modulo.Etiqueta}}
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            <span class=flex-spacer></span>
-                            <mat-icon *ngIf="modulo.Imagen != null; else noImage">{{ modulo.Imagen }}</mat-icon>
-                            <ng-template #noImage>
-                                <mat-icon>extension</mat-icon>
-                            </ng-template>
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-
-                    <mat-list dense *ngFor="let recurso of modulo.RecursosHijos"  >
-                        <h3 mat-subheader color="primary">{{ recurso.Descripcion}}</h3>
-                        <mat-list-item *ngFor="let subrecurso of recurso.RecursosHijos"  >
-                                <mat-icon matListIcon>chevron_right</mat-icon>
-                            <a routerLink="{{subrecurso.Ejecutable}}" class="accordion-list" (click)="sidenav.toggle()">{{subrecurso.Descripcion}}</a>
-                        </mat-list-item>
-                    </mat-list>
-                    
-                </mat-expansion-panel>
-            </mat-accordion> -->
-            <mat-divider></mat-divider>
-        </mat-sidenav>
+    <div fxFlex="1" fxLayout="column" fxLayoutAlign="center center" class="main-container">
         <router-outlet></router-outlet>
-    </mat-sidenav-container>
+    </div>
 
-    <footer fxFlexFill>
+    <footer>
         <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" class="main-footer" >
             <span>{{ langService.getLang(eModulo.Base ,'msg-copyright') }}</span>
             <span *ngIf="environment.semver">&nbsp;|&nbsp;{{ config.version["semver"]["raw"] }}</span>
