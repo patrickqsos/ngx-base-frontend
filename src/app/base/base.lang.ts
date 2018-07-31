@@ -46,7 +46,8 @@ export const baseLang = {
             'btn-no': 'Cancelar',
             'lbl-user': 'Usuario',
             'lbl-inst': 'Institución',
-            'menu-user': 'Información del usuario'
+            'menu-user': 'Información del usuario',
+            'tit-search-menu': 'Buscar página'
         },
         'en': {
             'lang-error': 'Lang not found',

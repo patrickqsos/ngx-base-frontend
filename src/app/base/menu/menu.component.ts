@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '../../shared/base.component';
 import { ContextoService } from '../../shared/services/contexto.service';
 import { LangService } from '../../shared/services/lang.service';
-import { zoomInAnim, fadeInLeftAnim } from '../../shared/animations/template.animation';
+import { zoomInAnim, fadeInLeftAnim, breadListAnim } from '../../shared/animations/template.animation';
+import { AutofocusDirective } from '../../shared/directives/autofocus.directive';
 
 /**
  * Componente para mostrar el menu del sistema.
@@ -16,9 +17,26 @@ import { zoomInAnim, fadeInLeftAnim } from '../../shared/animations/template.ani
 @Component({
     selector: 'base-menu',
     templateUrl: 'menu.component.html',
-    animations: [zoomInAnim, fadeInLeftAnim]
+    animations: [zoomInAnim, fadeInLeftAnim, breadListAnim],
+    host: {class: 'container-fluid'}
 })
 export class MenuComponent extends BaseComponent implements OnInit {
+
+    /**
+     * Viewchild para acceder al campo de búsqueda.
+     *
+     * @type {AutofocusDirective}
+     * @memberof MenuComponent
+     */
+    @ViewChild(AutofocusDirective) searchField: AutofocusDirective;
+
+    /**
+     * Lista de menus de respaldo desde de iniciar una búsqueda.
+     *
+     * @type {Array<any>}
+     * @memberof MenuComponent
+     */
+    backupList: Array<any>;
 
     /**
      * Creates an instance of MenuComponent.
@@ -49,6 +67,9 @@ export class MenuComponent extends BaseComponent implements OnInit {
         // Si el item seleccionado tiene una ruta cargada, se usa el router para cargarla.
         if (pMenu.Ejecutable) {
             this.router.navigate([pMenu.Ejecutable]);
+        } else if (this.searchField) {
+            // Setea el focus en el buscador.
+            this.searchField.focus();
         }
     }
 
@@ -62,6 +83,38 @@ export class MenuComponent extends BaseComponent implements OnInit {
         this.contextoService.breadCrumbs = [];
         // Vuelve a cargar menu inicial
         this.contextoService.listaMenu = this.contextoService.getListaSchemas();
+    }
+
+    /**
+     * Método que realiza la búsqueda de menus.
+     *
+     * @param {string} searchValue
+     * @memberof MenuComponent
+     */
+    search(searchValue: string): void {
+        searchValue = searchValue.toLowerCase().trim();
+
+        if (searchValue) {
+            if (!this.backupList) {
+                this.backupList = this.contextoService.listaMenu;
+            }
+            this.contextoService.listaMenu = this.backupList.filter(s => s.Etiqueta.toLowerCase().includes(searchValue));
+        } else if (searchValue === '') {
+            this.contextoService.listaMenu = this.backupList;
+            this.backupList = undefined;
+        }
+
+    }
+
+    /**
+     * Método que limpia los campos de búsqueda.
+     *
+     * @memberof MenuComponent
+     */
+    clearSearch(): void {
+        this.contextoService.listaMenu = this.backupList;
+        this.searchField.elementRef.nativeElement.value = '';
+        this.backupList = undefined;
     }
 
     /**
