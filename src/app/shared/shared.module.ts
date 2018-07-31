@@ -43,6 +43,7 @@ import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinn
 import { TableEmptyComponent } from './components/table-empty/table-empty.component';
 import { TableDirective } from './directives/table.directive';
 import { DisabledDirective } from './directives/disabled.directive';
+import { UppercaseDirective } from './directives/uppercase.directive';
 
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
@@ -60,6 +61,7 @@ import { DisabledDirective } from './directives/disabled.directive';
         ToolbarModalDirective,
         TableDirective,
         DisabledDirective,
+        UppercaseDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
@@ -139,6 +141,7 @@ import { DisabledDirective } from './directives/disabled.directive';
         ToolbarModalDirective,
         TableDirective,
         DisabledDirective,
+        UppercaseDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
