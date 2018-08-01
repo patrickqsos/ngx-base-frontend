@@ -1,11 +1,13 @@
 import { Directive, AfterViewInit, ElementRef, HostListener, Output, EventEmitter, Renderer2, forwardRef } from '@angular/core';
 import { DefaultValueAccessor, NG_VALUE_ACCESSOR } from '../../../../node_modules/@angular/forms';
 
+/* tslint:disable */
 const UPPERCASE_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => UppercaseDirective),
     multi: true
 };
+/* tslint:enable */
 
 /**
  * Directiva para hacer que el value de un input sea en mayusculas.
