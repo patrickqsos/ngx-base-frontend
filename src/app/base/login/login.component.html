@@ -5,19 +5,18 @@
 		</mat-toolbar>
 	</mat-card-header>
 	<mat-card-content>	
-		<form fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center" [formGroup]="form">
-			<mat-form-field color="primary" fxFlexFill>
+		<form fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center stretch" [formGroup]="form">
+			<mat-form-field color="primary">
 				<mat-icon matSuffix>account_box</mat-icon>
-				<input shAutofocus matInput placeholder="{{ langService.getLang(eModulo.Base,'usuarioFormLabel') }}" formControlName="usuario" required>
+				<input shAutofocus matInput placeholder="{{ langService.getLang(eModulo.Base,'usuarioFormLabel') }}" formControlName="usuario">
 				<mat-error *ngIf="form.controls['usuario'].invalid">{{ langService.getLang(eModulo.Base,'usuarioLogin') }}</mat-error>
 			</mat-form-field>
-			<mat-form-field color="primary" fxFlexFill>
+			<mat-form-field color="primary">
 				<mat-icon matSuffix>vpn_key</mat-icon>
-				<input type="password" matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" formControlName="password" required>
+				<input type="password" matInput placeholder="{{ langService.getLang(eModulo.Base,'passwordFormLabel') }}" formControlName="password">
 				<mat-error *ngIf="form.controls['password'].invalid">{{ langService.getLang(eModulo.Base,'passwordLogin') }}</mat-error>
 			</mat-form-field>
 			<button 
-				fxFlexFill 
 				mat-raised-button 
 				color="accent" 
 				(click)="login()"
