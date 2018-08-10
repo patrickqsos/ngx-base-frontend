@@ -1,9 +1,6 @@
 <div class="main-page" fxLayout='column' fxLayoutAlign="center stretch"  >
     <header>
         <mat-toolbar color="primary" fxLayout="row" class="main-toolbar">
-            <!-- <button mat-icon-button (click)="sidenav.toggle()" matTooltip="{{langService.getLang(eModulo.Base,'tit-menu')}}">
-                <mat-icon>menu</mat-icon>
-            </button>￼ -->
             <img class="main-logo" src="../../assets/logo.png" alt="logo">
             <h1 style="font-size: 25px">{{ config.nombreSistema }}</h1>
             <span class="flex-spacer"></span>
@@ -28,7 +25,6 @@
 
             <a mat-button (click)="authService.logoutUser()" matTooltip="{{langService.getLang(eModulo.Base,'logoutMensaje')}}" *ngIf="authService.isUserAuthenticated()"><mat-icon class="transform_icon">input</mat-icon></a>
             <a mat-button routerLink="/login" matTooltip="{{langService.getLang(eModulo.Base,'loginMensaje')}}" *ngIf="!authService.isUserAuthenticated()"><mat-icon>input</mat-icon></a>
-            <!-- <app-breadcrumbs *ngIf="authService.isUserAuthenticated()"></app-breadcrumbs> -->
         </mat-toolbar>
     </header>
     
@@ -44,6 +40,7 @@
             <span>{{ langService.getLang(eModulo.Base ,'msg-copyright') }}</span>
             <span *ngIf="environment.semver">&nbsp;|&nbsp;{{ config.version["semver"]["raw"] }}</span>
             <span *ngIf="!environment.semver">&nbsp;|&nbsp;{{ config.version["raw"] }}</span>
+            <span style="display: none">&nbsp;|&nbsp;{{ config.versionBase }}</span>
             <span>&nbsp;|&nbsp;{{ environment.env }}</span>
         </mat-toolbar>
     </footer>
