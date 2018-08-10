@@ -38,7 +38,7 @@ export class LangService {
   getLang(pModulo: eModulo, pIdMensaje: string): string {
 
     // Obtiene idioma actual.
-    const idioma = this.contextoService.getIdiomaActual();
+    const idioma = this.contextoService.idiomaSeleccionado;
     // Valida params de entrada.
     if (pModulo !== undefined && pIdMensaje !== undefined) {
       const lang = this.langs[pModulo].contenido[idioma][pIdMensaje];

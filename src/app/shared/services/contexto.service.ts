@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { baseLang } from '../../base/base.lang';
+import * as SecureLS from 'secure-ls';
 
 /**
  * Servicio para interactuar con el contexto del sistema.
@@ -13,17 +12,16 @@ import { baseLang } from '../../base/base.lang';
 @Injectable()
 export class ContextoService {
 
-    // Idioma seleccionado para el sistema.
-    private idiomaSeleccionado = '';
-
     // Array de idiomas disponibles.
     private idiomas = [];
 
     // Configuración leida del archivo de configuración.
     private config: Object = undefined;
 
-    // Entorno del sistema.
-    private env: Object = undefined;
+    private ls: any;
+
+    // Idioma seleccionado para el sistema.
+    idiomaSeleccionado = '';
 
     // Array que contiene todos los menus seleccionado, sirve para armar las migas de pan.
     breadCrumbs: Array<any> = [];
@@ -39,7 +37,12 @@ export class ContextoService {
      * @param {HttpClient} http Servicio HttpClient
      * @memberof ContextoService
      */
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+        this.ls = new SecureLS({
+            encodingType: 'aes',
+            isCompression: false
+        });
+    }
 
     /**
      * Método para cargar el archivo de configuración.
@@ -49,11 +52,8 @@ export class ContextoService {
      */
     load(): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            // Obtiene entorno de ejecución.
-            this.env = environment.env;
-
             // Lee el archivo de configuración.
-            this.http.get(`../../../configs/config.${this.env}.json`)
+            this.http.get(`../../../configs/config.${environment.env}.json`)
                     .subscribe((responseData) => {
                         // Guarda localmente la configuración leida.
                         this.config = responseData;
@@ -80,43 +80,6 @@ export class ContextoService {
         return this.config[key];
     }
 
-    getBackendAPI(): string {
-        return this.config['backendApi'];
-    }
-
-    /**
-     * Método para cambiar el idioma del sistema.
-     *
-     * @param {string} pNuevoLenguaje Nuevo idioma.
-     * @memberof ContextoService
-     */
-    setNuevoIdioma(pNuevoIdioma: string): void {
-        this.idiomaSeleccionado = pNuevoIdioma;
-    }
-
-    /**
-     * Método para obtener el idioma actual del sistema.
-     *
-     * @memberof ContextoService
-     */
-    getIdiomaActual(): string {
-        return this.idiomaSeleccionado ;
-    }
-
-    /**
-     * Método para obtener lista de modulos del sistema.
-     *
-     * @returns {any[]} Lista de modulos.
-     * @memberof ContextoService
-     */
-    getListaModulos(): Array<any> {
-        if (this.getContexto() && this.getContexto().RecursosUsuario) {
-            return this.getContexto().RecursosUsuario;
-        } else {
-            return [];
-        }
-    }
-
     /**
      *  Método para obtener lista de recursos hijos.
      *
@@ -124,18 +87,15 @@ export class ContextoService {
      * @memberof ContextoService
      */
     getListaSchemas(): Array<any> {
-        // Instancia lista.
         const listaSchemas = [];
-        // Valida si existe elementos en la lista.
-        if (this.getContexto() && this.getContexto().RecursosUsuario) {
-            // Recorre lista de recursos hijos para adiconarlos a la lista a devolver.
-            for (const modulo of this.getContexto().RecursosUsuario) {
+        const item = this.getItemContexto('RecursosUsuario');
+        if (item) {
+            for (const modulo of item) {
                 // for(let schema of modulo.RecursosHijos) {
                     listaSchemas.push(modulo);
                 // }
             }
         }
-        // Retorna lista.
         return listaSchemas;
     }
 
@@ -147,15 +107,12 @@ export class ContextoService {
      * @memberof ContextoService
      */
     checkRecurso(pUrl: string): boolean {
-        // Valida si el contexto tiene la propiedad de recursos.
-        if (this.getContexto() && this.getContexto().Recursos) {
-            const recursos = this.getContexto().Recursos;
-            // Busca el recurso en el contexto.
-            const result = recursos.filter(obj => {
+        const item = this.getItemContexto('Recursos');
+        if (item) {
+            const result = item.filter(obj => {
                 return pUrl.includes(obj.Uri);
                 // return obj.Uri === pUrl.substring(1);
             });
-            // Retorna bandera.
             return result.length > 0;
         } else {
             return false;
@@ -169,19 +126,7 @@ export class ContextoService {
      * @memberof ContextoService
      */
     setContexto(pContextoUsuario: any): void {
-        // Guarda en el local storage el contexto.
-        localStorage.setItem('context', JSON.stringify(pContextoUsuario));
-    }
-
-    /**
-     * Método para obtener el contexto.
-     *
-     * @returns
-     * @memberof ContextoService
-     */
-    getContexto(): any {
-        // Obtiene desde el local storage el contexto.
-        return JSON.parse(localStorage.getItem('context'));
+        this.ls.set('context', pContextoUsuario);
     }
 
     /**
@@ -190,73 +135,22 @@ export class ContextoService {
      * @memberof ContextoService
      */
     finalizarContexto(): void {
-        // Remueve el contexto del local storage.
         localStorage.removeItem('context');
     }
 
     /**
-     * Método para obtener el usuario loggeado en el contexto.
+     * Método para obtener un item del contexto.
      *
-     * @returns {string}
-     * @memberof ContextoService
-     */
-    getUsuario(): string {
-        // Valida si el nombre del usuario esta en el contexto.
-        if (this.getContexto() && this.getContexto().NombreCompletoUsuario) {
-            return this.getContexto().NombreCompletoUsuario;
-        } else {
-            return undefined;
-        }
-    }
-
-    /**
-     * Método para obtener la institución del usuario loggeado en el contexto.
-     *
-     * @returns {string}
-     * @memberof ContextoService
-     */
-    getInstitucion(): string {
-        // Valida si el nombre de la institución esta en el contexto.
-        if (this.getContexto() && this.getContexto().NombreInstitucion) {
-            return this.getContexto().NombreInstitucion;
-        } else {
-            return undefined;
-        }
-    }
-
-    /**
-     * Método para evaluar si el sistema tiene multiples idiomas.
-     *
-     * @returns {boolean}
-     * @memberof ContextoService
-     */
-    esMultiIdioma(): boolean {
-        return this.idiomas.length > 1;
-    }
-
-    /**
-     * Método para obtener listado de idiomas.
-     *
+     * @param {string} key
      * @returns {*}
      * @memberof ContextoService
      */
-    getIdiomas(): Array<any> {
-        return this.idiomas;
-    }
-
-    /**
-     * Método para obtener el IdHistoricoUsuarioSesion desde el contexto.
-     *
-     * @returns {number} IdHistoricoUsuarioSesion.
-     * @memberof ContextoService
-     */
-    getIdSesion(): number {
-        // Valida si el nombre del usuario esta en el contexto.
-        if (this.getContexto() && this.getContexto().IdHistoricoUsuarioSesion) {
-            return this.getContexto().IdHistoricoUsuarioSesion;
+    getItemContexto(key: string): any {
+        const context = this.ls.get('context');
+        if (context) {
+            return context[key];
         } else {
             return undefined;
         }
     }
-
 }

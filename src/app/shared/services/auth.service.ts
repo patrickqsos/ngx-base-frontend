@@ -49,7 +49,7 @@ export class AuthService {
             pass: pPassword
         };
 
-        this.http.post<Resultado>(`${this.contextoService.getBackendAPI()}/login`, params)
+        this.http.post<Resultado>(`${this.contextoService.getConfig('backendApi')}/login`, params)
             .subscribe(
                 response => {
                     if (response.data) {
@@ -74,10 +74,10 @@ export class AuthService {
      */
     logoutUser(): void {
         const params = {
-            idHistoricoUsuarioSesion: this.contextoService.getIdSesion()
+            idHistoricoUsuarioSesion: this.contextoService.getItemContexto('IdHistoricoUsuarioSesion')
         };
 
-        this.http.post<Resultado>(`${this.contextoService.getBackendAPI()}/logout`, params)
+        this.http.post<Resultado>(`${this.contextoService.getConfig('backendApi')}/logout`, params)
             .subscribe(
                 response => {
                     // Remueve el token del local storage.

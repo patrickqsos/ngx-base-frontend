@@ -12,13 +12,13 @@
             </button>
 
             <mat-menu #userInfo="matMenu" xPosition="before" yPosition="below" [overlapTrigger]="false" class="user-info">
-                <button mat-menu-item matTooltip="{{langService.getLang(eModulo.Base,'lbl-user')}} : {{ contextoService.getUsuario() }}" matTooltipShowDelay="500">
+                <button mat-menu-item matTooltip="{{langService.getLang(eModulo.Base,'lbl-user')}} : {{ contextoService.getItemContexto('NombreCompletoUsuario') }}" matTooltipShowDelay="500">
                     <mat-icon>account_circle</mat-icon>
-                    {{ contextoService.getUsuario() }}
+                    {{ contextoService.getItemContexto('NombreCompletoUsuario') }}
                 </button>
-                <button mat-menu-item matTooltip="{{langService.getLang(eModulo.Base,'lbl-inst')}} : {{ contextoService.getInstitucion() }}" matTooltipShowDelay="500">
+                <button mat-menu-item matTooltip="{{langService.getLang(eModulo.Base,'lbl-inst')}} : {{ contextoService.getItemContexto('NombreInstitucion') }}" matTooltipShowDelay="500">
                     <mat-icon>work</mat-icon>
-                    {{ contextoService.getInstitucion() }}
+                    {{ contextoService.getItemContexto('NombreInstitucion') }}
                 </button>
                 <button mat-menu-item>
                     <mat-icon>date_range</mat-icon>

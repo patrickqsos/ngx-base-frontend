@@ -132,7 +132,7 @@ export class BackendInterceptor implements HttpInterceptor {
      */
     getHeaders(pReqHeaders: HttpHeaders): HttpHeaders {
         // Adiciona headers.
-        pReqHeaders = pReqHeaders.set('Accept-Language', this.contextoService.getIdiomaActual());
+        pReqHeaders = pReqHeaders.set('Accept-Language', this.contextoService.idiomaSeleccionado);
 
         if (!pReqHeaders.has('Content-Type')) {
             pReqHeaders = pReqHeaders.set('Content-Type', 'application/json; charset=utf-8');
