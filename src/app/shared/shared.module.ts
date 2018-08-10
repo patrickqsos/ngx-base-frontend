@@ -41,7 +41,7 @@ import { CellPositionDirective } from './directives/cell-position.directive';
 import { ToolbarModalDirective } from './directives/toolbar-modal.directive';
 import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinner.component';
 import { TableEmptyComponent } from './components/table-empty/table-empty.component';
-import { TableDirective } from './directives/table.directive';
+import { LoaderDirective } from './directives/loader.directive';
 import { DisabledDirective } from './directives/disabled.directive';
 import { UppercaseDirective } from './directives/uppercase.directive';
 
@@ -59,7 +59,7 @@ import { UppercaseDirective } from './directives/uppercase.directive';
         AutofocusDirective,
         CellPositionDirective,
         ToolbarModalDirective,
-        TableDirective,
+        LoaderDirective,
         DisabledDirective,
         UppercaseDirective,
 
@@ -139,7 +139,7 @@ import { UppercaseDirective } from './directives/uppercase.directive';
         AutofocusDirective,
         CellPositionDirective,
         ToolbarModalDirective,
-        TableDirective,
+        LoaderDirective,
         DisabledDirective,
         UppercaseDirective,
 

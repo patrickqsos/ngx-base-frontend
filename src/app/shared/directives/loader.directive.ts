@@ -1,16 +1,16 @@
-import { Directive, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, OnInit, ElementRef } from '@angular/core';
 
 /**
- * Directiva para los mat-table.
+ * Directiva para delimitar el tamaño del componente shared-loader-spinner.
  *
  * @export
- * @class TableDirective
+ * @class LoaderDirective
  * @implements {OnInit}
  */
 @Directive({
-    selector: '[shTable]'
+    selector: '[shLoader]'
 })
-export class TableDirective implements OnInit {
+export class LoaderDirective implements OnInit {
 
     /**
      * Ctor de la directiva.
