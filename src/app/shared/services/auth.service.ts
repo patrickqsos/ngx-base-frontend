@@ -1,19 +1,18 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 import { JwtService } from './jwt.service';
 import { ContextoService } from './contexto.service';
 import { LangService } from './lang.service';
 import { Resultado } from '../../shared/models/resultado.model';
-import { NotificacionService } from './notificacion.service';
-import { eModulo } from '../../shared/enums/modulo.enum';
 
-@Injectable()
 /**
- * Class AuthService
- * Clase que permite Realizar la autenticacion de usuarios.
+ * Servicio de autenticación.
+ *
+ * @export
+ * @class AuthService
  */
+@Injectable()
 export class AuthService {
 
     /**
@@ -25,17 +24,17 @@ export class AuthService {
     returnUrl: string;
 
     /**
-     * Constructor de la clase
-     * @param router ;
-     * @param http ;
-     * @param langService ;
-     * @param contextoService ;
-     * @param snackBar ;
+     *Creates an instance of AuthService.
+     * @param {Router} router
+     * @param {HttpClient} http
+     * @param {LangService} langService
+     * @param {ContextoService} contextoService
+     * @param {JwtService} jwtService
+     * @memberof AuthService
      */
     constructor(
         private router: Router,
         private http: HttpClient,
-        private langService: LangService,
         private contextoService: ContextoService,
         private jwtService: JwtService) {}
 
@@ -50,7 +49,7 @@ export class AuthService {
             pass: pPassword
         };
 
-        this.http.post<Resultado>(`${this.contextoService.getBackendAPI()}/login`, params, {headers: {'Accept': 'image/png'}})
+        this.http.post<Resultado>(`${this.contextoService.getBackendAPI()}/login`, params)
             .subscribe(
                 response => {
                     if (response.data) {
