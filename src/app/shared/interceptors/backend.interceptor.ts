@@ -1,4 +1,4 @@
-import { Observable ,  ReplaySubject ,  Subject, throwError } from 'rxjs';
+import { Observable , throwError } from 'rxjs';
 import { tap, catchError, finalize } from 'rxjs/operators';
 import { Injectable, Injector } from '@angular/core';
 import {    HttpInterceptor,
@@ -6,16 +6,13 @@ import {    HttpInterceptor,
             HttpHandler,
             HttpEvent,
             HttpEventType,
-            HttpResponse,
             HttpErrorResponse,
             HttpHeaders } from '@angular/common/http';
-import { JwtService } from '../services/jwt.service';
 import { NotificacionService } from '../services/notificacion.service';
 import { eTipoNotificacion } from '../enums/tipo-notificacion.enum';
 import { ContextoService } from '../services/contexto.service';
 import { LangService } from '../services/lang.service';
 import { eModulo } from '../enums/modulo.enum';
-import { Resultado } from '../models/resultado.model';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
@@ -32,7 +29,6 @@ export class BackendInterceptor implements HttpInterceptor {
      * @memberof BackendInterceptor
      */
     constructor(
-        private jwtService: JwtService,
         private inj: Injector
     ) {}
 
@@ -149,7 +145,7 @@ export class BackendInterceptor implements HttpInterceptor {
         }
 
         // Obtiene el token con el servicio jwt.
-        const token = this.jwtService.getToken();
+        const token = this.contextoService.getItemContexto('token');
 
         // Si pudo obtener un token, adiciona el header de autorizacion.
         if (token) {

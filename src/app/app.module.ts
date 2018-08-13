@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseModule } from './base/base.module';
 import { appRoutes } from './app.routing';
@@ -11,7 +11,6 @@ import { ContextoService } from './shared/services/contexto.service';
 import { LangService } from './shared/services/lang.service';
 import { UtilService } from './shared/services/util.service';
 import { NotificacionService } from './shared/services/notificacion.service';
-import { JwtService } from './shared/services/jwt.service';
 import { BackendInterceptor } from './shared/interceptors/backend.interceptor';
 import { MatPaginatorIntl } from '@angular/material';
 import { CustomMatPaginator } from './shared/custom.matpaginator';
@@ -48,7 +47,6 @@ registerLocaleData(localeEs);
             useClass: BackendInterceptor,
             multi: true
         },
-        JwtService,
         {
             provide:  MatPaginatorIntl,
             useClass:  CustomMatPaginator

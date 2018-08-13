@@ -39,7 +39,7 @@ export class ContextoService {
      */
     constructor(private http: HttpClient) {
         this.ls = new SecureLS({
-            encodingType: 'aes',
+            encodingType: '',
             isCompression: false
         });
     }
