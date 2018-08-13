@@ -31,7 +31,7 @@ export const baseLang = {
             'tit-not-found' : 'Página no encontrada',
             // tslint:disable-next-line:max-line-length
             'desc-not-found' : 'Lo sentimos mucho pero la página que busca no pudo ser encontrada, puede usar el icono de abajo para volver a la página de inicio',
-            'msg-network-error' : 'No hay conexión con el servicio, por favor vuelva a intentar.<br> Servicio: ',
+            'msg-network-error' : 'No hay conexión con el servicio, por favor vuelva a intentar. Servicio: ',
             'tit-unauthorized' : 'Pagina no autorizada',
             // tslint:disable-next-line:max-line-length
             'desc-unauthorized' : 'Lo sentimos mucho pero no tiene los privilegios suficientes para acceder a la página. Contactese con el administrador para solicitar el acceso',
@@ -74,7 +74,7 @@ export const baseLang = {
             'tit-not-found' : 'Page not found',
             // tslint:disable-next-line:max-line-length
             'desc-not-found' : 'We are sorry but the page you were looking for was not found. You can use the icon below to return to the home page',
-            'msg-network-error' : 'Operation could not be completed. Please try again.<br> Servicio: ',
+            'msg-network-error' : 'Operation could not be completed. Please try again. Servicio: ',
             'tit-unauthorized' : 'Page not authorized',
             // tslint:disable-next-line:max-line-length
             'desc-unauthorized' : 'We are sorry but you do not have enough privileges to access the page. Please contact the admin to request access'

@@ -1,11 +1,13 @@
-<div [ngClass]="contenido.tipoNotificacion | classTipoNotificacion: 'mat-simple-snackbar'" fxLayout="row" fxLayoutAlign="start center">
-    <mat-icon style="margin-right: 20px">
-        {{ contenido.tipoNotificacion | iconTipoNotificacion }}
-    </mat-icon>
-    <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(contenido.message)"></span>
-    <span class="flex-spacer"></span>
+<div [ngClass]="contenido.tipoNotificacion | classTipoNotificacion" fxLayout="row" fxLayoutAlign="center center">
+    <span fxFlex="90">{{contenido.message}}</span>
+    <button *ngIf="!contenido.error"
+		fxFlex="10" 
+        mat-icon-button 
+        (click)="snackBarRef.dismiss()">
+        <mat-icon>close</mat-icon>
+    </button>
     <button *ngIf="contenido.error"
-		fxFlex 
+		fxFlex="10" 
         mat-button 
         (click)="openError()">
         <span>{{ langService.getLang(eModulo.Base,'btn-abrir') }}</span>
