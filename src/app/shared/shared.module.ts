@@ -44,6 +44,7 @@ import { TableEmptyComponent } from './components/table-empty/table-empty.compon
 import { LoaderDirective } from './directives/loader.directive';
 import { DisabledDirective } from './directives/disabled.directive';
 import { UppercaseDirective } from './directives/uppercase.directive';
+import { RightClickOffDirective } from './directives/right-click.directive';
 
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
@@ -62,6 +63,7 @@ import { UppercaseDirective } from './directives/uppercase.directive';
         LoaderDirective,
         DisabledDirective,
         UppercaseDirective,
+        RightClickOffDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
@@ -142,6 +144,7 @@ import { UppercaseDirective } from './directives/uppercase.directive';
         LoaderDirective,
         DisabledDirective,
         UppercaseDirective,
+        RightClickOffDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
