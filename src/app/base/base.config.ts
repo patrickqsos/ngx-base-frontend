@@ -6,5 +6,5 @@ export const baseConfig = {
     nombreSistema: 'Sistema base segip',
     paginatorSize: 10,
     paginatorOptions: [5, 10, 15],
-    versionBase: '1.0.0'
+    versionBase: '1.0.1'
 };
