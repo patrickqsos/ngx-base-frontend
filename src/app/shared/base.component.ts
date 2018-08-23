@@ -1,8 +1,4 @@
 import { eModulo } from '../shared/enums/modulo.enum';
-import { LangService } from '../shared/services/lang.service';
-import { UtilService } from '../shared/services/util.service';
-import { NotificacionService } from '../shared/services/notificacion.service';
-import { Component } from '@angular/core';
 import { eTipoNotificacion } from '../shared/enums/tipo-notificacion.enum';
 import { Subject } from 'rxjs';
 import { baseConfig } from '../base/base.config';
@@ -47,6 +43,22 @@ export class BaseComponent {
     eTipoNotificacion = eTipoNotificacion;
 
     /**
+     * Id seleccionado en un row.
+     *
+     * @type {*}
+     * @memberof BaseComponent
+     */
+    idSeleccionado: any;
+
+    /**
+     * Contenido para mostrar un error en un dialog.
+     *
+     * @type {string}
+     * @memberof BaseComponent
+     */
+    dialogError: string;
+
+    /**
      * Propiedad subject para manejar los unsubscribe de forma general en un componente.
      *
      * @protected
@@ -54,4 +66,23 @@ export class BaseComponent {
      * @memberof BaseComponent
      */
     protected unsubscribe$: Subject<boolean> = new Subject();
+
+    /**
+     * Método para setear un id seleccionado.
+     *
+     * @param {*} id
+     * @memberof BaseComponent
+     */
+    setIdSeleccionado(id: any): void {
+        this.idSeleccionado = id;
+    }
+
+    /**
+     * Método para quitar un id seleccionado.
+     *
+     * @memberof BaseComponent
+     */
+    unsetIdSeleccionado(): void {
+        this.idSeleccionado = undefined;
+    }
 }
