@@ -1,9 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Resultado } from '../../../shared/models/resultado.model';
 import { LangService } from '../../../shared/services/lang.service';
 import { BaseComponent } from '../../../shared/base.component';
 
+/**
+ * Componente para mostrar dialog de confirmación de acciones.
+ *
+ * @export
+ * @class ConfirmDialogComponent
+ * @extends {BaseComponent}
+ */
 @Component({
     selector: 'shared-confirm-dialog',
     templateUrl: './confirm-dialog.component.html'
