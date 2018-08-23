@@ -41,6 +41,8 @@ export const baseLang = {
             'mat-ITEMS_PER_PAGE': 'Items por página',
             'mat-NEXT_PAGE': 'Siguiente página',
             'mat-PREVIOUS_PAGE': 'Página anterior',
+            'mat-FIRST_PAGE': 'Primera página',
+            'mat-LAST_PAGE': 'Última página',
             'mat-FROM': 'de',
             'btn-si': 'Aceptar',
             'btn-no': 'Cancelar',
