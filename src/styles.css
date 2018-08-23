@@ -125,7 +125,7 @@ router-outlet{
 }
 
 mat-dialog-content{
-    padding: 24px !important;
+    padding-top: 24px !important;
 }
 
 .mat-header-cell.mat-sort-header-sorted {
