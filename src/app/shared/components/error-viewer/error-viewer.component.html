@@ -1,15 +1,15 @@
-<mat-toolbar color="warn">
+<mat-toolbar shToolbarModal color="warn">
     {{ data.message }}
 </mat-toolbar>
 <mat-dialog-content>
-        <shared-json-viewer [json]="data.error"></shared-json-viewer>
+    <shared-json-viewer [json]="data.error"></shared-json-viewer>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button 
         fxFlex 
         mat-raised-button 
         color="warn"
-        (click)="onClose()">
+        mat-dialog-close>
         <span>{{ langService.getLang(eModulo.Base,'btn-cerrar') }}</span>
     </button>
 </mat-dialog-actions>
