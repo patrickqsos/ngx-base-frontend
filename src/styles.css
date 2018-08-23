@@ -1,6 +1,9 @@
 html, body {
     height: 100%;
     margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 @font-face {
@@ -122,8 +125,7 @@ router-outlet{
 }
 
 mat-dialog-content{
-    padding: 25px !important;
-    font-size: 14px;
+    padding: 24px !important;
 }
 
 .mat-header-cell.mat-sort-header-sorted {
@@ -140,7 +142,7 @@ mat-spinner{
 }
 
 mat-card-content {
-    padding-top: 15px;
+    padding-top: 24px;
 }
 
 .toolbar-modal {
