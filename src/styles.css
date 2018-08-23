@@ -159,3 +159,13 @@ mat-card-content {
 .form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > .mat-form-field-label-wrapper > label{
     color: #00527a;
 }
+
+.row-hover{
+    cursor: pointer;
+    background: #f7be68;
+}
+
+.row-action{
+    cursor: pointer;
+    background: #f7be68;
+}
