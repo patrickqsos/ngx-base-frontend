@@ -46,6 +46,7 @@ import { DisabledDirective } from './directives/disabled.directive';
 import { UppercaseDirective } from './directives/uppercase.directive';
 import { RightClickOffDirective } from './directives/right-click.directive';
 import { RowHoverDirective } from './directives/row-hover.directive';
+import { ToolbarErrorDirective } from './directives/toolbar-error.directive';
 
 /**
  * Shared modulo que importa y exporta los modulos necesarios para material design, tambien exporta directivas y pipes.
@@ -66,6 +67,7 @@ import { RowHoverDirective } from './directives/row-hover.directive';
         UppercaseDirective,
         RightClickOffDirective,
         RowHoverDirective,
+        ToolbarErrorDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,
@@ -148,6 +150,7 @@ import { RowHoverDirective } from './directives/row-hover.directive';
         UppercaseDirective,
         RightClickOffDirective,
         RowHoverDirective,
+        ToolbarErrorDirective,
 
         ConfirmDialogComponent,
         JsonViewerComponent,

@@ -150,6 +150,11 @@ mat-card-content {
     font-size: 16px;
 }
 
+.toolbar-error {
+    height: 45px !important;
+    font-size: 14px !important;
+}
+
 .form-field-disabled > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-outline{
     color: #00527a;
 }
