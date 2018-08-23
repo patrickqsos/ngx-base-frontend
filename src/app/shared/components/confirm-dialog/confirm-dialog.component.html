@@ -1,6 +1,14 @@
-<mat-toolbar shToolbarModal color="{{data.color}}">
-    {{ data.title }}
-</mat-toolbar>
+<div class="alt-theme">
+    <mat-toolbar shToolbarModal color="primary">
+        {{ data.title }}
+    </mat-toolbar>
+    <mat-dialog-content fxLayout="row" fxLayoutAlign="space-around center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15" >
+            <mat-icon [inline]="true" style="font-size: 50px !important" color="primary">{{ data.icon }}</mat-icon>
+        </div>
+        <span style="font-size: 20px; text-align: center">{{ data.content }}</span>
+    </mat-dialog-content>
+</div>
 
 <mat-dialog-actions fxLayout="row" fxLayoutGap="20px">
     <button 
