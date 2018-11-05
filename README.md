@@ -1,6 +1,3 @@
-[![pipeline status](http://10.10.22.30/segip-sistemas/segip-base-frontend/badges/develop/pipeline.svg)](http://10.10.22.30/segip-sistemas/segip-base-frontend/commits/develop)
-
-
 
 # Base
 
