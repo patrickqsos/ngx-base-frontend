@@ -1,4 +1,5 @@
-image: registry.segip.gob.bo/base/frontend-ci:latest
+image: registry.my-company.com
+/base/frontend-ci:latest
 
 stages:
   - tests
@@ -63,15 +64,19 @@ docker-anl:
     - develop
   stage: docker
   before_script:
-    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.my-company.com
+    
   script:
-    - docker build -t registry.segip.gob.bo/base/frontend:stable-analisis --build-arg ENV=anl .
-    - docker push registry.segip.gob.bo/base/frontend:stable-analisis
+    - docker build -t registry.my-company.com
+    /base/frontend:stable-analisis --build-arg ENV=anl .
+    - docker push registry.my-company.com
+    /base/frontend:stable-analisis
   environment:
     name: svr-analisis
     url: http://base.analisis.local
   after_script:
-    - docker logout https://registry.segip.gob.bo
+    - docker logout https://registry.my-company.com
+    
   
 docker-dev:
   only:
@@ -79,15 +84,19 @@ docker-dev:
     - develop
   stage: docker
   before_script:
-    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.my-company.com
+    
   script:
-    - docker build -t registry.segip.gob.bo/base/frontend:stable-dev --build-arg ENV=dev .
-    - docker push registry.segip.gob.bo/base/frontend:stable-dev
+    - docker build -t registry.my-company.com
+    /base/frontend:stable-dev --build-arg ENV=dev .
+    - docker push registry.my-company.com
+    /base/frontend:stable-dev
   environment:
     name: svr-dev
     url: http://base.dev.local
   after_script:
-    - docker logout https://registry.segip.gob.bo
+    - docker logout https://registry.my-company.com
+    
   
 docker-test:
   only:
@@ -95,29 +104,37 @@ docker-test:
     - develop
   stage: docker
   before_script:
-    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.my-company.com
+    
   script:
-    - docker build -t registry.segip.gob.bo/base/frontend:stable-test --build-arg ENV=test .
-    - docker push registry.segip.gob.bo/base/frontend:stable-test
+    - docker build -t registry.my-company.com
+    /base/frontend:stable-test --build-arg ENV=test .
+    - docker push registry.my-company.com
+    /base/frontend:stable-test
   environment:
     name: svr-test
     url: http://base.test.local
   after_script:
-    - docker logout https://registry.segip.gob.bo
+    - docker logout https://registry.my-company.com
+    
   
 docs:
   only:
     - tags
   stage: docker
   before_script:
-    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.segip.gob.bo
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD" https://registry.my-company.com
+    
   script:
     - npm run compodoc
-    - docker build -t registry.segip.gob.bo/base/frontend:docs --build-arg ENV=docs .
-    - docker push registry.segip.gob.bo/base/frontend:docs
+    - docker build -t registry.my-company.com
+    /base/frontend:docs --build-arg ENV=docs .
+    - docker push registry.my-company.com
+    /base/frontend:docs
   artifacts:
     name: "DOCS($CI_COMMIT_REF_NAME-$CI_COMMIT_SHA)"
     paths:
       - dist-docs
   after_script:
-    - docker logout https://registry.segip.gob.bo
+    - docker logout https://registry.my-company.com
+    
