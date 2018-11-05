@@ -18,7 +18,7 @@
     "compodoc:serve": "./node_modules/.bin/compodoc -p src/tsconfig.app.json --theme material --output ./dist-docs -s"
   },
   "authors": [
-    "Patricio Quispe Sosa <patrickqsos@gmail.com>",
+    "Patricio Quispe Sosa <patrickqsos@gmail.com>"
   ],
   "private": true,
   "dependencies": {
